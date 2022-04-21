@@ -1,0 +1,122 @@
+<!------------ Header  ---------------->
+<ion-toolbar color="light">
+  <ion-buttons slot="start">
+    <ion-menu-button style="margin-top:15px;color:#121212" autoHide="false">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 7H19" stroke="#121212" stroke-width="2" stroke-linecap="round" />
+        <path d="M5 12H15" stroke="#121212" stroke-width="2" stroke-linecap="round" />
+        <path d="M5 17H11" stroke="#121212" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </ion-menu-button>
+  </ion-buttons>
+
+  <div class="row">
+    <div class="col-4">
+      <h5 style="margin-top:10px"><b></b></h5>
+    </div>
+    <div class="col-8 mt-2 mx-2" style="text-align: right;width: 90%;">
+      <svg (click)="notification()" style="margin:3px;" width="26" height="26" viewBox="0 0 24 24" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M13.7942 3.29494C13.2296 3.10345 12.6258 3 12 3C9.1535 3 6.7622 5.14032 6.44786 7.96942L6.19605 10.2356L6.1896 10.2933C6.06065 11.417 5.69489 12.5005 5.11646 13.4725L5.08667 13.5222L4.50863 14.4856C3.98408 15.3599 3.7218 15.797 3.77842 16.1559C3.8161 16.3946 3.93899 16.6117 4.12435 16.7668C4.40292 17 4.9127 17 5.93224 17H18.0678C19.0873 17 19.5971 17 19.8757 16.7668C20.061 16.6117 20.1839 16.3946 20.2216 16.1559C20.2782 15.797 20.0159 15.3599 19.4914 14.4856L18.9134 13.5222L18.8836 13.4725C18.4273 12.7059 18.1034 11.8698 17.9236 10.9994C15.1974 10.9586 13 8.73592 13 6C13 5.00331 13.2916 4.07473 13.7942 3.29494ZM16.2741 4.98883C16.0999 5.28551 16 5.63109 16 6C16 6.94979 16.6621 7.74494 17.5499 7.94914C17.4205 6.82135 16.9608 5.80382 16.2741 4.98883Z"
+          fill="black" />
+        <path
+          d="M9 17C9 17.394 9.0776 17.7841 9.22836 18.1481C9.37913 18.512 9.6001 18.8427 9.87868 19.1213C10.1573 19.3999 10.488 19.6209 10.8519 19.7716C11.2159 19.9224 11.606 20 12 20C12.394 20 12.7841 19.9224 13.1481 19.7716C13.512 19.6209 13.8427 19.3999 14.1213 19.1213C14.3999 18.8427 14.6209 18.512 14.7716 18.1481C14.9224 17.7841 15 17.394 15 17L12 17H9Z"
+          fill="black" />
+        <circle cx="18" cy="6" r="2.5" fill="#eb154b" stroke="#eb154b" />
+      </svg>
+
+    </div>
+  </div>
+</ion-toolbar>
+
+<ion-content [scrollEvents]="true">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <svg (click)="exit()" style="margin-left: 3%;margin:5px;cursor:pointer;color:#EB154B" width="30" height="30"
+          viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M5 12L4.29289 11.2929L3.58579 12L4.29289 12.7071L5 12ZM17 13C17.5523 13 18 12.5523 18 12C18 11.4477 17.5523 11 17 11V13ZM8.29289 7.29289L4.29289 11.2929L5.70711 12.7071L9.70711 8.70711L8.29289 7.29289ZM4.29289 12.7071L8.29289 16.7071L9.70711 15.2929L5.70711 11.2929L4.29289 12.7071ZM5 13H17V11H5V13Z"
+            fill="#EB154B" />
+        </svg>
+
+      </div>
+      <div class="col-6 ion-text-right mt-1">
+        <button (click)="navigateTo()" class="btn btn-sm addproduct-btn ">+ Add Product</button>
+      </div>
+
+
+      <div class="col-10">
+        <h2 class="title">
+
+          <b> My Products</b>
+        </h2>
+
+        <!------------ no products gif  --------------->
+        <div *ngIf="noProducts" style="margin: auto !important;margin-top: 50%;">
+          <img style="width:100%;height:100%;margin-left: 25px !important;" src="assets/gif/empty.gif" alt="">
+        </div>
+
+      </div>
+
+
+      <div class="col-2 mt-3">
+
+        <svg (click)="searchPage()" width="25" height="25" viewBox="0 0 24 24" fill="none">
+          <circle cx="11" cy="11" r="7" stroke="#121212" stroke-width="2" />
+          <path
+            d="M11 8C10.606 8 10.2159 8.0776 9.85195 8.22836C9.48797 8.37913 9.15726 8.6001 8.87868 8.87868C8.6001 9.15726 8.37913 9.48797 8.22836 9.85195C8.0776 10.2159 8 10.606 8 11"
+            stroke="#CCD2E3" stroke-width="2" stroke-linecap="round" />
+          <path d="M20 20L17 17" stroke="#121212" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </div>
+
+    </div>
+
+
+
+    <div *ngFor="let product of productlist" class="welcomecard"
+      style="box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px !important;border-radius: 5px; ">
+
+      <div style="cursor: pointer;" class="row">
+        <div class="col-5" >
+          <img src="{{product.product_image}}" alt="">
+        </div>
+
+
+        <div class="col-7">
+          <h6 class="productName" (click)="editDetails(product.product_name)">
+            <b>{{product.product_name}}</b></h6>
+
+          <p style="margin-top: -7px !important;">Alarm set : &nbsp; {{product.product_count}}</p>
+
+          <h6 style="margin-top: -7px !important;" (click)="editDetails(product.product_name)">
+            Rs.{{product.cost}}/{{product.unit}}</h6>
+
+          <div class="row">
+            <div class="col-8">
+              <button (click)="navigatetoaddoffer(product.product_name)"
+                class="btn btn-sm btn-outline-danger repost-btn mb-3"> + Add Offer</button>
+            </div>
+            <div class="col-4">
+              <svg (click)="editDetails(product.product_name)"  width="22" height="20" fill="currentColor"
+                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+              </svg>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</ion-content>

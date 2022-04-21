@@ -1,0 +1,92 @@
+<ion-content class="bg-class mb-3">
+  <div class="container-wrapper">
+
+    <div class="signin-div" style="margin-top: -40px;">
+
+      <div class="row">
+        <div class="col-9">
+          <h2 class="mx-3" ><b>Signup</b></h2>
+
+        </div>
+
+        <div class="col-3 ion-text-center">
+          <svg (click)="navigateHome()" style="margin-top:12px;cursor:pointer" width="24" height="27"
+            viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_d_1056_2574)">
+              <path d="M18 6L6 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M6 6L18 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+            <defs>
+              <filter id="filter0_d_1056_2574" x="-4" y="0" width="32" height="32" filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1056_2574" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1056_2574" result="shape" />
+              </filter>
+            </defs>
+          </svg>
+        </div>
+
+      </div>
+      <div class="row ">
+        <div class="col-12">
+          <p class="get-started mt-2 mx-3"><b>Getting Started</b></p>
+          <p class="create-account mx-3 ">Create an account to continue!</p>
+        </div>
+       
+
+      </div>
+      <div class="input-field">
+        <div class="container">
+          <ion-input  required (keyup)="isEmailCheck()" [(ngModel)]="emailid"placeholder="Enter your email" class="primary-input"></ion-input>
+          <p *ngIf="isNotEmailAlert" > Incorrect Email Address </p>
+
+          <ion-input  required [(ngModel)]="sellername"  (keyup)="isUSername()" placeholder="Enter your user name" class="primary-input"></ion-input>
+          <p *ngIf="isUserNameAlert" style="color:#EB154B;;font-size: 10px;"> Incorrect User name </p>
+
+          <ion-input  (keyup)="isMobileNumber()" required [(ngModel)]="mobilenumber" type="text" maxlength="10"placeholder="Enter your mobile number" class="primary-input" maxlength="10"></ion-input>
+          <p style="color:#EB154B;font-size: 10px; "  *ngIf="ValidNumber"> Enter Valid Mobile
+            Number </p>
+
+          <ion-input  required [(ngModel)]="password" (keyup)="isPasswordCheck()" type="password" placeholder="Enter your password" class="primary-input"></ion-input>
+          <p *ngIf="passwordCheck" >Your password must be 8-16
+            characters, and include at least one lowercse letter, one uppercase letter, and a number</p>       
+        </div>
+       
+      </div>
+
+      <div class="row">
+
+        <div class="col-1 tearmsAndCondition" style="margin-left: 14px;">
+          <ion-checkbox (ionChange)="checkboxClick($event)" color="success" [checked]="checked"></ion-checkbox>
+        </div>
+        <div class="col-8">
+          <p class="tearmsAndCondition" (click)="termsAndCondition()" 
+            *ngIf="acceptCondtioned">By
+            creating an account, you agree to our
+            <b> Terms & Conditions</b>
+          </p>
+          <p class="tearmsAndCondition" (click)="termsAndCondition()" 
+            *ngIf="acceptCondtion" style="color:red;font-size: 10px;padding-top: 8px;">By
+            creating an account, you agree to our
+            <b> Terms & Conditions</b>
+          </p>
+        </div>
+      </div>
+
+      <div style="width:100%; text-align: center;">
+        <button (click)="signup()" type="button" class="btn btn-primary  signup-btn mt-2">SIGN UP </button>
+      </div>
+      <p style="cursor: pointer;" (click)="signinPage()" class="condition ion-text-center">Already have an account? <b
+        class="signIn"> Sign in</b></p>
+
+
+    </div>
+  </div>
+</ion-content>

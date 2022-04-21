@@ -1,0 +1,263 @@
+.myproduct-div {
+  position: relative;
+  left: 2%;
+  background-color: var(--ion-color-light);
+  border: 1px solid #ebe6e6;
+  border-radius: 18px;
+  box-shadow: 2px 2px 2px 2px #ebe6e6;
+  width: 96% !important;
+}
+
+.support-btn {
+  border-radius: 5px !important;
+  background: transparent;
+  margin: 10px;
+  width: 50%;
+  text-align: center;
+  border: 1px solid #ebe6e6;
+  font-size: 12px !important;
+  margin-top: 17% !important;
+  color: var(--ion-color-light);
+
+}
+
+.enable-btn {
+  color: var(--ion-color-primary);
+  border: 1px solid var(--ion-color-primary);
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.disable-btn {
+  color: var(--ion-color-secondary);
+  border: 1px solid var(--ion-color-secondary);
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.name {
+  font-size: 14px;
+  color: #5C5C5C;
+  text-align: left;
+  font-style: bold;
+  font-weight: 550;
+}
+
+
+.edit-name {
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+// #edit-field{
+//     border:1px solid #fff;
+//     width:100%;
+//     margin-left: -20px;
+//     font-size: 11px;
+//     background-color: transparent;
+// }
+
+input[type=text] {
+  font-size: 13px;
+  margin-top: -12px;
+  margin-left: -20px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: none !important;
+  border-bottom: 2px solid var(--ion-color-primary) !important;
+}
+
+input:focus {
+  outline: none !important;
+  border-bottom: 2px solid var(--ion-color-success) !important;
+}
+
+.error-message {
+  font-size: 12px;
+  margin-left: 25px;
+
+}
+
+#edit {
+  cursor: pointer;
+}
+
+#social-icon {
+  margin-bottom: 5px;
+}
+
+.update-btn {
+  border-radius: 5px !important;
+  background: var(--ion-color-primary);
+  color: var(--ion-color-light);
+  height: 25px;
+  width: 25%;
+  text-align: center;
+  border: 1px solid #fff;
+  font-size: 12px !important;
+  padding: 3px;
+  margin: 15px !important;
+}
+
+.cancel-btn {
+  border-radius: 5px !important;
+  background: var(--ion-color-secondary);
+  color: var(--ion-color-light);
+  height: 25px;
+  width: 25%;
+  text-align: center;
+  border: 1px solid #fff;
+  font-size: 12px !important;
+  padding: 3px;
+  margin: 15px !important;
+}
+
+ion-toggle {
+  --handle-box-shadow: 0 3px 12px var(--ion-color-primary), 0 3px 1px var(--ion-color-primary);
+  overflow: visible;
+  contain: none;
+  color: var(--ion-color-primary) !important;
+
+}
+
+ion-badge {
+  border-radius: 3px !important;
+  margin-left: -10px !important;
+
+}
+
+#card {
+  position: absolute;
+  height: 150%;
+  width: 1500px !important;
+  margin-left: -10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid #ebe6e6;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px #ccc;
+  margin-top: -285px !important;
+  z-index: 5;
+}
+
+#modal {
+  position: fixed;
+  top: 18% !important;
+  margin: 5%;
+  background-color: var(--ion-color-light);
+  border: 1px solid #ebe6e6;
+  border-radius: 5px;
+  // box-shadow: 2px 2px 2px 2px #ccc;
+  width: 94% !important;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes example {
+  from {
+    top: 0px;
+  }
+
+  to {
+    top: 200px;
+    background-color: #fff;
+  }
+}
+
+.submit-btn {
+  background-color: var(--ion-color-secondary);
+  color: var(--ion-color-light);
+}
+
+
+.profile {
+  border: 6px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  margin: 2%;
+  width: 125px;
+  height: 125px;
+}
+
+.editprofile {
+  width: 155px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.upload-proff {
+  background: linear-gradient(to left, #23a6d5 0%, #23d5ab 100%);
+  color: #fff !important;
+
+}
+
+.welcomecard {
+  background: var(--ion-color-light);
+  border-radius: 18px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.2px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+ion-content {
+  --background-color: var(--ion-color-light) !important;
+  // background: linear-gradient(to bottom, darkturquoise
+  // 0%, #d1f2e7
+  // 100%) !important;
+  --offset-bottom: auto !important;
+  --overflow: hidden;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+ion-toggle:disabled,
+ion-toggle[disabled] {
+  opacity: 1;
+}
+
+.submit-btn {
+  cursor: pointer;
+}
+
+input[type="file"] {
+  display: none;
+
+}
+
+.infoIcon {
+  position: relative;
+  width: 10px !important;
+  top: 0;
+}
+
+
+
+.extraInfo{
+  position: absolute;
+  color: var(--ion-color-light);
+  background-color:#2c2c2ce7;
+  border-radius: 5px;
+  padding: 10px 10px;
+  width: 225px;
+  text-align: center;
+  visibility: hidden;
+  font-size: 12px;
+  z-index: 1;
+}
+
+.infoIcon:hover .extraInfo {
+  visibility: visible;
+}
+
+.success{
+  color: green;
+}
+
+.danger{
+  color: red;
+}

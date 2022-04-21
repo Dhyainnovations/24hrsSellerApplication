@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Platform } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +9,25 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  constructor(private platform: Platform) {
+   
+  }
+
+
+  home(){
+    localStorage.setItem("location", "home");
+
+  }
+
+  promotion(){
+    localStorage.setItem("location", "");
+
+  }
+
+  product(){
+    localStorage.setItem("location", "");
+
+  }
+
 
 }

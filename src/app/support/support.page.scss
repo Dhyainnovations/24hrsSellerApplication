@@ -1,0 +1,30 @@
+
+.submit-btn{
+    border-radius: 5px !important;
+  text-align: center !important;
+  background: linear-gradient(to left, #535252
+  0%, #0D0D0D
+  100%);
+    border:1px solid #fff;
+    margin:5px;
+}
+
+.signin-div{
+    background: rgba(105, 95, 95, 0.18);
+}
+
+
+
+ion-content {
+    background-color: var(--ion-color-light) !important;
+    // background: linear-gradient(to bottom, #8cdbe2
+    // 0%, #d1f2e7
+    // 100%) !important;
+
+    --offset-bottom: auto!important;
+    --overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+  }

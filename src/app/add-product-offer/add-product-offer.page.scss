@@ -1,0 +1,163 @@
+input[type=text] {
+    font-size       : 15px;
+    margin          : 0 8px;
+    width           : 92%;
+    box-sizing      : border-box;
+    background-color: transparent;
+    border:none !important;
+    border-bottom   : 2px solid #EB154B !important;
+  }
+  
+  .add-new-btn{
+    background-color: #EB154B !important;
+    border:1px solid #EB154B;
+  }
+  .signin-btn{
+    background-color: #ffffff;
+    color: #0D0D0D;
+    border:1px solid #0D0D0D;
+  }
+  
+  input:focus {
+    outline   : none !important;
+    border-bottom   : 2px solid #23d5ab !important;
+  }
+  #card{
+    z-index: 1 !important;
+    
+    height: 36% !important;
+    top:20%;
+    box-shadow: none !important;
+    background: rgba(245, 245, 245, 0.54);
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    // backdrop-filter: blur(13.1px);
+    // -webkit-backdrop-filter: blur(13.1px);
+  }
+  .card {
+    background-color  : #fff;
+    border            : 1px solid #fff;
+    border-radius     : 8px;
+    width             : 96% !important;
+    margin            : 5px;
+    -moz-box-shadow   : 0 0 3px #ccc;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    box-shadow        : 2px 2px 2px 2px #ccc !important;
+    border            : 1px solid #fff;
+  }
+  
+  .delete-btn {
+    background-color: #EB154B !important;
+    color           : #fff;
+    text-align      : center;
+  }
+  
+  .update-btn {
+    background-color: #121212;
+    color           : #fff;
+    text-align      : center;
+    width: 55%;
+    border-radius: 5px;
+  }
+  
+  .btn {
+    margin: 10px 0 !important;
+  }
+  
+  ion-content {
+    background-color: #F4F7FA !important;
+    // background: linear-gradient(to bottom, darkturquoise
+    // 0%, #d1f2e7
+    // 100%) !important;
+  
+    --offset-bottom: auto !important;
+    --overflow     : hidden;
+    overflow       : auto;
+  
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  
+  .pop-up-card {
+    box-shadow   : none !important;
+    position     : absolute;
+    top          : 10%;
+    z-index      : 1;
+    right        : 3px;
+    border-radius: 10px;
+  }
+  
+  #product-popupCard{
+  /* From https://css.glass */
+  /* From https://css.glass */
+  background: #191818;
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(13.1px);
+  -webkit-backdrop-filter: blur(13.1px);
+  height:26%;
+  margin-top: 50% !important;
+  border:none !important;
+  color:#fff;
+  }
+  
+  button {
+    box-shadow: rgba(50, 50, 93, 0.068) 0px 2px 5px -1px, rgba(0, 0, 0, 0.068) 0px 1px 3px -1px;
+  }
+  
+  #subcategory-popupCard {
+  /* From https://css.glass */
+  /* From https://css.glass */
+  background: #191818;
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  // backdrop-filter: blur(13.1px);
+  // -webkit-backdrop-filter: blur(13.1px);
+  height:26%;
+  margin-top: 50%;
+  border:none !important;
+  color:#fff;
+  }
+  
+  #category-popupCard{
+  /* From https://css.glass */
+  /* From https://css.glass */
+  background: #191818;
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  // backdrop-filter: blur(13.1px);
+  // -webkit-backdrop-filter: blur(13.1px);
+  height:26%;
+  margin-top: 50%;
+  border:none !important;
+  color:#fff;
+  }
+  input[type="file"] {
+    display: none;
+  } 
+  
+  input[type=datetime-local] {
+    font-size       : 15px;
+    margin          : 0 5px;
+    width           : 90%;
+    box-sizing      : border-box;
+    border          : none;
+    background-color:  transparent !important;
+    border-bottom: 2px solid #EB154B;
+  }
+
+  ion-content {
+    background-color: #ffff !important;
+    // background: linear-gradient(to bottom, darkturquoise
+    // 0%, #d1f2e7
+    // 100%) !important;
+  
+    --offset-bottom: auto !important;
+    --overflow     : hidden;
+    overflow       : auto;
+  
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }

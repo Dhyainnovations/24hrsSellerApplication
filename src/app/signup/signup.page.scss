@@ -1,0 +1,95 @@
+.location {
+    color    : #171717;
+    font-size: 12px;
+    margin   : 5px;
+}
+
+.signin-div{
+    background-color: var(--ion-color-light) !important;
+    width: 95%;
+    height: 20%;
+    margin: auto !important;
+    z-index: 99 !important;
+}
+
+.get-started {
+    font-size: 20px;
+    color    : #171717;
+    margin   : 8px;
+}
+
+.create-account {
+    color   : var(--ion-color-secondary);
+    font-size: 10px;
+    margin   : 8px;
+}
+
+.tearmsAndCondition {
+    color   : var(--ion-color-secondary);
+    font-size: 10px;
+    margin   : 5px;
+    cursor   : pointer;
+}
+
+// .input-field{
+//     margin-left :-10px;
+
+// }
+.signup-btn {
+    border-radius: 5px !important;
+    width        : 50%;
+    height       : 35px;
+    background   : var(--ion-color-secondary);
+    color        : var(--ion-color-light);
+    border       : 1px solid #fff;
+}
+
+.verify-btn {
+    border-radius: 5px !important;
+    margin       : 10px;
+    background   : var(--ion-color-secondary);
+    color        : var(--ion-color-light);
+    border       : 1px solid #fff;
+}
+
+.send-otp-btn {
+    border-radius: 5px !important;
+    background   : var(--ion-color-secondary);
+    color        : var(--ion-color-light);
+    border       : 1px solid #fff;
+    margin-bottom: 2px !important;
+}
+
+.tearmsAndCondition {
+    font-size: 10px;
+}
+
+ion-label {
+    font-size: 15px !important;
+    color    : #4c4c4d !important;
+}
+
+.condition {
+    font-size: 12px;
+    color    : gray;
+    padding  : 15px;
+}
+
+.container-wrapper {
+    margin-top: 25%;
+}
+
+ion-item {
+    border-bottom         : 1px solid #fff !important;
+    --highlight-background: var(--ion-color-primary)!important;
+}
+
+
+
+p{
+    color: var(--ion-color-primary);
+    font-size: 10px;
+}
+.signIn{
+    color: var(--ion-color-primary);
+}

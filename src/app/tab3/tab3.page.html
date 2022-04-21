@@ -1,17 +1,283 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!------------ Header  ---------------->
+<ion-toolbar color="light">
+  <ion-buttons slot="start">
+    <ion-menu-button style="margin-top:15px;color:#121212" autoHide="false">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 7H19" stroke="#121212" stroke-width="2" stroke-linecap="round" />
+        <path d="M5 12H15" stroke="#121212" stroke-width="2" stroke-linecap="round" />
+        <path d="M5 17H11" stroke="#121212" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </ion-menu-button>
+  </ion-buttons>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="row">
+    <div class="col-4">
+      <h5 style="color:#121212;margin-top:10px"><b></b></h5>
+    </div>
+    <div class="col-8 mt-2 mx-2" style="text-align: right;width: 90%;">
+      <svg (click)="notification()" style="margin:3px;" width="26" height="26" viewBox="0 0 24 24" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M13.7942 3.29494C13.2296 3.10345 12.6258 3 12 3C9.1535 3 6.7622 5.14032 6.44786 7.96942L6.19605 10.2356L6.1896 10.2933C6.06065 11.417 5.69489 12.5005 5.11646 13.4725L5.08667 13.5222L4.50863 14.4856C3.98408 15.3599 3.7218 15.797 3.77842 16.1559C3.8161 16.3946 3.93899 16.6117 4.12435 16.7668C4.40292 17 4.9127 17 5.93224 17H18.0678C19.0873 17 19.5971 17 19.8757 16.7668C20.061 16.6117 20.1839 16.3946 20.2216 16.1559C20.2782 15.797 20.0159 15.3599 19.4914 14.4856L18.9134 13.5222L18.8836 13.4725C18.4273 12.7059 18.1034 11.8698 17.9236 10.9994C15.1974 10.9586 13 8.73592 13 6C13 5.00331 13.2916 4.07473 13.7942 3.29494ZM16.2741 4.98883C16.0999 5.28551 16 5.63109 16 6C16 6.94979 16.6621 7.74494 17.5499 7.94914C17.4205 6.82135 16.9608 5.80382 16.2741 4.98883Z"
+          fill="black" />
+        <path
+          d="M9 17C9 17.394 9.0776 17.7841 9.22836 18.1481C9.37913 18.512 9.6001 18.8427 9.87868 19.1213C10.1573 19.3999 10.488 19.6209 10.8519 19.7716C11.2159 19.9224 11.606 20 12 20C12.394 20 12.7841 19.9224 13.1481 19.7716C13.512 19.6209 13.8427 19.3999 14.1213 19.1213C14.3999 18.8427 14.6209 18.512 14.7716 18.1481C14.9224 17.7841 15 17.394 15 17L12 17H9Z"
+          fill="black" />
+        <circle cx="18" cy="6" r="2.5" fill="#eb154b" stroke="#eb154b" />
+      </svg>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+      <!-- <ion-badge style="border-radius: 50%;margin-left: -14px ;color:#eb154b ;font-size: 12px;" color="light">10</ion-badge> -->
+
+    </div>
+  </div>
+</ion-toolbar>
+
+<ion-content class="bg-class mb-3" [ngStyle]="{'opacity':subcategoryPopupModel ? '0.50' : '1'}"
+  [ngStyle]="{'opacity':PopupModel ? '0.50' : '1'}" [fullscreen]="true">
+  <div class="mt-2 mb-2">
+    <!--------  Add Product Form  -------->
+    <form #addproduct="ngForm" (ngSubmit)="onClickSubmit(addproduct.value)">
+      <div class="welcomecard mt-2">
+        <div class="row mt-2" style="padding: 10px;">
+          <div class="col-12">
+
+            <h5 class="name  ion-text-center" ><b>Add Your Product</b></h5>
+            <div class="row">
+              <div class="col-6">
+                <p class="name mt-2 ion-text-left" >Category :</p>
+              </div>
+              <div class="col-6">
+                <button class="btn signin-btn " (click)="visibleCategoryPopup()">Add New +</button>
+              </div>
+            </div>
+          </div>
+
+
+          <form #categoryselect="ngForm" (change)="popupModel(categoryselect.value)">
+            <div class="col-12 ">
+              <div class="select">
+                <select ngModel name="category">
+                  <option value="" disabled selected>Select Your Category (e.g Grocery)</option>
+                  <option *ngFor="let cat of categoryList" value="{{cat.tbid}}">{{cat.category}}</option>
+                  <!-- <option style="background-color: #23d5ab;" value="categoryPopup" (click)="check()">+ add new</option> -->
+                </select>
+              </div>
+            </div>
+          </form>
+
+
+
+          <p class="small text-danger text-center" *ngIf="category_tbid_check">Select Your Category</p>
+          <form #subcategoryselect="ngForm" (change)="popupModelsubcategory(subcategoryselect.value)">
+            <div class="col-12 mt-2">
+              <div class="row">
+                <div class="col-6">
+                  <p class="name mt-2 ion-text-left" >Sub Category :</p>
+                </div>
+                <div class="col-6">
+                  <button class="btn signin-btn enter" (click)="visibleSubCategoryPopup()"
+                    [disabled]="OnlyIfCategorySelected">Add New +</button>
+                </div>
+              </div>
+              <div class="select">
+                <select ngModel name="subcategory">
+                  <option value="" disabled selected>Select Your Subcategory (e.g Fruits)</option>
+                  <option *ngFor="let subcat of subcategoryList" value="{{subcat.tbid}}">{{subcat.subsubcategory}}
+                  </option>
+                  <option disabled *ngIf="subCategoryNotfound">No Sub Category Found</option>
+                  <!-- <option style="background-color:#23d5ab;" value="subcategoryPopup">+ add new</option> -->
+                </select>
+              </div>
+            </div>
+          </form>
+          <p class="small text-danger text-center" *ngIf="Subcategory_tbid_check">Select Your Subcategory</p>
+
+          <div class="col-6 mt-3">
+            <p class="name" >Product Name :</p>
+          </div>
+          <div class="col-6 mt-2">
+            <input [(ngModel)]="productnameBind" name="product_name" type="text" placeholder="" id="offer"
+              (keyup)="ProductNAmeAvailableCheck()" style="color: black;">
+          </div>
+          <p class="small text-danger text-center" *ngIf="productName_check">Enter the Product Name</p>
+
+          <div class="col-6">
+            <p class="name" >Cost:</p>
+          </div>
+          <div class="col-6">
+            <input ngModel name="cost" type="text" id="offer" (keyup)="CostAvailableCheck()" style="color: black;">
+          </div>
+          <p class="small text-danger text-center" *ngIf="CostAvailable">Enter The Cost</p>
+          <div class="col-12">
+            <div class="row">
+              <div class="col-4">
+                <p class="name mt-3" >Quantity :</p>
+              </div>
+              <div class="col-3 mt-3">
+                <input ngModel name="weight" type="text" id="quantityTextBox" (keyup)="WeightAvailableCheck()" style="color: black;">
+              </div>
+              <div class="col-5">
+                <div class="select">
+                  <select ngModel name="unit" class="unit-dropdown " (change)="UnitAvailableCheck()">
+                    <option value="" disabled selected>unit </option>
+                    <option *ngFor="let item of unitList" value="{{item}}" class="unit-dropdown-options"> {{item}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <p class="small text-danger text-center" *ngIf="unitAvailable">Choose anyone of the Unit</p>
+              <p class="small text-danger text-center" *ngIf="weightavailable">Enter The Weight Of The Product</p>
+
+            </div>
+          </div>
+          <div class="col-6 mt-2">
+            <p>Product Image:</p>
+          </div>
+
+          <div class="col-6 mt-2">
+
+            <div class="row">
+              <div class="col-6">
+                <label class="btn btn-sm" (change)="MediaFileSelected($event)"
+                  style="margin-left: 26% !important;">
+
+                  <svg width="30" height="20" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M9.42857 8.24995V9.74997C9.42857 10.1641 9.07672 10.5 8.64286 10.5H2.35714C1.92328 10.5 1.57143 10.1641 1.57143 9.74997V8.24995C1.57143 7.8358 1.21958 7.49994 0.785714 7.49994C0.351853 7.49994 0 7.8358 0 8.24995V9.74997C0 10.9926 1.05531 12 2.35714 12H8.64286C9.94469 12 11 10.9926 11 9.74997V8.24995C11 7.8358 10.6481 7.49994 10.2143 7.49994C9.78042 7.49994 9.42857 7.8351 9.42857 8.24995ZM4.94509 0.219569L1.80223 3.21961C1.49507 3.51282 1.49556 3.98743 1.80223 4.28017C2.10915 4.57314 2.60636 4.57314 2.91328 4.28017L4.71429 2.56159V7.49994C4.71429 7.91455 5.06565 8.24995 5.5 8.24995C5.93435 8.24995 6.28571 7.91455 6.28571 7.49994V2.56159L8.08746 4.28146C8.39437 4.57443 8.89158 4.57443 9.1985 4.28146C9.50542 3.98849 9.50542 3.51387 9.1985 3.2209L6.05565 0.220858C5.74799 -0.073404 5.25201 -0.073404 4.94509 0.219569Z"
+                      fill="black" />
+                  </svg>
+
+
+                  <input type="file" class="" name="image" accept=".jpeg,.jpg,.png">
+                </label>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-sm " (click)="redirecttoGallery()"><svg width="30" height="20"
+                    viewBox="0 0 34 27" fill="none">
+                    <path
+                      d="M31.1667 0H8.5C6.93517 0 5.66667 1.25918 5.66667 2.8125V17.8125C5.66667 19.3658 6.93517 20.625 8.5 20.625H31.1667C32.7315 20.625 34 19.3658 34 17.8125V2.8125C34 1.25918 32.7309 0 31.1667 0ZM13.1691 3.75C14.2127 3.75 15.058 4.58965 15.058 5.625C15.058 6.66035 14.267 7.5 13.1691 7.5C12.1261 7.5 11.2802 6.66035 11.2802 5.625C11.2802 4.58965 12.1774 3.75 13.1691 3.75ZM29.1656 16.3828C29.0003 16.6875 28.6816 16.875 28.3333 16.875H11.3333C10.9778 16.875 10.6527 16.677 10.4916 16.3623C10.3305 16.0478 10.3609 15.6703 10.5702 15.385L14.7022 9.75996C14.8809 9.51563 15.1642 9.375 15.4653 9.375C15.767 9.375 16.0506 9.51803 16.2285 9.7602L17.5478 11.5567L21.2512 6.04242C21.374 5.7832 21.6691 5.625 22.0351 5.625C22.3507 5.625 22.6454 5.78156 22.8207 6.04248L29.119 15.4175C29.3132 15.7031 29.3309 16.0723 29.1656 16.3828ZM26.9167 23.4375H7.08333C4.73993 23.4375 2.83333 21.5449 2.83333 19.2188V5.15625C2.83333 4.38281 2.19878 3.75 1.41667 3.75C0.634549 3.75 0 4.38281 0 5.15625V19.2188C0 23.0977 3.17747 26.25 7.08333 26.25H26.9167C27.6988 26.25 28.3333 25.6201 28.3333 24.8438C28.3333 24.0674 27.7017 23.4375 26.9167 23.4375Z"
+                      fill="black" />
+                  </svg>
+                </button>
+              </div>
+              
+            </div>
+
+
+            
+          </div>
+
+          <div class="col-12 ">
+            <p class="small text-success text-center" *ngIf="logoUploadCheck">Uploaded Successfully</p>
+            <p class="small text-danger text-center" *ngIf="imageSize">Uploaded File Size Should Not Exceed More Than
+              5Mb
+            </p><!-- <button class="btn btn-primary" (click)="uploadMedia()">Submit</button> -->
+            <p class="small text-danger text-center" *ngIf="productImagecheck">Upload Product Image</p>
+            <span  class="validationtext small "><br>(Upload Only jpeg or png & Ratio 1:1)</span>
+          </div>
+
+        </div>
+
+        <div class="form-group ">
+          <label  for="exampleFormControlTextarea1">Product Description :</label>
+          <textarea maxlength="50" ngModel name="description"  class="form-control"
+            id="exampleFormControlTextarea1" rows="3" (keyup)="DescriptionAvailableCheck()"></textarea>
+        </div>
+        <p class="small text-danger text-center" *ngIf="descrptionAvailable">Enter The Description</p>
+        <div style="width:100%; text-align: center;">
+          <button type="submit" class="btn addproduct-btn mt-2 mb-4" (click)="makeTrue()">Add Product </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </ion-content>
+
+
+
+
+
+
+
+<!--------  Add New Category  -------->
+<div class="card" *ngIf="PopupModel" style="margin-top: 25%;" id="card">
+  <div class="row" style="margin:auto !important" id="modal">
+    <div class="col-10">
+      <h5 class="name  ion-text-center" style="color:#000000;font-size: 16px;"><b>Enter your category name</b></h5>
+    </div>
+
+    <div class="col-2 ion-text-right ">
+
+      <svg (click)="backToprivious()" style="margin-top:12px;cursor:pointer" width="24" height="27" viewBox="0 0 24 27"
+        fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d_1056_2574)">
+          <path d="M18 6L6 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M6 6L18 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <defs>
+          <filter id="filter0_d_1056_2574" x="-4" y="0" width="32" height="32" filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha" />
+            <feOffset dy="4" />
+            <feGaussianBlur stdDeviation="2" />
+            <feComposite in2="hardAlpha" operator="out" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1056_2574" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1056_2574" result="shape" />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="col-12 ">
+      <input style="text-align: center;border-bottom: 2px solid #EB154B !important;color:#000000" [(ngModel)]="categoryName"
+        type="text" placeholder="">
+    </div>
+    <div style="width:100%; text-align: center;">
+      <button type="button" (click)="createCategory()" class="btn  submit-btn mt-2 mb-2">Submit</button>
+    </div>
+  </div>
+</div>
+
+
+<!--------  Add New Sub Category  -------->
+<div class="card" *ngIf="subcategoryPopupModel" style="margin-top: 25%;" id="card">
+  <div class="row" style="margin:auto !important" id="modal">
+    <div class="col-10">
+      <h5 class="name  ion-text-center" style="color:#030303;font-size: 16px;"><b>Enter your subcategory name</b></h5>
+    </div>
+
+    <div class="col-2 ion-text-right ">
+
+      <svg (click)="ScBackToprivious()" style="margin-top:12px;cursor:pointer" width="24" height="27"
+        viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d_1056_2574)">
+          <path d="M18 6L6 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M6 6L18 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <defs>
+          <filter id="filter0_d_1056_2574" x="-4" y="0" width="32" height="32" filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha" />
+            <feOffset dy="4" />
+            <feGaussianBlur stdDeviation="2" />
+            <feComposite in2="hardAlpha" operator="out" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1056_2574" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1056_2574" result="shape" />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+    <div class="col-12">
+      <input style="border-bottom: 2px solid #EB154B !important;color:#000000" [(ngModel)]="subcategoryName" type="text" class="py-2"
+        placeholder="">
+    </div>
+    <div style="width:100%; text-align: center;">
+      <button type="button" (click)="createSubcategory()" class="btn  submit-btn mt-2">Submit</button>
+    </div>
+  </div>
+</div>

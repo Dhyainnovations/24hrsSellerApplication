@@ -1,0 +1,6 @@
+{
+	"appId": "com.sellermobo.app",
+	"appName": "Seller App",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

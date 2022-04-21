@@ -1,0 +1,428 @@
+<!------------ Header  ---------------->
+<ion-toolbar color="light">
+  <ion-buttons slot="start">
+    <ion-menu-button style="margin-top:15px;color:#121212" autoHide="false">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 7H19" stroke="#121212" stroke-width="2" stroke-linecap="round" />
+        <path d="M5 12H15" stroke="#121212" stroke-width="2" stroke-linecap="round" />
+        <path d="M5 17H11" stroke="#121212" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </ion-menu-button>
+  </ion-buttons>
+
+  <div class="row">
+    <div class="col-4">
+      <h5 style="margin-top:10px"><b></b></h5>
+    </div>
+    <div class="col-8 mt-2 mx-2" style="text-align: right;width: 90%;">
+      <svg (click)="notification()" style="margin:3px;" width="26" height="26" viewBox="0 0 24 24" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M13.7942 3.29494C13.2296 3.10345 12.6258 3 12 3C9.1535 3 6.7622 5.14032 6.44786 7.96942L6.19605 10.2356L6.1896 10.2933C6.06065 11.417 5.69489 12.5005 5.11646 13.4725L5.08667 13.5222L4.50863 14.4856C3.98408 15.3599 3.7218 15.797 3.77842 16.1559C3.8161 16.3946 3.93899 16.6117 4.12435 16.7668C4.40292 17 4.9127 17 5.93224 17H18.0678C19.0873 17 19.5971 17 19.8757 16.7668C20.061 16.6117 20.1839 16.3946 20.2216 16.1559C20.2782 15.797 20.0159 15.3599 19.4914 14.4856L18.9134 13.5222L18.8836 13.4725C18.4273 12.7059 18.1034 11.8698 17.9236 10.9994C15.1974 10.9586 13 8.73592 13 6C13 5.00331 13.2916 4.07473 13.7942 3.29494ZM16.2741 4.98883C16.0999 5.28551 16 5.63109 16 6C16 6.94979 16.6621 7.74494 17.5499 7.94914C17.4205 6.82135 16.9608 5.80382 16.2741 4.98883Z"
+          fill="black" />
+        <path
+          d="M9 17C9 17.394 9.0776 17.7841 9.22836 18.1481C9.37913 18.512 9.6001 18.8427 9.87868 19.1213C10.1573 19.3999 10.488 19.6209 10.8519 19.7716C11.2159 19.9224 11.606 20 12 20C12.394 20 12.7841 19.9224 13.1481 19.7716C13.512 19.6209 13.8427 19.3999 14.1213 19.1213C14.3999 18.8427 14.6209 18.512 14.7716 18.1481C14.9224 17.7841 15 17.394 15 17L12 17H9Z"
+          fill="black" />
+        <circle cx="18" cy="6" r="2.5" fill="#eb154b" stroke="#eb154b" />
+      </svg>
+
+
+    </div>
+  </div>
+</ion-toolbar>
+
+
+
+
+<!-- If No Offer -- Add Offer -->
+<ion-content class="bg-class mb-3" [ngStyle]="{'opacity':PopupModel ? '0.52' : '1' }"
+  [ngStyle]="{'opacity':backgroundisvisible ? '0.52' : '1' }">
+  <div class="  row mt-2 mb-2">
+    <div class="col-9">
+      <div style="width: 100%; ">
+        <button *ngIf="cardVisible" (click)="offerPage()" class="btn btn-success btn-sm offer-btn mx-2 ">+ Add
+          Offer</button>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <svg (click)="searchPage()" style="margin-left: 20%;" width="25" height="25" viewBox="0 0 24 24" fill="none">
+        <circle cx="11" cy="11" r="7" stroke="#121212" stroke-width="2" />
+        <path
+          d="M11 8C10.606 8 10.2159 8.0776 9.85195 8.22836C9.48797 8.37913 9.15726 8.6001 8.87868 8.87868C8.6001 9.15726 8.37913 9.48797 8.22836 9.85195C8.0776 10.2159 8 10.606 8 11"
+          stroke="#CCD2E3" stroke-width="2" stroke-linecap="round" />
+        <path d="M20 20L17 17" stroke="#121212" stroke-width="2" stroke-linecap="round" />
+      </svg>
+
+    </div>
+  </div>
+
+  <!------------ no products gif  --------------->
+  <div *ngIf="noOffer" style="margin: auto !important;margin-top: 50%;">
+    <img style="width:100%;height:100%;margin-left: 25px !important;" src="assets/gif/empty.gif" alt="">
+  </div>
+
+
+
+
+
+  <div *ngIf="cardVisible" class="add-card-div">
+    <div *ngFor="let offer of otherofferList; let i = index">
+      <div class="welcomecard">
+        <div class="row">
+          <div class="col-4">
+            <div class="outter-badge">
+              <img src="{{offer.product_image}}" alt="">
+            </div>
+            <button (click)="repostOffer(offer.product)"
+              class="btn btn-sm btn-outline-danger repost-btn mx-3 mb-2">Repost</button>
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <div style="margin-top: -5px;" class="col-8">
+                <h6><b>{{offer.product}}</b></h6>
+              </div>
+              <div class="col-4 mt-3">
+                <ion-badge slot="start" color="secondary">1
+                  {{offer.product_unit}}</ion-badge>
+              </div>
+            </div>
+            <!-- <h6 style="margin-top: -15px;" class="no-of-views">
+              <b>Views</b>&nbsp;
+              <span> 10</span>
+            </h6> -->
+            <p class="no-of-views" [ngClass]='offer.offer != "" ? "show" : "hidden"'>
+              <b>Offer</b>&nbsp;
+              {{offer.offer}}%
+            </p>
+            <p class="no-of-views">
+              <b>Offer time</b>&nbsp;
+              {{offer.offer_end_time}}
+            </p>
+            <p class="no-of-views">
+              <b>Remaining Time</b>&nbsp;
+              {{offer.remaining_time}}
+            </p>
+
+            <p class="no-of-views" [ngClass]='offer.offer == "" ? "show" : "hidden"'>
+              <b>Offer : </b>&nbsp;
+              {{offer.other_offer}}
+            </p>
+            <div class="row" [ngClass]='offer.offer != "" ? "show" : "hidden"'>
+              <div class="col-6">
+                <p style="font-size: 12px;">
+                  <b>Cost</b>&nbsp;
+                  <del>₹{{offer.total_cost}} </del> &nbsp;₹{{offer.offer_price}}
+                </p>
+              </div>
+            </div>
+            <div class="row" [ngClass]='offer.offer == "" ? "show" : "hidden"'>
+              <div class="col-6">
+                <p style="font-size: 12px;">
+                  <b>Cost</b>&nbsp;
+                  ₹{{offer.total_cost}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container mt-5" *ngIf="cardVisible">
+    <h5 *ngIf="expiredOffersBanner">Expired Offers:</h5>
+    <div *ngFor="let offer of expiredotherofferList; let i = index">
+      <div class="expiredcard">
+        <div class="row">
+          <div class="col-4">
+            <div class="outter-badge">
+              <img src="{{offer.product_image}}" alt="">
+            </div>
+            <button (click)="repostOffer(offer.product)"
+              class="btn btn-sm btn-outline-danger repost-btn mx-3 mb-2">Repost</button>
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <div style="margin-top: -5px;" class="col-8">
+                <h6><b>{{offer.product}}</b></h6>
+              </div>
+              <div class="col-4 mt-3">
+                <ion-badge style="color:#ffffff !important;font-size: 10px;" slot="start" color="secondary">1
+                  {{offer.product_unit}}</ion-badge>
+              </div>
+            </div>
+            <!-- <h6 style="margin-top: -15px;" class="no-of-views">
+              <b>Views</b>&nbsp;
+              <span> 10</span>
+            </h6> -->
+            <p class="no-of-views" [ngClass]='offer.offer != "" ? "show" : "hidden"'>
+              <b>Offer</b>&nbsp;
+              {{offer.offer}}%
+            </p>
+            <p class="no-of-views">
+              <b>Offer time</b>&nbsp;
+              {{offer.offer_end_time}}
+            </p>
+
+            <p class="no-of-views" [ngClass]='offer.offer == "" ? "show" : "hidden"'>
+              <b>Other Offer : </b>&nbsp;
+              {{offer.other_offer}}
+            </p>
+            <div class="row" [ngClass]='offer.offer != "" ? "show" : "hidden"'>
+              <div class="col-6">
+                <p style="font-size: 12px;">
+                  <b>Cost</b>&nbsp;
+                  <del>₹{{offer.total_cost}} </del> &nbsp;₹{{offer.offer_price}}
+                </p>
+              </div>
+            </div>
+            <div class="row" [ngClass]='offer.offer == "" ? "show" : "hidden"'>
+              <div class="col-6">
+                <p style="font-size: 12px;">
+                  <b>Cost</b>&nbsp;
+                  ₹{{offer.total_cost}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isvisible" class="container signin-div mb-4">
+    <div class="row">
+      <div class="col-12 ion-text-left mt-2">
+        <svg style="margin-top: 5px !important;" (click)="backToPrivious()" width="22" height="20" fill="#EB154B"
+          class="bi bi-arrow-left" viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+        </svg>
+      </div>
+      <div class="col-12">
+        <h5 class="name  ion-text-center" style="color:#676767;"><b>Add Your Offer</b></h5>
+        <div class="row">
+          <div class="col-6">
+            <p class="name mt-2 ion-text-left" style="color:hsl(0, 0%, 25%);">Category :</p>
+          </div>
+          <!-- <div class="col-6">
+            <button class="btn signin-btn text-white" (click)="visibleCategoryPopup()">Add New +</button>
+          </div> -->
+        </div>
+      </div>
+
+
+      <form #categoryselect="ngForm" (change)="popupModel(categoryselect.value)">
+        <div class="col-12 ">
+          <div class="select">
+            <select ngModel placeholder="category" name="category">
+              <option value="" disabled selected>Select Your Category</option>
+              <option *ngFor="let cat of categoryList" value="{{cat.tbid}}">{{cat.category}}</option>
+              <!-- <option style="background-color:#23d5ab;color:#fff;" value="categoryPopup" (click)="popupModelOpen()">+ add new</option> -->
+            </select>
+          </div>
+        </div>
+      </form>
+      <p class="small text-danger text-center" *ngIf="CheckCategoryTbidCheck">Select Your Category</p>
+
+      <div class="col-12 mt-4">
+        <div class="row">
+          <div class="col-6">
+            <p class="name mt-2 ion-text-left" style="color:hsl(0, 0%, 25%);">Sub Category :</p>
+          </div>
+          <!-- <div class="col-6">
+            <button class="btn signin-btn text-white" (click)="visibleSubCategoryPopup()"
+              [disabled]="OnlyIfCategorySelected">Add New +</button>
+          </div> -->
+        </div>
+        <form #subcategoryselect="ngForm" (change)="popupModelSubCategory(subcategoryselect.value)">
+          <div class="select" id="kg-dropdwon">
+            <select ngModel name="subcategory">
+              <option value="" disabled selected>Select Your Sub Category</option>
+              <option *ngFor="let subcat of subcategoryList" value="{{subcat.tbid}}">{{subcat.subsubcategory}}
+              </option>
+              <option disabled *ngIf="subCategoryNotfound">No Sub Category Found</option>
+              <!-- <option style="background-color:#23d5ab;color:#fff;" value="subcategoryPopup">+ add new</option> -->
+            </select>
+          </div>
+        </form>
+        <p class="small text-danger text-center" *ngIf="CheckSubCategoryTbidCheck">Select Your Subcategory</p>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-12 ion-text-left">
+        <p class="name mt-2">Product:</p>
+      </div>
+      <div class="col-12">
+        <form #productselect="ngForm" (change)="productNameCheckCondition(productselect.value)">
+          <div class="select" id="kg-dropdwon">
+            <select ngModel name="productName">
+              <option value="" disabled selected>Select Your Product</option>
+              <option *ngFor="let product of productList" value="{{product.product_name}}">{{product.product_name}}
+              </option>
+              <option disabled *ngIf="ProductNotfound">No Product Found</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+    <p class="small text-danger text-center" *ngIf="ProductTbidCheck">Select Your Product</p>
+
+    <div class="row mt-4">
+      <div class="col-6">
+        <p class="edit-name ion-text-left">Total Cost(₹) : </p>
+      </div>
+
+      <div class="col-6">
+        <input [(ngModel)]="totalCost" type="number" id="offer" (keyup)="keydownoffer()" disabled>
+      </div>
+    </div>
+    <p class="small text-danger text-center" *ngIf="totalcosterror">Enter Your Cost</p>
+
+    <div class="row">
+      <div class="col-12">
+        <p class="edit-name ion-text-left">Offer End Time :</p>
+      </div>
+      <div class="col-12">
+        <!-- <input [(ngModel)]="offerTime" type="time" id="offer"> -->
+        <input type="datetime-local" [ngModel]="expiryDateandTime | date:'yyyy-MM-ddTHH:mm'"
+          (ngModelChange)="change($event)">
+      </div>
+    </div>
+    <p class="small text-danger text-center" *ngIf="timerrorcheck">Select The Time</p>
+    <div class="row mt-2">
+      <div class="col-1">
+        <input name="offer-select" type="radio" value="DiscountOffer" (change)="onItemChange()"
+          checked="otherofferradio">
+      </div>
+      <div class="col-11" [ngStyle]="{'opacity': DiscountOffer ? '0.5' : '1' }">
+        <div class="row ">
+          <div class="col-6">
+            <p class="edit-name ion-text-left">Offer:</p>
+          </div>
+          <div class="col-4">
+            <!-- <span class="valuePadding"><input id="inputRRPDiscount" style="text-align:left;">%</span> -->
+            <span><input [(ngModel)]="offer" type="text" pattern="\d*" maxlength="2" min="1" max="99" id="offer"
+                (keyup)="keydown()" [disabled]="DiscountOffer"></span>
+          </div>
+          <div class="col-2">
+            <p>%</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <p class="edit-name ion-text-left">Offer Price(₹) :</p>
+          </div>
+          <div class="col-6">
+            <input [(ngModel)]="offerPrice" type="text" id="offer" disabled>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-1">
+        <input name="offer-select" type="radio" name="offer-select" value="OtherOffer" (change)="onItemChange2()" />
+      </div>
+      <div class="col-11" [ngStyle]="{'opacity': OtherOffer ? '0.5' : '1' }">
+        <div class="row">
+          <div class="col-6">
+            <p class="edit-name ion-text-left">Offer :</p>
+          </div>
+          <div class="col-6">
+            <input [(ngModel)]="otheroffer" type="text" id="offer" placeholder="Eg:Buy 2 Get 1 Free"
+              style="font-size: 12px;" [disabled]="otherofferenable" (keyup)="otheroffercheck()">
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="small text-danger text-center" *ngIf="OfferCheck">Choose Anyone one of the offer</p>
+    <div class="form-group mt-3 ion-text-center">
+      <label for="exampleFormControlTextarea1"> Description </label>
+      <textarea [(ngModel)]="description" maxlength="50" style="background-color: #fff;margin-top: 5px;"
+        class="form-control" id="exampleFormControlTextarea1" rows="3" (keyup)=" descrtionerrorFalse()"></textarea>
+    </div>
+    <p class="small text-danger text-center" *ngIf="descriptionerror">Enter The Description</p>
+    <div style="width:100%; text-align: center;">
+      <button type="button" (click)="addoffer()" class="btn btn-primary  confirm-btn mt-2">Confirm</button>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ion-content>
+
+
+
+<!-- Add New Category Pop Up-->
+<div class="card" *ngIf="PopupModel" style="margin-top: 20px;" id="card">
+  <div class="row" style="margin:10%" id="modal">
+    <div class="col-12 ion-text-left " style="margin-top: 20px;">
+      <svg (click)="backToprivious()" style="color: black;margin-top:-8px;cursor:pointer"
+        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#23d5ab" class="bi bi-arrow-left"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+      </svg>
+    </div>
+    <div class="col-12">
+      <h5 class="name  ion-text-center" style="color:#676767;"><b>Type Your Category Name</b></h5>
+    </div>
+    <div class="col-12">
+      <input [(ngModel)]="categoryName" type="text">
+    </div>
+
+    <div style="width:100%; text-align: center;">
+      <button type="button" (click)="createCategory()" class="btn  submit-btn mt-2">Submit</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Add New Sub-Category Pop Up-->
+<div class="card" *ngIf="subcategoryPopupModel" style="margin-top: 20px;" id="card">
+  <div class="row" style="margin:10%" id="modal">
+    <div class="col-12 ion-text-left " style="margin-top: 20px;">
+      <svg (click)="ScBackToprivious()" style="color: black;margin-top:-8px;cursor:pointer"
+        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#23d5ab" class="bi bi-arrow-left"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+      </svg>
+    </div>
+    <div class="col-12">
+      <h5 class="name  ion-text-center" style="color:#676767;"><b>Type Your Subcategory Name</b></h5>
+    </div>
+    <div class="col-12">
+      <input [(ngModel)]="subcategoryName" type="text">
+    </div>
+    <div style="width:100%; text-align: center;">
+      <button type="button" (click)="createSubcategory()" class="btn  submit-btn mt-2">Submit</button>
+    </div>
+  </div>
+</div>

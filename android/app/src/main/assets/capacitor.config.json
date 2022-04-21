@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "24hrs",
+	"appId": "com.sellermobo.app",
+	"appName": "ionic",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }

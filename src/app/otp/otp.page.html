@@ -1,0 +1,49 @@
+<ion-content class="ion-padding">
+  <div class="welcomecard p-3" style="margin-top: 55%;">
+  <div class="title">
+    <div class="row">
+      <div class="col-10">
+        <h4 ><b>OTP Verification</b></h4>
+      </div>
+      <div class="col-2">
+        <div class="ion-margin-top ion-text-center">
+          <svg (click)="dismiss()" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="9" fill="red" fill-opacity="0.25"/>
+            <path d="M16 8L8 16" stroke="white" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round"/>
+            <path d="M8 8L16 16" stroke="white" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round"/>
+            </svg>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div style="margin-top: -10%;" *ngIf="OTPField">
+    <div class="row">
+
+      <p>Hi User, OTP Has Been Sent To Your <br>Mobile Number : {{PhoneNumber}} </p>
+
+      <div class="col-12">
+        <ion-input  [(ngModel)]="OneTimePassword" placeholder=" - - - - "
+          class="primary-input"></ion-input>
+      </div>
+    </div>
+
+    <p class="small text-center mt-1">Resend OTP Will Be Enabled In 60 Seconds</p>
+    
+
+    <div class="row">
+      <div class="col-6">
+        <ion-button  *ngIf="AfterSixtySeconds" class="btn btn-sm " color="secondary" (click)="ReSendOTP()" >Resend OTP
+        </ion-button>
+      </div>
+  
+      <div class="col-6">
+        <ion-button class="btn btn-sm text-white" color="secondary" (click)="verifyOTP()">Verify OTP
+        </ion-button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</ion-content>

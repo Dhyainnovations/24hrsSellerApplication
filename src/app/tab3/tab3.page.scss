@@ -1,0 +1,89 @@
+.addproduct-btn {
+  border-radius: 5px !important;
+  width: 50%;
+  height: 35px;
+  background: var(--ion-color-secondary) !important;
+  border: 1px solid var(--ion-color-secondary);
+  margin: 5px;
+  color: var(--ion-color-light);
+}
+
+.welcomecard {
+  width: 93% !important;
+  margin: auto !important;
+  background: var(--ion-color-light) !important;
+  border-radius: 5px;
+  box-shadow      : 2px 2px 2px 2px #d3d3d3;
+  backdrop-filter: blur(8.2px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+input[type=text] {
+  font-size: 15px;
+  margin: 0 8px;
+  width: 92%;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: none !important;
+  color: var(--ion-color-light);
+  border-bottom: 2px solid var(--ion-color-primary) !important;
+}
+
+input[type=number] {
+  font-size: 15px;
+  margin: 0 5px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: var(--ion-color-light);
+  border-bottom: 2px solid var(--ion-color-primary);
+}
+
+input:focus {
+  outline: none !important;
+  border-bottom: 2px solid var(--ion-color-success) !important;
+}
+
+ion-content {
+  background-color: var(--ion-color-light-shade) !important;
+  --offset-bottom: auto !important;
+  --overflow: hidden;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+
+input[type="file"] {
+  display: none;
+}
+
+
+.unit-dropdown {
+  height: 85% !important;
+  margin: 5px 5px !important;
+  width: 15% !important;
+}
+
+
+.submit-btn {
+  border-radius: 5px !important;
+  width: 50%;
+  height: 35px;
+  background: var(--ion-color-secondary) !important;
+  border: 1px solid var(--ion-color-secondary);
+  margin: 5px;
+  color: var(--ion-color-light);
+}
+
+
+#card {
+  background: rgba(0, 0, 0, 0.18);
+    border-radius: 6px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(50.2px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}

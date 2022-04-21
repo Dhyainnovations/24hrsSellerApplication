@@ -1,0 +1,177 @@
+<ion-content class="mt-2">
+  <div class="myproduct-div mt-5 ">
+
+    <div class="row">
+      <div class="col-9">
+        <span class="seller"><b>24hrs</b></span>
+      </div>
+
+      <div class="col-3 ion-text-center mt-3">
+
+        <svg (click)="navigateHome()" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" fill="red" fill-opacity="0.25" />
+          <path d="M16 8L8 16" stroke="white" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round" />
+          <path d="M8 8L16 16" stroke="white" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round" />
+        </svg>
+      </div>
+
+    </div>
+
+
+    <p style="font-size:20px;margin-left:10px;margin-top:10px; "> Provide Your Details:</p>
+    <form #sellerdetailform="ngForm" (ngSubmit)="onClickSubmit(sellerdetailform.value)">
+      <div class="row" style="padding-left: 10px;">
+        <div class="col-12">
+          <p class="edit-name">Store logo: <br><span class="small">(Upload Only jpeg or png & Ratio 1:1)</span></p>
+        </div>
+
+
+        <label class="btn btn-default ion-text-center"
+          style="border:1px solid rgb(202, 202, 202);width:60%;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;font-size: 13px;margin: auto !important;"
+          (change)="MediaFileSelected($event)">
+          <svg width="23" height="20" viewBox="0 0 23 20" fill="none">
+            <path
+              d="M0 2.5C0 1.11914 1.14401 0 2.55556 0H8.94444V5C8.94444 5.69141 9.51545 6.25 10.2222 6.25H15.3333V7.75781C12.3825 8.57422 10.2222 11.2266 10.2222 14.375C10.2222 16.6836 11.3842 18.7227 13.1651 19.9727C13.0413 19.9883 12.9095 20 12.7778 20H2.55556C1.14401 20 0 18.8789 0 17.5V2.5ZM10.2222 5V0L15.3333 5H10.2222ZM11.5 14.375C11.5 11.2695 14.0755 8.75 17.25 8.75C20.4245 8.75 23 11.2695 23 14.375C23 17.4805 20.4245 20 17.25 20C14.0755 20 11.5 17.4805 11.5 14.375ZM17.8889 11.8398C17.8889 11.5313 17.6014 11.2148 17.25 11.2148C16.8986 11.2148 16.6111 11.5313 16.6111 11.8398V13.7148H14.6944C14.3431 13.7148 14.0556 14.0313 14.0556 14.3398C14.0556 14.7188 14.3431 14.9648 14.6944 14.9648H16.6111V16.8398C16.6111 17.2188 16.8986 17.4648 17.25 17.4648C17.6014 17.4648 17.8889 17.2188 17.8889 16.8398V14.9648H19.8056C20.1569 14.9648 20.4444 14.7188 20.4444 14.3398C20.4444 14.0313 20.1569 13.7148 19.8056 13.7148H17.8889V11.8398Z"
+              fill="black" />
+          </svg>
+          <span class="small">Upload</span>
+          <input type="file" class="" name="image" accept=".jpeg,.png">
+        </label>
+        <p class="small text-success" *ngIf="logoUploadCheck"><i>Uploaded Successfully</i></p>
+        <p class="small text-danger" *ngIf="imageSize"><i>Uploaded File Size Should Not Exceed More Than 5Mb</i></p>
+      </div>
+
+      <p class="small text-danger text-center mt-2" *ngIf="storelogoCheck">Upload Your Store Logo</p>
+      <div class="row mt-2" style="padding-left: 10px;">
+        <div class="col-6">
+          <p class="edit-name">Store Name:</p>
+        </div>
+        <div class="col-6">
+          <input type="text" id="edit-field" name="store_name" [(ngModel)]="store_name"
+            (keyup)="RemoveStoreNameError()">
+        </div>
+      </div>
+
+      <div class="row" style="padding-left: 10px;">
+        <div class="col-12">
+          <p class="edit-name">Store Address:</p>
+        </div>
+        <div class="col-6">Address Line 1</div>
+        <div class="col-6">
+          <input ngModel type="text" id="edit-field" name="address_line_1" (keyup)="adresscheckFalse()">
+        </div>
+        <div class="col-6">Address Line 2</div>
+        <div class="col-6">
+          <input ngModel type="text" id="edit-field" name="address_line_2" (keyup)="adresscheckFalse()">
+        </div>
+        <div class="col-6">City</div>
+        <div class="col-6">
+          <input ngModel type="text" id="edit-field" name="city" (keyup)="adresscheckFalse()">
+        </div>
+        <div class="col-6">State</div>
+        <div class="col-6">
+          <input ngModel type="text" id="edit-field" name="state" (keyup)="adresscheckFalse()">
+        </div>
+        <div class="col-6">Pincode</div>
+        <div class="col-6">
+          <input ngModel type="text" id="edit-field" name="pincode" (keyup)="adresscheckFalse()" maxlength="6">
+        </div>
+      </div>
+
+      <p class="small text-danger text-center mt-1" *ngIf="addresscheck">Enter Your Valid Store Address</p>
+      <div class="row" style="padding-left: 10px;">
+        <div class="col-5 mt-3">
+          <p class="edit-name">Store category:</p>
+        </div>
+        <div class="col-6">
+          <div class="select">
+            <select ngModel placeholder="category" name="category">
+              <option *ngFor="let cat of listOfCat" value="{{cat.tbid}}">{{cat.store_category}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <p class="small text-danger text-center mt-2" *ngIf="storecategoryCheck">Choose Store Category</p>
+      <div class="row" style="padding-left: 10px;">
+        <div class="col-6">
+          <p class="edit-name">User Name:</p>
+        </div>
+        <div class="col-6">
+          <input ngModel type="text" id="edit-field" name="username" (keyup)="usernameCheckFalse()">
+        </div>
+      </div>
+      <p class="small text-danger text-center mt-2" *ngIf="usernameCheck">Enter Username</p>
+      <div class="row" style="padding-left: 10px;">
+        <div class="col-6">
+          <p class="edit-name">Mobile Number:</p>
+        </div>
+        <div class="col-6">
+          <input ngModel type="text" id="edit-field" name="usernumber" (keyup)="mobileNumbeCheck()">
+        </div>
+      </div>
+      <p class="small text-danger text-center mt-2" *ngIf="usernumber">Enter MobileNumber</p>
+
+
+      <div class="row" style="padding-left: 10px;">
+        <div class="col-12">
+          <p class="edit-name">Id Proof:<span class="small"><i>(Pdf Format)</i></span>&nbsp; <span class="infoIcon">
+              <img src="assets/icon/i.png" alt="info icon" width="15px">
+
+              <p class="extraInfo">Aadhar Card,
+                Driving License,<br>
+                Pan Card </p>
+            </span></p>
+
+        </div>
+
+        <label class="btn btn-default mb-2" style="font-size: 13px;" (change)="MediaFileSelected_idproof($event)"
+          style="border:1px solid rgb(202, 202, 202);width:60%;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;font-size: 13px;margin: auto !important;">
+          <svg width="23" height="20" viewBox="0 0 23 20" fill="none">
+            <path
+              d="M0 2.5C0 1.11914 1.14401 0 2.55556 0H8.94444V5C8.94444 5.69141 9.51545 6.25 10.2222 6.25H15.3333V7.75781C12.3825 8.57422 10.2222 11.2266 10.2222 14.375C10.2222 16.6836 11.3842 18.7227 13.1651 19.9727C13.0413 19.9883 12.9095 20 12.7778 20H2.55556C1.14401 20 0 18.8789 0 17.5V2.5ZM10.2222 5V0L15.3333 5H10.2222ZM11.5 14.375C11.5 11.2695 14.0755 8.75 17.25 8.75C20.4245 8.75 23 11.2695 23 14.375C23 17.4805 20.4245 20 17.25 20C14.0755 20 11.5 17.4805 11.5 14.375ZM17.8889 11.8398C17.8889 11.5313 17.6014 11.2148 17.25 11.2148C16.8986 11.2148 16.6111 11.5313 16.6111 11.8398V13.7148H14.6944C14.3431 13.7148 14.0556 14.0313 14.0556 14.3398C14.0556 14.7188 14.3431 14.9648 14.6944 14.9648H16.6111V16.8398C16.6111 17.2188 16.8986 17.4648 17.25 17.4648C17.6014 17.4648 17.8889 17.2188 17.8889 16.8398V14.9648H19.8056C20.1569 14.9648 20.4444 14.7188 20.4444 14.3398C20.4444 14.0313 20.1569 13.7148 19.8056 13.7148H17.8889V11.8398Z"
+              fill="black" />
+          </svg>
+          <span class="small">Upload</span>
+          <input type="file" class="" name="image" accept=".pdf">
+        </label>
+        <p class="small text-success" *ngIf="idProofUploadCheck"><i>Uploaded Successfully</i></p>
+      </div>
+
+      <div class="row mt-2" style="padding-left: 10px;">
+        <div class="col-12">
+          <p class="edit-name">Address Proof:<span class="small"><i>(Pdf Format)</i></span>&nbsp;<span class="infoIcon">
+              <img src="assets/icon/i.png" alt="info icon" width="15px">
+
+              <p class="extraInfo">GST,
+                Stores and establishments registered certificate,
+                Roc,
+                FSSAI for food related business</p>
+            </span></p>
+        </div>
+
+        <label class="btn btn-default" style="font-size: 13px;" (change)="MediaFileSelected_addressproof($event)"
+          style="border:1px solid rgb(202, 202, 202);width:60%;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;font-size: 13px;margin: auto !important;">
+          <svg width="23" height="20" viewBox="0 0 23 20" fill="none">
+            <path
+              d="M0 2.5C0 1.11914 1.14401 0 2.55556 0H8.94444V5C8.94444 5.69141 9.51545 6.25 10.2222 6.25H15.3333V7.75781C12.3825 8.57422 10.2222 11.2266 10.2222 14.375C10.2222 16.6836 11.3842 18.7227 13.1651 19.9727C13.0413 19.9883 12.9095 20 12.7778 20H2.55556C1.14401 20 0 18.8789 0 17.5V2.5ZM10.2222 5V0L15.3333 5H10.2222ZM11.5 14.375C11.5 11.2695 14.0755 8.75 17.25 8.75C20.4245 8.75 23 11.2695 23 14.375C23 17.4805 20.4245 20 17.25 20C14.0755 20 11.5 17.4805 11.5 14.375ZM17.8889 11.8398C17.8889 11.5313 17.6014 11.2148 17.25 11.2148C16.8986 11.2148 16.6111 11.5313 16.6111 11.8398V13.7148H14.6944C14.3431 13.7148 14.0556 14.0313 14.0556 14.3398C14.0556 14.7188 14.3431 14.9648 14.6944 14.9648H16.6111V16.8398C16.6111 17.2188 16.8986 17.4648 17.25 17.4648C17.6014 17.4648 17.8889 17.2188 17.8889 16.8398V14.9648H19.8056C20.1569 14.9648 20.4444 14.7188 20.4444 14.3398C20.4444 14.0313 20.1569 13.7148 19.8056 13.7148H17.8889V11.8398Z"
+              fill="black" />
+          </svg>
+          <span class="small">Upload</span>
+          <input type="file" class="" name="image" accept=".pdf">
+        </label>
+        <p class="small text-success" *ngIf="addressProofUploadCheck"><i>Uploaded Successfully</i></p>
+
+      </div>
+      <p class="small text-danger text-center mt-2" *ngIf="proofCheck">Upload Both Id And Address Proof</p>
+      <div class="row ">
+        <div class="col-7">
+          <button (click)="navigateHome()" type="button" class="btn btn-sm skip-btn">Skip</button>
+        </div>
+        <div class="col-5">
+          <button type="submit" class="btn  btn-sm update-btn">Next</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</ion-content>
