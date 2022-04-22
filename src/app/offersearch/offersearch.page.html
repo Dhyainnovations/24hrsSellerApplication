@@ -71,11 +71,10 @@
       style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px !important;border-radius: 5px;">
       <div class="row">
         <div class="col-5">
-          <img src="{{productImage}}" alt=""
-           >
+          <img src="{{productImage}}" alt="">
 
         </div>
-        <div class="col-7">
+        <div class="col-7 small">
           <h6 class="product-name"><b>{{productname}}</b></h6>
 
           <p style="font-size: smaller;" *ngIf="IfOfferPresent">
@@ -93,8 +92,8 @@
             <span style="font-size: 13px;"><b>Price: &nbsp;</b></span>
             <b><span style="text-decoration: line-through;">₹{{totalcost}}</span>&nbsp;₹{{offerprice}}</b>
           </p>
-          <p *ngIf="IfNotOfferPresent" style="font-size: 13px;">{{other_offer}} </p>
-
+          <p *ngIf="IfNotOfferPresent" style="font-size: 13px;">Offer : {{otherOffer}} </p>
+          <p *ngIf="IfNotOfferPresent" style="font-size: 13px;">Price :₹{{totalcost}}</p>
         </div>
       </div>
     </div>

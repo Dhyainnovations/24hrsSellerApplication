@@ -82,7 +82,9 @@ export class OffersearchPage implements OnInit {
       if (response.records[0].offer != "") {
         this.IfOfferPresent = true
         this.IfNotOfferPresent = false
+
       } else {
+   
         this.IfOfferPresent = false
         this.IfNotOfferPresent = true;
       }

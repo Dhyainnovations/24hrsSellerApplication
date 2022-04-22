@@ -21,14 +21,22 @@
 }
 
 .expiredcard {
-  background-color: rgb(203, 203, 203);
+  background-color: rgba(136, 136, 136, 0.171);
   width           : 97%;
   margin          : auto !important;
   margin-bottom   : 8px !important;
   border-radius   : 4px !important;
   // box-shadow      : 3px 3px 16px 4px #ccc;
-  opacity         : 0.5;
+  color: rgb(136, 136, 136);
 }
+
+.expiredcard img{
+  opacity: 0.5;
+}
+.expiredcard ion-badge{
+  opacity: 0.5;
+}
+
 
 .Expiredrepost-btn{
    color     : var(--ion-color-primary);

@@ -32,22 +32,10 @@ export class Tab3Page {
   }
 
   ngOnInit() {
-    this.https.get(this.imageUrl, { responseType: "blob" }).subscribe((res: Blob) => {
-      var ref = this;
-      var reader = new FileReader();
-      reader.readAsDataURL(res);
-      reader.onloadend = function () {
-        ref.base64 = reader.result.toString();
-      }
-    })
-    console.log(this.base64);
+
     
   }
 
-
-
-  base64: string = "";
-  imageUrl: string = "https://dhya.in/24Hrs/images/seller/product/simmtronics-64-gb-metal-pendrive-250x250.jpg";
   selectedProductImageTbid: any;
   store_categoryCheck: any;
   resProject: any[];
@@ -131,8 +119,8 @@ export class Tab3Page {
   }
 
   redirecttoGallery() {
-    if (this.productnameBind) {
-      this.router.navigate(['/show-product-image'], { queryParams: { productname: this.productnameBind } });
+    if (this.subcategory_tbid) {
+      this.router.navigate(['/show-product-image'], { queryParams: { productname: this.subcategory_tbid } });
     }
   }
 

@@ -50,7 +50,7 @@
           <ion-input  required [(ngModel)]="sellername"  (keyup)="isUSername()" placeholder="Enter your user name" class="primary-input"></ion-input>
           <p *ngIf="isUserNameAlert" style="color:#EB154B;;font-size: 10px;"> Incorrect User name </p>
 
-          <ion-input  (keyup)="isMobileNumber()" required [(ngModel)]="mobilenumber" type="text" maxlength="10"placeholder="Enter your mobile number" class="primary-input" maxlength="10"></ion-input>
+          <ion-input  (keyup)="isMobileNumber()" required [(ngModel)]="mobilenumber"  maxlength="10"placeholder="Enter your mobile number" class="primary-input" (keypress)="numberOnly($event)" type="text"></ion-input >
           <p style="color:#EB154B;font-size: 10px; "  *ngIf="ValidNumber"> Enter Valid Mobile
             Number </p>
 

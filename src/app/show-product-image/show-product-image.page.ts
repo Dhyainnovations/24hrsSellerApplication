@@ -38,30 +38,30 @@ export class ShowProductImagePage implements OnInit {
   }
   productImage: any;
 
-
+  noImage:any;
   productImageList: any;
   getProductImage() {
     this.productImageList = [];
     var obj = {
-      product_name: this.productImage
+      subcategory_id: this.productImage
     }
     this.http.post('/product_image_list', obj).subscribe((response: any) => {
       console.log(response.records);
 
-    
 
+      this.noImage = false;
       this.productImageList = response.records
     }, (error: any) => {
       console.log(error);
+      this.noImage = true;
     }
     );
   }
 
   SelectImage(data) {
     console.log(data);
-    var slicedUrl=data.replace("https://dhya.in/24Hrs/images/seller/product/", "");
+    var slicedUrl = data.replace("https://dhya.in/24Hrs/images/seller/product/", "");
     console.log(slicedUrl);
-    
     this.router.navigate(['/tabs/tab3'], { queryParams: { selectedProductImageTbid: slicedUrl } });
   }
 }

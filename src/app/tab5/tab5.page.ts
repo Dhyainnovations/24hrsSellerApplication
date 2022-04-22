@@ -141,12 +141,12 @@ export class Tab5Page {
           this.addProofNotExist = false;
         }
 
-        if (response.records.city == "" || response.records.city == null) {        
+        if (response.records.city == "" || response.records.city == null) {
           this.location = "Not Available"
         } else {
-          this.location = response.records.city          
+          this.location = response.records.city
         }
-       
+
         this.contact_number = response.records.store_number;
         this.instagram = response.records.instagram;
         this.whatsapp = response.records.whatsapp;
@@ -379,9 +379,7 @@ export class Tab5Page {
       console.log(error);
     }
     );
-    setTimeout(() => {
-      location.reload();
-    }, 10);
+ 
 
   }
 
@@ -440,12 +438,12 @@ export class Tab5Page {
       if (response.success == "true") {
         console.log(response);
         this.idSubmitButtonProof = false;
+        this.sellerAllDetails();
       }
     }, (error: any) => {
       console.log(error);
     }
     );
-    location.reload();
 
   }
 
@@ -459,13 +457,13 @@ export class Tab5Page {
       if (response.success == "true") {
         console.log(response);
         this.addressSubmitButtonProof = false;
+        this.sellerAllDetails();
       }
     }, (error: any) => {
       console.log(error);
     }
     );
-    location.reload();
-
+  
   }
 
 

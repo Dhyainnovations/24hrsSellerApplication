@@ -106,7 +106,7 @@
           <p class="edit-name">Mobile Number:</p>
         </div>
         <div class="col-6">
-          <input ngModel type="text" id="edit-field" name="usernumber" (keyup)="mobileNumbeCheck()">
+          <input ngModel type="text" id="edit-field" name="usernumber" (keyup)="mobileNumbeCheck()" maxlength="10">
         </div>
       </div>
       <p class="small text-danger text-center mt-2" *ngIf="usernumber">Enter MobileNumber</p>
