@@ -19,7 +19,7 @@ export class Tab5Page {
     route.params.subscribe(val => {
       this.PopupModel = false;
       this.sellerAllDetails();
-
+      this.list();
     });
 
   }
@@ -379,7 +379,7 @@ export class Tab5Page {
       console.log(error);
     }
     );
- 
+
 
   }
 
@@ -463,7 +463,7 @@ export class Tab5Page {
       console.log(error);
     }
     );
-  
+
   }
 
 
@@ -683,7 +683,17 @@ export class Tab5Page {
 
   }
 
+  listOfCat = [];
 
+  list() {
+    this.http.get('/list_store_category',).subscribe((response: any) => {
+      console.log(response);
+      this.listOfCat = response.records;
+    }, (error: any) => {
+      console.log(error);
+    }
+    );
+  }
 
 
   //Naviagtions

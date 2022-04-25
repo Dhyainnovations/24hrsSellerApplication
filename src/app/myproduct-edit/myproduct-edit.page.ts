@@ -169,7 +169,7 @@ export class MyproductEditPage implements OnInit {
   selectedFile: File = null;
   image: any;
   buttonType: any;
-
+  uploadImageFile: any;
 
   onClickSubmit(data) {
     if (this.MakeTrue == true) {
@@ -179,57 +179,108 @@ export class MyproductEditPage implements OnInit {
       var Splittedunit = this.Selectedunit.split(" ", 1);
       this.image = this.selectedFile;
       if (this.image == null) {
+        this.uploadImageFile = false;
         var ImageName = this.DisplayImage.replace('https://dhya.in/24Hrs/images/seller/product/', '');
         this.image = ImageName
 
       }
 
-      console.log(this.image);
-      console.log(this.DisplayImage);
-      const formdata = new FormData();
-      formdata.append("tbid", this.tbid_value)
-      formdata.append("category_id", this.category_tbid);
-      formdata.append("subcategory_id", this.subcategory_tbid);
-      formdata.append("product_name", data.product_name);
-      formdata.append("cost", data.cost);
-      formdata.append("unit", Splittedunit);
-      formdata.append("description", data.description);
-      formdata.append("product_image", this.image);
-      formdata.append("weight", data.weight)
+ 
 
       // console.log('formData: ', formdata.getAll('category'), formdata.getAll('product_image'));
 
       // var body = "category = " + data.category + "subcategory = " + data.subcategory + "product_name = " + data.product_name + "cost = " + data.cost + "unit = " + data.unit + "product_image = " + this.image + "description = " + data.description;
       // console.log(body);
 
-      this.http.postFormData("/update_product", formdata).subscribe((response: any) => {
-        console.log(response);
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 1000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
+      if (this.uploadImageFile != false) {
+        const formdata = new FormData();
+        formdata.append("tbid", this.tbid_value)
+        formdata.append("category_id", this.category_tbid);
+        formdata.append("subcategory_id", this.subcategory_tbid);
+        formdata.append("product_name", data.product_name);
+        formdata.append("cost", data.cost);
+        formdata.append("unit", Splittedunit);
+        formdata.append("description", data.description);
+        formdata.append("product_image", this.image);
+        formdata.append("weight", data.weight)
+        this.http.postFormData("/update_product", formdata).subscribe((response: any) => {
+          console.log(response);
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Updated successfully'
+          })
+          this.router.navigate(['/myproducts']);
+
+        }, (error: any) => {
+
+          if (error.error.message == "Please select a image file to upload. Data is incomplete.") {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 1500,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+
+            Toast.fire({
+              icon: 'error',
+              title: 'Kindly Upload Image Once Again To Update Product'
+            })
           }
-        })
+          if (error.error.message == "Unable to Update Product. Data is incomplete.") {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 1500,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
 
-        Toast.fire({
-          icon: 'success',
-          title: 'Updated successfully'
-        })
-        this.router.navigate(['/myproducts']);
-
-      }, (error: any) => {
-
-        if (error.error.message == "Please select a image file to upload. Data is incomplete.") {
+            Toast.fire({
+              icon: 'error',
+              title: 'Kindly Fill All The Details'
+            })
+          }
+        }
+        );
+      }else{
+        const formdata = new FormData();
+        formdata.append("tbid", this.tbid_value)
+        formdata.append("category_id", this.category_tbid);
+        formdata.append("subcategory_id", this.subcategory_tbid);
+        formdata.append("product_name", data.product_name);
+        formdata.append("cost", data.cost);
+        formdata.append("unit", Splittedunit);
+        formdata.append("description", data.description);
+        formdata.append("product_image_url", this.image);
+        formdata.append("weight", data.weight)
+        this.http.postFormData("/products_gallery", formdata).subscribe((response: any) => {
+          console.log(response);
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 1500,
+            timer: 1000,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -238,30 +289,52 @@ export class MyproductEditPage implements OnInit {
           })
 
           Toast.fire({
-            icon: 'error',
-            title: 'Kindly Upload Image Once Again To Update Product'
+            icon: 'success',
+            title: 'Updated successfully'
           })
-        }
-        if (error.error.message == "Unable to Update Product. Data is incomplete.") {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 1500,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-          })
+          this.router.navigate(['/myproducts']);
 
-          Toast.fire({
-            icon: 'error',
-            title: 'Kindly Fill All The Details'
-          })
+        }, (error: any) => {
+
+          if (error.error.message == "Please select a image file to upload. Data is incomplete.") {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 1500,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+
+            Toast.fire({
+              icon: 'error',
+              title: 'Kindly Upload Image Once Again To Update Product'
+            })
+          }
+          if (error.error.message == "Unable to Update Product. Data is incomplete.") {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 1500,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+
+            Toast.fire({
+              icon: 'error',
+              title: 'Kindly Fill All The Details'
+            })
+          }
         }
+        );
       }
-      );
     }
   }
 

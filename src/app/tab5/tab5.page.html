@@ -447,6 +447,19 @@
               <input type="text" id="edit-field" [(ngModel)]="EmailID">
             </div>
 
+            <div class="row">
+              <div class="col-5">
+                <p class="edit-name">Store category:</p>
+              </div>
+              <div class="col-6">
+                <div class="select">
+                  <select ngModel placeholder="category" name="category">
+                    <option *ngFor="let cat of listOfCat" value="{{cat.tbid}}">{{cat.store_category}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
           </div>
 
 
