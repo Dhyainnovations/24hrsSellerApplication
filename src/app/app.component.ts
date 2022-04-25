@@ -28,15 +28,15 @@ export class AppComponent {
 
   constructor( private _location: Location ,private router: Router, route: ActivatedRoute, private platform: Platform) {
     
-    // App.addListener('backButton', () => {
-    //   if (this.location == "home") {
-    //     navigator['app'].exitApp();
-    //     alert("exit")
-    //   }
-    //   else {
-    //     this._location.back();
-    //   }
-    // });
+    App.addListener('backButton', () => {
+      if (this.location == "home") {
+        navigator['app'].exitApp();
+        alert("exit")
+      }
+      else {
+        this._location.back();
+      }
+    });
 
 
 

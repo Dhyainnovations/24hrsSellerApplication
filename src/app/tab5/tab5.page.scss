@@ -246,7 +246,7 @@ input[type="file"] {
   width: 225px;
   text-align: center;
   visibility: hidden;
-  font-size: 12px;
+  font-size: 10px;
   z-index: 1;
 }
 
@@ -256,8 +256,10 @@ input[type="file"] {
 
 .success{
   color: green;
+  font-size: 10px;
 }
 
 .danger{
-  color: red;
+  color:var(--ion-color-primary);
+  font-size: 10px;
 }

@@ -80,7 +80,7 @@ export class SigninPage implements OnInit {
       if (response.success == "true") {
         this.dismiss();
      
-          this.router.navigate(['/sellerdetailpage'])
+          
      
    
         
@@ -90,6 +90,35 @@ export class SigninPage implements OnInit {
         localStorage.setItem("StoreName", response.store_name)
         localStorage.setItem("EmailID", response.email_id)
 
+        this.http.get('/seller_details').subscribe((response: any) => {
+          if (response.success == "true") {
+            console.log(response);
+            this.store_category_id = response.records.store_category_id
+            if (response.records.store_category != null) {
+              this.store_categoryCheck = false
+            } else {
+              this.store_categoryCheck = true;
+            }
+            if (response.records.id_proof != null) {
+              this.idproofcheck = false
+            } else {
+              this.idproofcheck = true;
+            }
+            if (response.records.address_proof != null) {
+              this.addressproofcheck = false
+            } else {
+              this.addressproofcheck = true;
+            }
+            if (this.store_categoryCheck == false && this.idproofcheck == false && this.addressproofcheck == false) {
+              this.router.navigate(['/tabs'])
+            }else{
+              this.router.navigate(['/sellerdetailpage'])
+            }
+          }
+        }, (error: any) => {
+          console.log(error);
+        }
+        );  
 
 
         const Toast = Swal.mixin({
@@ -191,34 +220,7 @@ export class SigninPage implements OnInit {
   idproofcheck: any;
   store_category_id: any;
   addressproofcheck: any;
-  sellerAllDetails() {
-    this.http.get('/seller_details').subscribe((response: any) => {
-      if (response.success == "true") {
-        console.log(response);
-        this.store_category_id = response.records.store_category_id
-        console.log(response.records.id_proof);
-        console.log(response.records.address_proof);
-        if (response.records.store_category != null) {
-          this.store_categoryCheck = false
-        } else {
-          this.store_categoryCheck = true;
-        }
-        if (response.records.id_proof != null) {
-          this.idproofcheck = false
-        } else {
-          this.idproofcheck = true;
-        }
-        if (response.records.address_proof != null) {
-          this.addressproofcheck = false
-        } else {
-          this.addressproofcheck = true;
-        }
-      }
-    }, (error: any) => {
-      console.log(error);
-    }
-    );
-    }
+
 
 
 }
