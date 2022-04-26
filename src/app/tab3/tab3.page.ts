@@ -305,8 +305,10 @@ export class Tab3Page {
         var str = data.unit;
         var splittedUnit = str.split(" ", 1);
         console.log(splittedUnit)
+
         this.image = this.selectedFile;
         console.log(this.image)
+        
         const formdata = new FormData();
         formdata.append("category_id", this.category_tbid);
         formdata.append("subcategory_id", this.subcategory_tbid);
@@ -351,6 +353,7 @@ export class Tab3Page {
         } else {
           this.weightavailable = false
         }
+        
         if (this.image == null) {
           this.productImagecheck = true
         } else {

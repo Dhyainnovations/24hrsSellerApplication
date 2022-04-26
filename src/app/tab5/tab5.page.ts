@@ -93,10 +93,6 @@ export class Tab5Page {
   selectedFile: File = null;
   delivery_availability_button_disabled: any;
   delivery_availability_button_enabled: any;
-
-
-
-
   noimagefound: any;
   imagefound: any;
   addressProof: any;
@@ -380,6 +376,16 @@ export class Tab5Page {
     }
     );
 
+    const sellerdetailformdata = new FormData();
+    sellerdetailformdata.append("tbid", this.parsedObj);
+    sellerdetailformdata.append("store_category", this.store_category_tbid);
+    this.http.postFormData("/seller_update_profile", sellerdetailformdata).subscribe((response: any) => {
+      console.log(response);
+      this.router.navigate(['/social-media-details'])
+    }, (error: any) => {
+      console.log(error);
+    }
+    );
 
   }
 
@@ -463,7 +469,6 @@ export class Tab5Page {
       console.log(error);
     }
     );
-
   }
 
 
@@ -699,6 +704,13 @@ export class Tab5Page {
   //Naviagtions
   notification() {
     this.router.navigate(['/notification'])
+  }
+  store_category_tbid: any;
+  StoreCategorySelect(data) {
+    const formdata = new FormData();
+    formdata.append("category", data.storeCategory);
+    this.store_category_tbid = data.storeCategory
+
   }
 
 }
