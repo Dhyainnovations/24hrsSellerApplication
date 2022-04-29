@@ -15,6 +15,8 @@
 
 .forget a {
     font-size: small !important;
+    margin: 0 !important;
+    padding:  0 !important;
 }
 
 .otp-btn{
@@ -46,8 +48,10 @@ margin: 0;
 }
 
 .signup{
-    color:var(--ion-color-primary);
+    color:var(--ion-color-secondary);
 }
+
+
 
 ion-content {
     background-color:var(--ion-color-light) !important;

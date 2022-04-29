@@ -15,6 +15,9 @@ ion-tabs{
     --border-radius: 50%;
     background: var(--ion-color-light);
 }
+ion-tabs.ios{
+  --border-radius: 0 !important;
+}
 
 ion-tab-bar {
     --background: #0c0c0c;
@@ -28,6 +31,16 @@ ion-tab-bar {
     height: 55px;
   }
   
+  ion-tab-bar.ios {
+    --background: #0c0c0c;
+    box-shadow: none !important;
+    bottom: 0 !important;
+    border-radius: 0 !important;
+    width: 100%;
+    border-top: none;
+    margin: 0 auto;
+  }
+
   ion-tab-button {
     --color: #d4d4d4;
     --color-selected: var(--ion-color-primary);
@@ -47,6 +60,11 @@ ion-tab-bar {
       background-color: var(--ion-color-primary);
     }
   }
+
+  ion-tab-button.ios {
+
+  }
+    
   
 
   

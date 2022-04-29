@@ -21,7 +21,8 @@
 .create-account {
     color   : var(--ion-color-secondary);
     font-size: 10px;
-    margin   : 8px;
+    margin-left   : 6% !important;
+    margin-top: -6px !important;
 }
 
 .tearmsAndCondition {
@@ -31,10 +32,10 @@
     cursor   : pointer;
 }
 
-// .input-field{
-//     margin-left :-10px;
-
-// }
+ion-input{
+    margin: 2px !important;
+    margin-bottom: 10px !important;
+}
 .signup-btn {
     border-radius: 5px !important;
     width        : 50%;
@@ -62,6 +63,7 @@
 
 .tearmsAndCondition {
     font-size: 10px;
+  
 }
 
 ion-label {
@@ -70,7 +72,7 @@ ion-label {
 }
 
 .condition {
-    font-size: 12px;
+    font-size: 14px;
     color    : gray;
     padding  : 15px;
 }
@@ -91,5 +93,6 @@ p{
     font-size: 10px;
 }
 .signIn{
-    color: var(--ion-color-primary);
+    font-size: 25 !important;
+    color: var(--ion-color-secondary);
 }

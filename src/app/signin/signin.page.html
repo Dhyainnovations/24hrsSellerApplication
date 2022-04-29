@@ -1,58 +1,51 @@
-
-
-<ion-content   class="ion-padding">
+<ion-content class="ion-padding">
   <div class="welcomecard p-3" style="margin-top: 55%;">
 
-  <div class="title">
+    <div class="title">
+      <div class="row">
+        <div class="col-12">
+          <h2><b>Login</b></h2>
+        </div>
+
+      </div>
+      <p>Lets get started</p>
+    </div>
+
+    <div style="margin-top: -7%;" class="row">
+      <div class="col-{{MobInputcolSize}}">
+        <ion-input [(ngModel)]="signinemailid" placeholder="Enter your mail" class="primary-input"></ion-input>
+      </div>
+    </div>
+
+
+    <ion-input [(ngModel)]="signinpassword" placeholder="Enter your password" type="password" class="primary-input">
+    </ion-input>
+
     <div class="row">
-      <div class="col-10">
-        <h4 ><b>Login</b></h4>
+      <div class="col-12 forgot-pw" (click)="forgotPasswordPage()">
+        Forgot password?
       </div>
-      <div class="col-2">
-        <div class="ion-margin-top ion-text-center">
-          <svg (click)="dismiss()" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="9" fill="red" fill-opacity="0.25"/>
-            <path d="M16 8L8 16" stroke="white" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round"/>
-            <path d="M8 8L16 16" stroke="white" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round"/>
-            </svg>
-          </div>
+
+
+
+      <div *ngIf="verifyOTPValidate">
+
+        <ion-input type="number" [(ngModel)]="verifynumber" placeholder="Enter your sign-up number"
+          class="primary-input"></ion-input>
+        <ion-button class="secondarySmallBtn" color="none" (click)="otpPage()">Verify Number</ion-button>
+
       </div>
     </div>
-    <p>Lets get started</p>
-  </div>
 
-  <div style="margin-top: -7%;" class="row">
-    <div class="col-{{MobInputcolSize}}">
-      <ion-input  [(ngModel)]="signinemailid"  placeholder="Enter your mail" class="primary-input"></ion-input>
+    <div >
+      <ion-button style="width: 98%;" [disabled]="otp == '' " class="secondaryLargeBtn" color="none" (click)="signin()">
+        LOGIN</ion-button>
+    </div>
+
+    <div class="col-12 forgot-pw ion-text-center">
+      New user ? <span (click)="signupPage()" class="signup"><b>Signup</b></span>
     </div>
   </div>
 
- 
-  <ion-input   [(ngModel)]="signinpassword" placeholder="Enter your password" type="password" class="primary-input"></ion-input>
 
-  <div class="row">
-    <div class="col-12 forgot-pw" (click)="forgotPasswordPage()">
-      Forgot password?
-    </div>
-
-    
-    
-    <div *ngIf="verifyOTPValidate" >
-
-        <ion-input  type="number" [(ngModel)]="verifynumber" placeholder="Enter your sign-up number" class="primary-input"></ion-input>
-
-      <button (click)="otpPage()" class="btn btn-sm signin-btn mt-3">Verify Number</button>
-    </div>
-  </div>
-
-  <div class="ion-margin-top">
-    <ion-button  [disabled]="otp == '' " expand="block" color="secondary" (click)="signin()">LOGIN</ion-button>
-  </div>
-
-  <div class="col-12 forgot-pw ion-text-center">
-    New user ? <span   (click)="signupPage()" class="signup"><b>Signup</b></span>
-  </div>
-</div>
-
-  
 </ion-content>

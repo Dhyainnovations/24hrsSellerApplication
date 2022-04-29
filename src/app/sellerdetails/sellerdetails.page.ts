@@ -174,17 +174,19 @@ export class SellerdetailsPage implements OnInit {
 
 
 
-    if (this.image == null) {
-      this.storelogoCheck = true;
-    } else {
-      this.storelogoCheck = false;
-    }
+    // if (this.image == null) {
+    //   this.storelogoCheck = true;
+    // } else {
+    //   this.storelogoCheck = false;
+    // }
     if (this.addressproof == null || this.idproof == null) {
       this.proofCheck = true;
     } else {
       this.proofCheck = false;
     }
-    if (this.storeNameError == false && this.addresscheck == false && this.proofCheck == false && this.storelogoCheck == false && this.usernameCheck == false && this.usernumber == false) {
+
+    // this.storelogoCheck == false &&
+    if (this.storeNameError == false && this.addresscheck == false && this.proofCheck == false && this.usernameCheck == false && this.usernumber == false) {
       this.http.postFormData("/seller_update_profile", formdata).subscribe((response: any) => {
         console.log(response);
         this.router.navigate(['/social-media-details'])

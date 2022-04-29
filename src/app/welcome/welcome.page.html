@@ -2,28 +2,58 @@
 
 </ion-header>
 
-<ion-content class="ion-padding ion-text-center" >
+<ion-content class="ion-padding ion-text-center">
   <img src="assets/logo.jpeg" class="logo" />
-  <div class="welcomecard mb-5">
-    <div class="title mt-5">
-      <h2>Welcome</h2>
-      <p>Enjoy the 24hrs App</p>
+  <div class="welcomecard mb-5 mt-3">
+    <div >
+      <p class="title"><b>Welcome</b> <br>
+        </p>
+        <p class="subtitle" >Enjoy The 24hrs App</p>
+     
     </div>
 
-    <div class="ion-margin-top mb-4">
+    <div class="ion-margin-top mb-3 mt-3">
       <div class="row">
-        <div class="col-12">
-          <ion-button class="" style="width: 90%;" class="ion-margin-top" fill="outline" color="secondary" (click)="register()">
+        <div class="col-12 mt-2">
+          <ion-button style="width: 90%;" class="ion-margin-top secondaryLargelOutlineBtn"  color="none"(click)="register()">
             <span style="margin-top: 4px;">SIGN UP</span>
           </ion-button>
         </div>
-        <div class="col-12">
-          <ion-button style="width: 90%;" class="ion-margin-top" (click)="login()" color="secondary">
+        <div class="col-12 mt-2">
+          <ion-button style="width: 90%;" class="ion-margin-top secondaryLargeBtn" color="none" (click)="login()" >
             SIGN IN</ion-button>
         </div>
       </div>
-     
-     
+
     </div>
+
+    <!-- <ion-button class="secondarySmallBtn" (click)="login()" color="none">
+      SSB </ion-button>
+
+    <ion-button class="secondarySmallOutlineBtn" (click)="login()" color="none">
+      SSBO</ion-button>
+
+      <ion-button class="secondaryLargeBtn" (click)="login()" color="none">
+        SLB </ion-button>
+  
+      <ion-button class="secondaryLargelOutlineBtn" (click)="login()" color="none">
+        SLBO</ion-button>
+
+
+
+
+
+        <ion-button class="primarySmallBtn" (click)="login()" color="none">
+          PSB </ion-button>
+    
+        <ion-button class="primarySmallOutlineBtn" (click)="login()" color="none">
+          PSBO</ion-button>
+    
+          <ion-button class="primaryLargeBtn" (click)="login()" color="none">
+            PLB </ion-button>
+      
+          <ion-button class="primaryLargelOutlineBtn" (click)="login()" color="none">
+            PLBO</ion-button> -->
+
   </div>
 </ion-content>

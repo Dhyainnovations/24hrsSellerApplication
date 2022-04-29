@@ -25,14 +25,6 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-.ion-color-white {
-    --ion-color-base: var(--ion-color-white);
-    --ion-color-base-rgb: var(--ion-color-white-rgb);
-    --ion-color-contrast: var(--ion-color-white-contrast);
-    --ion-color-contrast-rgb: var(--ion-color-white-contrast-rgb);
-    --ion-color-shade: var(--ion-color-white-shade);
-    --ion-color-tint: var(--ion-color-white-tint);
-}
 
 .login-modal .modal-wrapper {
     height: 45%;
@@ -59,22 +51,10 @@
 }
 
 
-// @font-face {
-//   font-family: "InterRegular";
-//   src: local("InterRegular"),
-//     url("./assets/Inter/Inter-Regular.ttf") format("truetype");
-// }
-// @font-face {
-//   font-family: "InterBold";
-//   src: local("InterBold"),
-//     url("./assets/Inter/Inter-Bold.ttf") format("truetype");
-// }
 
 *{
-  // font-family: 'Cinzel', serif;
-  // font-family: 'Marcellus SC', serif;
+
   font-family: 'Roboto', sans-serif;   
-  // font-family: 'Poppins', sans-serif;
 }
   
  
@@ -120,16 +100,7 @@
       box-shadow: 2px 2px 2px 2px #ebe6e6;
       border-radius: 10px;
   }
-  // .bg-class{
-  //     --background: linear-gradient(to bottom, #8cdbe2
-  //     0%, #d1f2e7
-  //     100%) !important;
-  
-  //   }
-    // .bgcolor-class{
-    //   --background: linear-gradient(to bottom, #FEC401 0%, #FEC401 100%) !important;
-  
-    // }
+
     .signin-div{
       background: var(--ion-color-light);
       border-radius: 5px;
@@ -255,7 +226,7 @@
     position: relative;
     display: flex;
     width: 100%;
-    height: 3em;
+    height: 2em;
     border-radius: .25em;
     overflow: hidden;
     margin-left: 0%;
@@ -266,8 +237,8 @@
   .select::after {
     content: '\25BC';
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -10px;
+    right: -6px;
     padding: 1em;
     background-color: transparent;
     color:var(--ion-color-primary) !important
@@ -447,4 +418,116 @@ ion-badge{
   color: var(--ion-color-light) !important;
   font-size: 10px !important;
   border-radius: 2px;
+}
+
+
+
+//-------------- buttons ------------------//
+
+
+//------------ Secondary small button -------//
+.secondarySmallBtn{
+  background-color: var(--ion-color-secondary) !important; 
+  color: var(--ion-color-light) !important;
+  margin: 5px;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+  border-radius: 3px;
+  font-size: 12px;
+  height: 32px;
+  text-transform: none;
+}
+
+.secondarySmallOutlineBtn{
+  margin: 5px;
+  background-color: transparent !important;
+  border: 1px solid var(--ion-color-secondary) !important; 
+  color: var(--ion-color-secondary) !important;
+  border-radius: 3px;
+  font-size: 12px;
+  height: 32px;
+  text-transform: none;
+}
+
+
+//------------ Secondary large button -------//
+
+.secondaryLargeBtn{
+  background-color: var(--ion-color-secondary) !important; 
+  color: var(--ion-color-light) !important;
+  margin: 5px;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+  border-radius: 6px;
+  font-size: 17px;
+  height: 38px;
+  text-transform: none;
+}
+
+.secondaryLargelOutlineBtn{
+  margin: 5px;
+  background-color: transparent !important;
+  border: 1px solid var(--ion-color-secondary) !important; 
+  color: var(--ion-color-secondary) !important;
+  border-radius: 6px;
+  font-size: 17px;
+  height: 38px;
+  text-transform: none;
+  text-align: center !important;
+}
+
+
+//------------ primary small button -------//
+.primarySmallBtn{
+  background-color: var(--ion-color-primary) !important; 
+  color: var(--ion-color-light) !important;
+  margin: 5px;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+  border-radius: 3px;
+  font-size: 12px;
+  height: 32px;
+  text-transform: none;
+}
+
+.primarySmallOutlineBtn{
+  margin: 5px;
+  background-color: transparent !important;
+  border: 1px solid var(--ion-color-primary) !important; 
+  color: var(--ion-color-primary) !important;
+  border-radius: 3px;
+  font-size: 12px;
+  height: 32px;
+  text-transform: none;
+  --box-shadow:none !important;
+}
+
+
+//------------ primary large button -------//
+
+.primaryLargeBtn{
+  background-color: var(--ion-color-primary) !important; 
+  color: var(--ion-color-light) !important;
+  margin: 5px;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+  border-radius: 3px;
+  font-size: 17px;
+  height: 36px;
+  text-transform: none;
+}
+
+.primaryLargelOutlineBtn{
+  margin: 5px;
+  background-color: transparent !important;
+  border: 1px solid var(--ion-color-primary) !important; 
+  color: var(--ion-color-primary) !important;
+  border-radius: 3px;
+  font-size: 17px;
+  height: 36px;
+  text-transform: none;
+  --box-shadow:none !important;
+}
+
+
+//----------- ios toolbar ---------//
+ion-toolbar.ios{
+  margin-top: 5% !important;
+  --margin-top: 5% !important;
 }

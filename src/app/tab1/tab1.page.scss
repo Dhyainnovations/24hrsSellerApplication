@@ -7,7 +7,7 @@
     width: 75%;
     background-color: var(--ion-color-light)
     ;
-    border-radius: 50%;
+    border-radius: 10%;
     display: inline-block;
     box-shadow: 0px 5px 17px -7px rgba(0, 0, 0, 5.5);
   }
@@ -190,9 +190,9 @@ body {
   position:relative;
   width:60%;
   padding-bottom:50%;
-  box-shadow: 0px 5px 17px -7px rgba(0, 0, 0, 5.5);
+  box-shadow: 1px 1px 1px 2px #ccc;
   background:var(--ion-color-light) ;
-  border-radius:50%;
+  border-radius:8px;
   margin: auto !important;
 }
 .circle h3{

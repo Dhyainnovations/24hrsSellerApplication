@@ -4,75 +4,40 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #ee4659;
+  --ion-color-primary: #EB154B;
   --ion-color-primary-rgb: 238, 70, 89;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #ee4659;
-  --ion-color-primary-tint: #ee4659;
-  /** white **/
-  --ion-color-white: #ffffff;
-  --ion-color-white-rgb: 255, 255, 255;
-  --ion-color-white-contrast: #ee4659;
-  --ion-color-white-contrast-rgb: 238, 70, 89;
-  --ion-color-white-shade: #e0e0e0;
-  --ion-color-white-tint: #ffffff;
-  /** secondary **/
-  --ion-color-secondary: #3dc2ff;
-  --ion-color-secondary-rgb: 61, 194, 255;
+  --ion-color-primary-shade: #EB154B;
+  --ion-color-primary-tint: #EB154B;
+  /** secondary Color **/
+  --ion-color-secondary: #2b2b2b;
+  --ion-color-secondary-rgb: 238, 70, 89;
   --ion-color-secondary-contrast: #ffffff;
   --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #36abe0;
-  --ion-color-secondary-tint: #50c8ff;
-  /** tertiary **/
-  --ion-color-tertiary: #5260ff;
-  --ion-color-tertiary-rgb: 82, 96, 255;
-  --ion-color-tertiary-contrast: #ffffff;
-  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-  --ion-color-tertiary-shade: #4854e0;
-  --ion-color-tertiary-tint: #6370ff;
+  --ion-color-secondary-shade: #676767;
+  --ion-color-secondary-tint: #353637;
+  /** light **/
+  --ion-color-light: #ffffff;
+  --ion-color-light-rgb: 255, 255, 255;
+  --ion-color-light-contrast: #f0eeee;
+  --ion-color-light-contrast-rgb: 238, 70, 89;
+  --ion-color-light-shade: #F4F7FA;
+  --ion-color-light-tint: #ffffff;
   /** success **/
-  --ion-color-success: #2dd36f;
+  --ion-color-success: #23d5ab;
   --ion-color-success-rgb: 45, 211, 111;
   --ion-color-success-contrast: #ffffff;
   --ion-color-success-contrast-rgb: 255, 255, 255;
-  --ion-color-success-shade: #28ba62;
-  --ion-color-success-tint: #42d77d;
+  --ion-color-success-shade: #23d5ab;
+  --ion-color-success-tint: #23d5ab;
   /** warning **/
-  --ion-color-warning: #ffc409;
+  --ion-color-warning: red;
   --ion-color-warning-rgb: 255, 196, 9;
   --ion-color-warning-contrast: #000000;
   --ion-color-warning-contrast-rgb: 0, 0, 0;
-  --ion-color-warning-shade: #e0ac08;
-  --ion-color-warning-tint: #ffca22;
-  /** danger **/
-  --ion-color-danger: #eb154b;
-  --ion-color-danger-rgb: 235, 68, 90;
-  --ion-color-danger-contrast: #ffffff;
-  --ion-color-danger-contrast-rgb: 255, 255, 255;
-  --ion-color-danger-shade: #cf3c4f;
-  --ion-color-danger-tint: #ed576b;
-  /** dark **/
-  --ion-color-dark: #222428;
-  --ion-color-dark-rgb: 34, 36, 40;
-  --ion-color-dark-contrast: #ffffff;
-  --ion-color-dark-contrast-rgb: 255, 255, 255;
-  --ion-color-dark-shade: #1e2023;
-  --ion-color-dark-tint: #383a3e;
-  /** medium **/
-  --ion-color-medium: #d4d4d4;
-  --ion-color-medium-rgb: 146, 148, 156;
-  --ion-color-medium-contrast: #ffffff;
-  --ion-color-medium-contrast-rgb: 255, 255, 255;
-  --ion-color-medium-shade: #808289;
-  --ion-color-medium-tint: #9d9fa6;
-  /** light **/
-  --ion-color-light: #ffffff;
-  --ion-color-light-rgb: 244, 245, 248;
-  --ion-color-light-contrast: #000000;
-  --ion-color-light-contrast-rgb: 0, 0, 0;
-  --ion-color-light-shade: #d7d8da;
-  --ion-color-light-tint: #f5f6f9;
+  --ion-color-warning-shade: red;
+  --ion-color-warning-tint: red;
 }
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].rules[0].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].rules[0].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[6].rules[1].use[0]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[6].rules[1].use[1]!./src/global.scss ***!
@@ -1250,14 +1215,6 @@ sub {
 .ion-align-items-baseline {
   align-items: baseline !important;
 }
-.ion-color-white {
-  --ion-color-base: var(--ion-color-white);
-  --ion-color-base-rgb: var(--ion-color-white-rgb);
-  --ion-color-contrast: var(--ion-color-white-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-white-contrast-rgb);
-  --ion-color-shade: var(--ion-color-white-shade);
-  --ion-color-tint: var(--ion-color-white-tint);
-}
 .login-modal .modal-wrapper {
   height: 45%;
   top: 55%;
@@ -1280,13 +1237,7 @@ sub {
   margin-bottom: 10px;
 }
 * {
-  font-family: "Cinzel", serif;
-  font-family: "Marcellus SC", serif;
   font-family: "Roboto", sans-serif;
-}
-.title {
-  font-family: "InterBold";
-  margin-top: 80px;
 }
 .welcome {
   font-family: "InterRegular";
@@ -1298,12 +1249,12 @@ sub {
   font-family: "Roboto", sans-serif;
   font-size: 34px;
   font-weight: 25px;
-  color: #EB154B;
+  color: var(--ion-color-primary);
   text-shadow: 2px 2px 4px #ccc;
   margin-left: 5px;
 }
 .card {
-  border: 1px solid #FFFFFF;
+  border: 1px solid var(--ion-color-light);
   border-radius: 3px;
   box-shadow: 4px 4px 4px 4px #ccc;
   margin-bottom: 20px;
@@ -1311,25 +1262,25 @@ sub {
   cursor: pointer;
 }
 #productCard {
-  border: 1px solid #fff;
+  border: 1px solid var(--ion-color-light);
   box-shadow: 3px 3px 16px 4px #ccc;
   margin-left: 8px !important;
   margin-right: 6px !important;
   margin: 6px;
   width: 45%;
-  background-color: #fff !important;
+  background-color: var(--ion-color-light) !important;
   border-radius: 2px;
 }
 .icon {
   margin: 10px;
-  background-color: #fff;
-  border: 1px solid #fff;
+  background-color: var(--ion-color-light);
+  border: 1px solid var(--ion-color-light);
   padding: 5px;
   box-shadow: 2px 2px 2px 2px #ebe6e6;
   border-radius: 10px;
 }
 .signin-div {
-  background: #fff;
+  background: var(--ion-color-light);
   border-radius: 5px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   -webkit-backdrop-filter: blur(8.2px);
@@ -1352,7 +1303,7 @@ sub {
 #card {
   position: absolute;
   top: 25%;
-  background-color: #fff;
+  background-color: var(--ion-color-light);
   border: 1px solid #ebe6e6;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 2px #ccc;
@@ -1360,7 +1311,7 @@ sub {
   margin: 5px;
 }
 .signin {
-  color: #EB154B;
+  color: var(--ion-color-primary);
   font-size: 15px;
   margin-top: 8px !important;
 }
@@ -1404,10 +1355,10 @@ sub {
   margin: 10px;
 }
 .signin-btn {
-  background-color: #EB154B;
-  border: 1px solid #eb154b;
+  background-color: var(--ion-color-primary);
+  border: 1px solid var(--ion-color-primary);
   margin-left: 18px;
-  color: #fff;
+  color: var(--ion-color-light);
 }
 .new-background-color {
   --background: linear-gradient(to left, #23a6d5
@@ -1425,7 +1376,7 @@ select {
   flex: 1;
   padding: 0 1em;
   color: #5C5C5C;
-  background-color: #fff;
+  background-color: var(--ion-color-light);
   background-image: none;
   cursor: pointer;
   border-radius: 5px;
@@ -1439,7 +1390,7 @@ select::-ms-expand {
   position: relative;
   display: flex;
   width: 100%;
-  height: 3em;
+  height: 2em;
   border-radius: 0.25em;
   overflow: hidden;
   margin-left: 0%;
@@ -1448,11 +1399,11 @@ select::-ms-expand {
 .select::after {
   content: "▼";
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -10px;
+  right: -6px;
   padding: 1em;
   background-color: transparent;
-  color: #EB154B !important;
+  color: var(--ion-color-primary) !important;
   transition: 0.5s all ease;
   pointer-events: none;
   border-radius: 2px;
@@ -1463,22 +1414,22 @@ select::-ms-expand {
 }
 select:focus > option:checked {
   cursor: pointer;
-  background-color: #fff;
+  background-color: var(--ion-color-light);
 }
 option:hover {
   cursor: pointer;
 }
 .item-has-focus {
-  --highlight-background: #EB154B !important;
+  --highlight-background: var(--ion-color-primary) !important;
 }
 .ion-label {
-  --highlight-background: #EB154B !important;
+  --highlight-background: var(--ion-color-primary) !important;
 }
 .buttonCss button.alert-button:nth-child(1) {
-  color: red;
+  color: var(--ion-color-primary);
 }
 .buttonCss button.alert-button:nth-child(2) {
-  color: #009c36;
+  color: var(--ion-color-success);
 }
 svg {
   cursor: pointer;
@@ -1506,14 +1457,17 @@ ion-toolbar {
           backdrop-filter: blur(8.2px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
+textarea {
+  background-color: var(--ion-color-light);
+}
 textarea:focus {
-  border-color: #23d5ab !important;
-  box-shadow: 0 0 4px 0 #23d5ab !important;
+  border-color: var(--ion-color-success) !important;
+  box-shadow: 0 0 4px 0 var(--ion-color-success) !important;
 }
 .search {
   text-align: center !important;
   justify-content: center !important;
-  background-color: #FFFFFF;
+  background-color: var(--ion-color-light);
   position: relative;
   box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
   width: 90%;
@@ -1524,11 +1478,11 @@ textarea:focus {
   text-indent: 25px;
   border: 2px solid #d6d4d4;
   border-radius: 100px !important;
-  background-color: #FFFFFF;
+  background-color: var(--ion-color-light);
 }
 .search input:focus {
   box-shadow: none;
-  border: 2px solid #EB154B;
+  border: 2px solid var(--ion-color-primary);
 }
 .search .fa-search {
   position: absolute;
@@ -1546,13 +1500,124 @@ textarea:focus {
 ion-chip {
   box-shadow: 0px 5px 17px -7px black;
   margin-bottom: 10px;
-  color: #fff !important;
+  color: var(--ion-color-light) !important;
   background: linear-gradient(to right, #555c59 0%, #1d1f1e 100%);
-  background: #EB154B !important;
+  background: var(--ion-color-primary) !important;
   border-radius: 16px;
   box-shadow: 1 4px 71px rgba(17, 18, 13, 0.61);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+}
+ion-input {
+  color: var(--ion-color-secondary) !important;
+}
+.productName {
+  color: var(--ion-color-secondary) !important;
+}
+.title {
+  color: var(--ion-color-secondary) !important;
+}
+.subtitle {
+  color: var(--ion-color-secondary-shade) !important;
+}
+.primaryTitle {
+  color: var(--ion-color-primary) !important;
+}
+.validationtext {
+  opacity: 0.52;
+  color: var(--ion-color-primary) !important;
+}
+ion-badge {
+  color: var(--ion-color-light) !important;
+  font-size: 10px !important;
+  border-radius: 2px;
+}
+.secondarySmallBtn {
+  background-color: var(--ion-color-secondary) !important;
+  color: var(--ion-color-light) !important;
+  margin: 5px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  font-size: 12px;
+  height: 32px;
+  text-transform: none;
+}
+.secondarySmallOutlineBtn {
+  margin: 5px;
+  background-color: transparent !important;
+  border: 1px solid var(--ion-color-secondary) !important;
+  color: var(--ion-color-secondary) !important;
+  border-radius: 3px;
+  font-size: 12px;
+  height: 32px;
+  text-transform: none;
+}
+.secondaryLargeBtn {
+  background-color: var(--ion-color-secondary) !important;
+  color: var(--ion-color-light) !important;
+  margin: 5px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  font-size: 17px;
+  height: 38px;
+  text-transform: none;
+}
+.secondaryLargelOutlineBtn {
+  margin: 5px;
+  background-color: transparent !important;
+  border: 1px solid var(--ion-color-secondary) !important;
+  color: var(--ion-color-secondary) !important;
+  border-radius: 6px;
+  font-size: 17px;
+  height: 38px;
+  text-transform: none;
+  text-align: center !important;
+}
+.primarySmallBtn {
+  background-color: var(--ion-color-primary) !important;
+  color: var(--ion-color-light) !important;
+  margin: 5px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  font-size: 12px;
+  height: 32px;
+  text-transform: none;
+}
+.primarySmallOutlineBtn {
+  margin: 5px;
+  background-color: transparent !important;
+  border: 1px solid var(--ion-color-primary) !important;
+  color: var(--ion-color-primary) !important;
+  border-radius: 3px;
+  font-size: 12px;
+  height: 32px;
+  text-transform: none;
+  --box-shadow:none !important;
+}
+.primaryLargeBtn {
+  background-color: var(--ion-color-primary) !important;
+  color: var(--ion-color-light) !important;
+  margin: 5px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  font-size: 17px;
+  height: 36px;
+  text-transform: none;
+}
+.primaryLargelOutlineBtn {
+  margin: 5px;
+  background-color: transparent !important;
+  border: 1px solid var(--ion-color-primary) !important;
+  color: var(--ion-color-primary) !important;
+  border-radius: 3px;
+  font-size: 17px;
+  height: 36px;
+  text-transform: none;
+  --box-shadow:none !important;
+}
+ion-toolbar.ios {
+  margin-top: 5% !important;
+  --margin-top: 5% !important;
 }
 
 /*# sourceMappingURL=styles.css.map*/
