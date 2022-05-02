@@ -18,7 +18,7 @@ export class EditProfilePage implements OnInit {
   store_categoryExist: any;
   store_categoryNotExist: any;
   store_category: any;
-  storeName:any=localStorage.getItem("StoreName");
+  storeName: any = localStorage.getItem("StoreName");
   user_tbid: any = localStorage.getItem("tbid");
   EmailID: any = localStorage.getItem("EmailID");
 
@@ -35,6 +35,10 @@ export class EditProfilePage implements OnInit {
     this.router.navigate(['/tabs/tab5'])
   }
 
+  mailID(data) {
+    this.EmailID = data;
+  }
+
   sellerAllDetails() {
     this.http.get('/seller_details').subscribe((response: any) => {
       if (response.success == "true") {
@@ -42,11 +46,11 @@ export class EditProfilePage implements OnInit {
         this.sellerDetails = response.records;
         console.log(this.sellerDetails);
         this.store_category_tbid = response.records.store_category_id;
-        this.address_line_1=response.records.address_line_1;
-        this.address_line_2=response.records.address_line_2;
-        this.citys=response.records.city;
-        this.states=response.records.city;
-        this.pincodes=response.records.pincode;
+        this.address_line_1 = response.records.address_line_1;
+        this.address_line_2 = response.records.address_line_2;
+        this.citys = response.records.city;
+        this.states = response.records.city;
+        this.pincodes = response.records.pincode;
         if (response.records.store_category == "" || response.records.store_category == null) {
           this.store_categoryNotExist = true;
           this.store_categoryExist = false;
@@ -104,6 +108,11 @@ export class EditProfilePage implements OnInit {
     } else {
       this.imageSize = false;
       this.logoUploadCheck = true;
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (_event) => {
+        this.storelogo = reader.result;
+      }
     }
 
   }
@@ -111,9 +120,9 @@ export class EditProfilePage implements OnInit {
 
 
   updateProfile() {
-    localStorage.setItem("location",this.citys);
-    localStorage.setItem("EmailID",this.EmailID);
-    localStorage.setItem("StoreName",this.storeName);
+    localStorage.setItem("location", this.citys);
+    localStorage.setItem("EmailID", this.EmailID);
+    localStorage.setItem("StoreName", this.storeName);
     //Update-Store-Logo
     console.log(this.selectedFile);
     if (this.selectedFile == undefined) {
@@ -142,6 +151,7 @@ export class EditProfilePage implements OnInit {
     sellerdetailformdata.append("store_category", this.store_category_tbid);
     sellerdetailformdata.append("state", this.states);
     sellerdetailformdata.append("pincode", this.pincodes);
+    sellerdetailformdata.append("email_id", this.EmailID);
     this.http.postFormData("/seller_update_profile", sellerdetailformdata).subscribe((response: any) => {
       console.log(response);
       this.router.navigate(['/social-media-details'])
@@ -151,26 +161,26 @@ export class EditProfilePage implements OnInit {
     );
   }
 
-  address_line_1:any;
-  address_line_2:any;
-  citys:any=localStorage.getItem("location");
-  states:any;
-  pincodes:any;
-  addressline_1(data){
-    this.address_line_1=data;  
+  address_line_1: any;
+  address_line_2: any;
+  citys: any = localStorage.getItem("location");
+  states: any;
+  pincodes: any;
+  addressline_1(data) {
+    this.address_line_1 = data;
   }
-  addressline_2(data){
-    this.address_line_2=data;
+  addressline_2(data) {
+    this.address_line_2 = data;
   }
-  city(data){
-    this.citys=data;
+  city(data) {
+    this.citys = data;
   }
-  state(data){
-    this.states=data;
+  state(data) {
+    this.states = data;
   }
 
-  pincode(data){
-    this.pincodes=data;
+  pincode(data) {
+    this.pincodes = data;
   }
   StoreCategory(data) {
     this.store_category_tbid = data.category;
