@@ -25,9 +25,7 @@
           fill="black" />
         <circle cx="18" cy="6" r="2.5" fill="#eb154b" stroke="#eb154b" />
       </svg>
-
       <!-- <ion-badge style="border-radius: 50%;margin-left: -14px ;color:#eb154b ;font-size: 12px;" color="light">10</ion-badge> -->
-
     </div>
   </div>
 </ion-toolbar>
@@ -60,7 +58,7 @@
           </div>
 
           <div class="col-12 text-center mt-3">
-            <!-- <label (change)="MediaFileSelected($event)" style="
+            <label (change)="MediaFileSelected($event)" style="
                     border: 1px solid rgb(202, 202, 202);
                     width: 60%;
                     margin-left: 10px;
@@ -74,7 +72,7 @@
 
               Upload
               <input type="file" class="btn" name="image" accept=".jpeg,.jpg,.png" />
-            </label> -->
+            </label>
             <p class="small text-success text-center pt-3" *ngIf="logoUploadCheck">Uploaded Successfully</p>
             <p class="small text-danger text-center" *ngIf="imageSize">Uploaded File Size Should Not Exceed More Than
               5Mb

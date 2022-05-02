@@ -306,9 +306,10 @@ export class Tab5Page {
 
 
   popupModelOpen() {
-    this.PopupModel = true;
-    this.userDetailstVisible = true;
-    this.contactVisible = false;
+    // this.PopupModel = true;
+    // this.userDetailstVisible = true;
+    // this.contactVisible = false;
+    this.router.navigate(['edit-profile'])
   }
 
   contactEdit() {
@@ -391,17 +392,6 @@ export class Tab5Page {
 
 
   //Update-Store-Logo
-  MediaFileSelected(event) {
-    this.selectedFile = event.target.files[0] as File;
-    var imageSize = event.target.files[0].size;
-    if (imageSize > 5242880) {
-      this.imageSize = true;
-      this.logoUploadCheck = false;
-    } else {
-      this.imageSize = false;
-      this.logoUploadCheck = true;
-    }
-  }
 
 
   //Upload-Id-Proof

@@ -82,6 +82,11 @@ const routes: Routes = [
     path: 'show-product-image',
     loadChildren: () => import('./show-product-image/show-product-image.module').then(m => m.ShowProductImagePageModule)
   },
+  {
+    path: 'edit-profile',
+    loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+  },
+
 
 
 ];

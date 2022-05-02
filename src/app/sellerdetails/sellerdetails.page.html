@@ -3,27 +3,37 @@
 
     <h4 style="padding-left: 17px;" class="title"> Provide Your Details:</h4>
     <form #sellerdetailform="ngForm" (ngSubmit)="onClickSubmit(sellerdetailform.value)">
-      <div class="row" style="padding-left: 17px;">
-        <div class="col-12">
-          <p>Store Logo <br><span style="color:rgb(74, 72, 72)" class="small">(Upload Only jpeg or png & Ratio
-              1:1)</span></p>
+      <div class="row mt-2" style="padding-left: 17px;">
+        <div class="col-6 ">
+          <p style="margin-top: 4px;">Store Logo:&nbsp;<span class="infoIcon">
+              <img src="assets/icon/i.png" alt="info icon" width="15px">
+
+              <p class="extraInfo">
+                (Upload Only jpeg or png & Ratio
+                1:1)</p>
+            </span></p>
+        </div>
+        <div class="col-6 ion-text-right uploadbtn">
+
+          <label class="btn btn-default" style="font-size: 13px;" (change)="MediaFileSelected($event)">
+            <svg width="20" height="16" viewBox="0 0 23 20" fill="none">
+              <path
+                d="M0 2.5C0 1.11914 1.14401 0 2.55556 0H8.94444V5C8.94444 5.69141 9.51545 6.25 10.2222 6.25H15.3333V7.75781C12.3825 8.57422 10.2222 11.2266 10.2222 14.375C10.2222 16.6836 11.3842 18.7227 13.1651 19.9727C13.0413 19.9883 12.9095 20 12.7778 20H2.55556C1.14401 20 0 18.8789 0 17.5V2.5ZM10.2222 5V0L15.3333 5H10.2222ZM11.5 14.375C11.5 11.2695 14.0755 8.75 17.25 8.75C20.4245 8.75 23 11.2695 23 14.375C23 17.4805 20.4245 20 17.25 20C14.0755 20 11.5 17.4805 11.5 14.375ZM17.8889 11.8398C17.8889 11.5313 17.6014 11.2148 17.25 11.2148C16.8986 11.2148 16.6111 11.5313 16.6111 11.8398V13.7148H14.6944C14.3431 13.7148 14.0556 14.0313 14.0556 14.3398C14.0556 14.7188 14.3431 14.9648 14.6944 14.9648H16.6111V16.8398C16.6111 17.2188 16.8986 17.4648 17.25 17.4648C17.6014 17.4648 17.8889 17.2188 17.8889 16.8398V14.9648H19.8056C20.1569 14.9648 20.4444 14.7188 20.4444 14.3398C20.4444 14.0313 20.1569 13.7148 19.8056 13.7148H17.8889V11.8398Z"
+                fill="black" />
+            </svg>
+            <span style="font-size: 14px;"> Upload</span>
+            <input type="file" class="" name="image" accept=".jpeg,.png">
+          </label>
         </div>
 
-        <!-- 
-        <label class="btn btn-default ion-text-center"
-          style="border:1px solid rgb(202, 202, 202);width:60%;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;font-size: 13px;margin: auto !important;"
-          (change)="MediaFileSelected($event)">
-          <svg width="23" height="20" viewBox="0 0 23 20" fill="none">
-            <path
-              d="M0 2.5C0 1.11914 1.14401 0 2.55556 0H8.94444V5C8.94444 5.69141 9.51545 6.25 10.2222 6.25H15.3333V7.75781C12.3825 8.57422 10.2222 11.2266 10.2222 14.375C10.2222 16.6836 11.3842 18.7227 13.1651 19.9727C13.0413 19.9883 12.9095 20 12.7778 20H2.55556C1.14401 20 0 18.8789 0 17.5V2.5ZM10.2222 5V0L15.3333 5H10.2222ZM11.5 14.375C11.5 11.2695 14.0755 8.75 17.25 8.75C20.4245 8.75 23 11.2695 23 14.375C23 17.4805 20.4245 20 17.25 20C14.0755 20 11.5 17.4805 11.5 14.375ZM17.8889 11.8398C17.8889 11.5313 17.6014 11.2148 17.25 11.2148C16.8986 11.2148 16.6111 11.5313 16.6111 11.8398V13.7148H14.6944C14.3431 13.7148 14.0556 14.0313 14.0556 14.3398C14.0556 14.7188 14.3431 14.9648 14.6944 14.9648H16.6111V16.8398C16.6111 17.2188 16.8986 17.4648 17.25 17.4648C17.6014 17.4648 17.8889 17.2188 17.8889 16.8398V14.9648H19.8056C20.1569 14.9648 20.4444 14.7188 20.4444 14.3398C20.4444 14.0313 20.1569 13.7148 19.8056 13.7148H17.8889V11.8398Z"
-              fill="black" />
-          </svg>
-          <span class="small">Upload</span>
-          <input type="file" class="" name="image" accept=".jpeg,.png">
-        </label> -->
         <p class="small text-success" *ngIf="logoUploadCheck"><i>Uploaded Successfully</i></p>
         <p class="small text-danger" *ngIf="imageSize"><i>Uploaded File Size Should Not Exceed More Than 5Mb</i></p>
+        <p class="small text-danger text-center mt-2" *ngIf="storelogoCheck">Upload Your Store Logo</p>
+
       </div>
+
+
+
 
       <p class="small text-danger text-center mt-2" *ngIf="storelogoCheck">Upload Your Store Logo</p>
       <div class="row" style="padding-left: 17px;">
@@ -108,7 +118,7 @@
 
         </div>
 
-        <div class="col-8 ion-text-center">
+        <div class="col-8 ion-text-right uploadbtn">
           <label class="btn btn-default mb-2" style="font-size: 13px;" (change)="MediaFileSelected_idproof($event)">
             <svg width="20" height="16" viewBox="0 0 23 20" fill="none">
               <path
@@ -136,7 +146,7 @@
                 FSSAI for food related business</p>
             </span></p>
         </div>
-        <div class="col-6">
+        <div class="col-6 ion-text-right uploadbtn">
 
           <label class="btn btn-default" style="font-size: 13px;" (change)="MediaFileSelected_addressproof($event)">
             <svg width="20" height="16" viewBox="0 0 23 20" fill="none">

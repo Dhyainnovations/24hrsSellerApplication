@@ -83,7 +83,6 @@ export class MyproductEditPage implements OnInit {
     const p = this.product_name;
     //console.log(p);
     this.http.get('/read_one_product?p=' + p).subscribe((response: any) => {
-
       this.description = response.records.description;
       this.Category = response.records.category;
       this.subcategory = response.records.subcategory;
@@ -164,7 +163,16 @@ export class MyproductEditPage implements OnInit {
       this.imageSize = false;
       this.logoUploadCheck = true;
       this.productImagecheck = false;
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (_event) => {
+        this.DisplayImage = reader.result;
+      }
     }
+    console.log(this.selectedFile);
+    const files = event.target.files;
+
+
   }
   selectedFile: File = null;
   image: any;
@@ -185,7 +193,7 @@ export class MyproductEditPage implements OnInit {
 
       }
 
- 
+
 
       // console.log('formData: ', formdata.getAll('category'), formdata.getAll('product_image'));
 
@@ -263,7 +271,7 @@ export class MyproductEditPage implements OnInit {
           }
         }
         );
-      }else{
+      } else {
         const formdata = new FormData();
         formdata.append("tbid", this.tbid_value)
         formdata.append("category_id", this.category_tbid);
