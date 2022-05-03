@@ -19,7 +19,7 @@
       </div>
       <div class="row" style="padding: 10px;">
         <div class="col-12 ion-text-center">
-          <img class="editprofile" src="{{storelogo}}" alt="" width="50%" *ngIf="imagefound">
+          <img class="editprofile" src="{{store_logo}}" alt="" width="50%" *ngIf="imagefound">
           <img class="editprofile" src="../../assets/imagenotavilable.png" alt="" *ngIf="noimagefound" width="50%">
         </div>
         <div class="row text-center">
@@ -71,30 +71,30 @@
             </select>
           </div>
         </form>
-      </div>
+      </div> 
 
 
       <div class="col-6 ">Address Line 1</div>
       <div class="col-6">
-        <input [ngModel]="sellerDetails.address_line_1" type="text" id="edit-field" name="address_line_1"
+        <input [ngModel]="sellerDetails.address_line_1 == 'null' ? '': sellerDetails.address_line_1" type="text" id="edit-field" name="address_line_1"
           placeholder="Enter Your Address" (ngModelChange)="addressline_1($event)">
       </div>
       <div class="col-6">Address Line 2</div>
       <div class="col-6">
-        <input [ngModel]="sellerDetails.address_line_2" type="text" id="edit-field" name="address_line_2"
+        <input [ngModel]="sellerDetails.address_line_2 == 'null' ? '': sellerDetails.address_line_2" type="text" id="edit-field" name="address_line_2"
           placeholder="Enter Your Address" (ngModelChange)="addressline_2($event)">
       </div>
       <div class="col-6">City</div>
       <div class="col-6">
-        <input [ngModel]="sellerDetails.city" type="text" id="edit-field" name="city" placeholder="Enter Your City" (ngModelChange)="city($event)">
+        <input [ngModel]="sellerDetails.city == 'null' ? '': sellerDetails.city" type="text" id="edit-field" name="city" placeholder="Enter Your City" (ngModelChange)="city($event)">
       </div>
       <div class="col-6">State</div>
       <div class="col-6">
-        <input [ngModel]="sellerDetails.state" type="text" id="edit-field" name="state" placeholder="Enter Your State" (ngModelChange)="state($event)">
+        <input [ngModel]="sellerDetails.state == 'null' ? '': sellerDetails.state" type="text" id="edit-field" name="state" placeholder="Enter Your State" (ngModelChange)="state($event)">
       </div>
       <div class="col-6">Pincode</div>
       <div class="col-6">
-        <input [ngModel]="sellerDetails.pincode" type="text" id="edit-field" name="pincode" maxlength="6"
+        <input [ngModel]="sellerDetails.pincode == 'null' ? '': sellerDetails.pincode" type="text" id="edit-field" name="pincode" maxlength="6"
           placeholder="Enter Your Pincode" (ngModelChange)="pincode($event)">
       </div>
 

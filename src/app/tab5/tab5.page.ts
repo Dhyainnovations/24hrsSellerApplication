@@ -364,29 +364,6 @@ export class Tab5Page {
     }
     );
 
-    //Update-Store-Logo
-    const formdata = new FormData();
-    formdata.append("tbid", this.parsedObj);
-    formdata.append("store_logo", this.selectedFile);
-    this.http.postFormData('/seller_update_store_logo', formdata).subscribe((response: any) => {
-      if (response.success == "true") {
-        console.log(response);
-      }
-    }, (error: any) => {
-      console.log(error);
-    }
-    );
-
-    const sellerdetailformdata = new FormData();
-    sellerdetailformdata.append("tbid", this.parsedObj);
-    sellerdetailformdata.append("store_category", this.store_category_tbid);
-    this.http.postFormData("/seller_update_profile", sellerdetailformdata).subscribe((response: any) => {
-      console.log(response);
-      this.router.navigate(['/social-media-details'])
-    }, (error: any) => {
-      console.log(error);
-    }
-    );
 
   }
 
@@ -398,13 +375,14 @@ export class Tab5Page {
   MediaFileSelected_idproof(event2) {
     this.idproof = event2.target.files[0] as File;
     var idproof = event2.target.files[0].size;
+    var name  = event2.target.files[0].name;
     this.idSubmitButtonProof = true;
     if (idproof > 10485760) {
       this.idProofSize = true;
       this.idProofUploadCheck = false;
     } else {
       this.idProofSize = false;
-      this.idProofUploadCheck = true;
+      this.idProofUploadCheck = true;      
     }
   }
 
@@ -414,6 +392,7 @@ export class Tab5Page {
     this.addressSubmitButtonProof = true;
     this.addressproof = event1.target.files[0] as File;
     var adressproof = event1.target.files[0].size;
+    var name  = event1.target.files[0].name;
     if (adressproof > 10485760) {
       this.adressProofSize = true;
       this.addressProofUploadCheck = false;

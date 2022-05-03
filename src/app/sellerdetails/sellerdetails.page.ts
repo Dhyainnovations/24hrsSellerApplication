@@ -123,8 +123,6 @@ export class SellerdetailsPage implements OnInit {
   onClickSubmit(data) {
     this.image = this.selectedFile;
     const formdata = new FormData();
-
-    //formdata.append("category", data.category);
     formdata.append("tbid", this.userdetails);
     formdata.append("store_name", this.store_name);
     formdata.append("store_address", this.store_name + "," + data.city);
@@ -137,9 +135,16 @@ export class SellerdetailsPage implements OnInit {
     formdata.append("mobile_number", data.usernumber);
     formdata.append("seller_name", data.username);
     formdata.append("store_logo", this.image);
-    formdata.append("address_proof", this.addressproof);
-    formdata.append("id_proof", this.idproof);
  
+    const idformdata = new FormData();
+    idformdata.append("tbid", this.userdetails);
+    idformdata.append("id_proof", this.idproof);
+
+    
+    const addressproofform = new FormData();
+    addressproofform.append("tbid", this.userdetails);
+    addressproofform.append("address_proof", this.addressproof);
+
 
     if (data.username.length <= 0) {
       this.usernameCheck = true
@@ -188,24 +193,45 @@ export class SellerdetailsPage implements OnInit {
     // this.storelogoCheck == false &&
     if (this.storeNameError == false && this.addresscheck == false && this.proofCheck == false && this.usernameCheck == false && this.usernumber == false) {
       this.http.postFormData("/seller_update_profile", formdata).subscribe((response: any) => {
-        console.log(response);
-        this.router.navigate(['/social-media-details'])
+        console.log(response);        
       }, (error: any) => {
         console.log(error);
       }
       );
+
+      this.http.postFormData('/seller_id_proof', idformdata).subscribe((response: any) => {
+        if (response.success == "true") {
+          console.log(response);
+        }
+      }, (error: any) => {
+        console.log(error);
+      }
+      
+      );
+      this.http.postFormData('/seller_address_proof', addressproofform).subscribe((response: any) => {
+        if (response.success == "true") {
+          console.log(response);
+        }
+      }, (error: any) => {
+        console.log(error);
+      }
+      );
+      this.router.navigate(['/social-media-details'])
     }
 
   }
 
-  // var body = "category = " + data.category + "subcategory = " + data.subcategory + "product_name = " + data.product_name + "cost = " + data.cost + "unit = " + data.unit + "product_image = " + this.image + "description = " + data.description;
-  // console.log(body);
+
 
   store_categoryCheck: any;
   idproofcheck: any;
   store_category_id: any;
   addressproofcheck: any;
 
+
+  navigatetoNextTab(){
+    this.router.navigate(['/social-media-details'])
+  }
   
 }
 

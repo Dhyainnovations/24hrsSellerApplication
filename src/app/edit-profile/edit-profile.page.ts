@@ -27,18 +27,16 @@ export class EditProfilePage implements OnInit {
     private toastCtrl: ToastController, route: ActivatedRoute,) {
     this.sellerAllDetails();
   }
-
   ngOnInit() {
-
+    this.sellerAllDetails();
   }
   backToprivious() {
     this.router.navigate(['/tabs/tab5'])
   }
-
   mailID(data) {
     this.EmailID = data;
   }
-
+  store_logo: any;
   sellerAllDetails() {
     this.http.get('/seller_details').subscribe((response: any) => {
       if (response.success == "true") {
@@ -49,6 +47,7 @@ export class EditProfilePage implements OnInit {
         this.address_line_1 = response.records.address_line_1;
         this.address_line_2 = response.records.address_line_2;
         this.citys = response.records.city;
+        this.store_logo = response.records.store_logo;
         this.states = response.records.city;
         this.pincodes = response.records.pincode;
         if (response.records.store_category == "" || response.records.store_category == null) {
@@ -79,6 +78,7 @@ export class EditProfilePage implements OnInit {
     }
     );
     this.list();
+
   }
 
 
@@ -124,24 +124,21 @@ export class EditProfilePage implements OnInit {
     localStorage.setItem("EmailID", this.EmailID);
     localStorage.setItem("StoreName", this.storeName);
     //Update-Store-Logo
-    console.log(this.selectedFile);
-    if (this.selectedFile == undefined) {
-      this.selectedFile = "";
-    }
-    if (this.store_category_tbid == null) {
-      this.store_category_tbid = "";
-    }
+
+
     const formdata = new FormData();
     formdata.append("tbid", this.user_tbid);
     formdata.append("store_logo", this.selectedFile);
-    this.http.postFormData('/seller_update_store_logo', formdata).subscribe((response: any) => {
-      if (response.success == "true") {
-        console.log(response);
-      }
-    }, (error: any) => {
-      console.log(error);
+    if (this.selectedFile) {
+      this.http.postFormData('/seller_update_store_logo', formdata).subscribe((response: any) => {
+        if (response.success == "true") {
+          console.log(response);
+        }
+      }, (error: any) => {
+        console.log(error);
+      })
     }
-    );
+
     const sellerdetailformdata = new FormData();
     sellerdetailformdata.append("tbid", this.user_tbid);
     sellerdetailformdata.append("store_address", this.storeName + "," + this.citys);
@@ -152,13 +149,15 @@ export class EditProfilePage implements OnInit {
     sellerdetailformdata.append("state", this.states);
     sellerdetailformdata.append("pincode", this.pincodes);
     sellerdetailformdata.append("email_id", this.EmailID);
+    sellerdetailformdata.append("store_name", this.storeName);
     this.http.postFormData("/seller_update_profile", sellerdetailformdata).subscribe((response: any) => {
       console.log(response);
-      this.router.navigate(['/social-media-details'])
+      this.router.navigate(['/tabs/tab5'])
     }, (error: any) => {
       console.log(error);
     }
     );
+
   }
 
   address_line_1: any;

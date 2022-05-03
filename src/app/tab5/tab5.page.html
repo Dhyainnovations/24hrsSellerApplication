@@ -88,13 +88,13 @@
           <p class="name">Email:</p>
         </div>
         <div class="col-6">
-          <input type="text" id="edit-field" disabled [value]="EmailID">
+          <input type="text" id="edit-field" disabled [(ngModel)]="EmailID">
         </div>
         <div class="col-6">
           <p class="name">Store location :</p>
         </div>
         <div class="col-6">
-          <input type="text" id="edit-field" [(ngModel)]="location" disabled>
+          <input type="text" id="edit-field" [(ngModel)]="location == 'null' ? 'Not Available': location" disabled>
         </div>
         <div class="col-6">
           <p class="name">Mobile number :</p>

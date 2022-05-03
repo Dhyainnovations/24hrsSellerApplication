@@ -24,8 +24,8 @@ export class Tab3Page {
     });
 
     this.route.queryParams.subscribe(queryParams => {
-      this.selectedFile = queryParams['selectedProductImageTbid'];
-      if (this.selectedFile) {
+      this.galleryImage = queryParams['selectedProductImageTbid'];
+      if (this.galleryImage) {
         this.logoUploadCheck = true;
       }
     });
@@ -33,9 +33,9 @@ export class Tab3Page {
 
   ngOnInit() {
 
-    
-  }
 
+  }
+  galleryImage: any;
   selectedProductImageTbid: any;
   store_categoryCheck: any;
   resProject: any[];
@@ -86,8 +86,8 @@ export class Tab3Page {
     "in (Inches)",
     "ft (Feet)",
     "lb (Pounds)",
-    
-    ]
+
+  ]
   PopupModel: any = false;
   subcategoryPopupModel: any = false;
   subCategoryNotfound = false;
@@ -105,7 +105,7 @@ export class Tab3Page {
   MediaFileSelected(event) {
     this.selectedFile = event.target.files[0] as File;
     console.log(this.selectedFile);
-    
+
     var imageSize = event.target.files[0].size;
     if (imageSize > 5242880) {
       this.imageSize = true;
@@ -302,69 +302,96 @@ export class Tab3Page {
   onClickSubmit(data) {
     if (this.idproofcheck == false && this.addressproofcheck == false && this.store_categoryCheck == false) {
       if (this.makeTrueCall == true) {
+        if (this.selectedFile) {
+          this.galleryImage = null
+        }
         var str = data.unit;
         var splittedUnit = str.split(" ", 1);
         console.log(splittedUnit)
-
         this.image = this.selectedFile;
         console.log(this.image)
-        
-        const formdata = new FormData();
-        formdata.append("category_id", this.category_tbid);
-        formdata.append("subcategory_id", this.subcategory_tbid);
-        formdata.append("product_name", data.product_name);
-        formdata.append("cost", data.cost);
-        formdata.append("unit", splittedUnit);
-        formdata.append("description", data.description);
-        formdata.append("product_image", this.image);
-        formdata.append("weight", data.weight)
-        console.log('formData: ', formdata.getAll('category'), formdata.getAll('product_image'));
-        console.log(this.subcategory_tbid.length);
-        console.log(this.subcategory_tbid.length);
-        if (this.subcategory_tbid.length <= 0) {
-          this.Subcategory_tbid_check = true
-          this.category_tbid_check = true;
-        } else {
-          this.Subcategory_tbid_check = false
-          this.category_tbid_check = false;
-        }
-        if (data.product_name.length <= 0) {
-          this.productName_check = true
-        } else {
-          this.productName_check = false
-        }
-        if (data.cost.length <= 0) {
-          this.CostAvailable = true
-        } else {
-          this.CostAvailable = false
-        }
-        if (data.unit.length <= 0) {
-          this.unitAvailable = true
-        } else {
-          this.unitAvailable = false
-        }
-        if (data.description.length <= 0) {
-          this.descrptionAvailable = true
-        } else {
-          this.descrptionAvailable = false
-        }
-        if (data.weight.length <= 0) {
-          this.weightavailable = true
-        } else {
-          this.weightavailable = false
-        }
-        
-        if (this.image == null) {
-          this.productImagecheck = true
-        } else {
-          this.productImagecheck = false
-        }
-        if (this.Subcategory_tbid_check == false && this.productName_check == false && this.CostAvailable == false && this.unitAvailable == false && this.weightavailable == false
-          && this.productImagecheck == false) {
-          this.http.postFormData("/create_product", formdata).subscribe((response: any) => {
-            this.router.navigate(['/myproducts']);
-            console.log(response);
-            if (response.success == "true") {
+
+
+        if (this.galleryImage) {     
+          this.selectedFile = null
+          const formdata = new FormData();
+          formdata.append("category_id", this.category_tbid);
+          formdata.append("subcategory_id", this.subcategory_tbid);
+          formdata.append("product_name", data.product_name);
+          formdata.append("cost", data.cost);
+          formdata.append("unit", splittedUnit);
+          formdata.append("description", data.description);
+          formdata.append("product_image_url", "http://localhost/24Hrs/images/seller/product/"+this.galleryImage);
+          formdata.append("weight", data.weight)
+          console.log('formData: ', formdata.getAll('category'), formdata.getAll('product_image'));
+          console.log(this.subcategory_tbid.length);
+          console.log(this.subcategory_tbid.length);
+          if (this.subcategory_tbid.length <= 0) {
+            this.Subcategory_tbid_check = true
+            this.category_tbid_check = true;
+          } else {
+            this.Subcategory_tbid_check = false
+            this.category_tbid_check = false;
+          }
+          if (data.product_name.length <= 0) {
+            this.productName_check = true
+          } else {
+            this.productName_check = false
+          }
+          if (data.cost.length <= 0) {
+            this.CostAvailable = true
+          } else {
+            this.CostAvailable = false
+          }
+          if (data.unit.length <= 0) {
+            this.unitAvailable = true
+          } else {
+            this.unitAvailable = false
+          }
+          if (data.description.length <= 0) {
+            this.descrptionAvailable = true
+          } else {
+            this.descrptionAvailable = false
+          }
+          if (data.weight.length <= 0) {
+            this.weightavailable = true
+          } else {
+            this.weightavailable = false
+          }
+
+          if (this.galleryImage == null) {
+            this.productImagecheck = true
+          } else {
+            this.productImagecheck = false
+          }
+          if (this.Subcategory_tbid_check == false && this.productName_check == false && this.CostAvailable == false && this.unitAvailable == false && this.weightavailable == false
+            && this.productImagecheck == false) {
+            this.http.postFormData("/product_gallery_create", formdata).subscribe((response: any) => {
+              this.router.navigate(['/myproducts']);
+              console.log(response);
+              if (response.success == "true") {
+                const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'top-end',
+                  showConfirmButton: false,
+                  timer: 1000,
+                  timerProgressBar: true,
+                  didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                  }
+                })
+                Toast.fire({
+                  icon: 'success',
+                  title: 'Product Added Successfully '
+                })
+                setTimeout(() => {
+                  location.reload();
+                }, 10);
+              }
+
+            }, (error: any) => {
+              console.log(error);
               const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
@@ -377,34 +404,111 @@ export class Tab3Page {
                 }
               })
               Toast.fire({
-                icon: 'success',
-                title: 'Product Added Successfully '
+                icon: 'error',
+                title: 'Product Already Exist'
               })
-              setTimeout(() => {
-                location.reload();
-              }, 10);
             }
-
-          }, (error: any) => {
-            console.log(error);
-            const Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 1000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-              }
-            })
-            Toast.fire({
-              icon: 'error',
-              title: 'Product Already Exist'
-            })
+            );
           }
-          );
+        } else {
+          const formdata = new FormData();
+          formdata.append("category_id", this.category_tbid);
+          formdata.append("subcategory_id", this.subcategory_tbid);
+          formdata.append("product_name", data.product_name);
+          formdata.append("cost", data.cost);
+          formdata.append("unit", splittedUnit);
+          formdata.append("description", data.description);
+          formdata.append("product_image", this.image);
+          formdata.append("weight", data.weight)
+          console.log('formData: ', formdata.getAll('category'), formdata.getAll('product_image'));
+          console.log(this.subcategory_tbid.length);
+          console.log(this.subcategory_tbid.length);
+          if (this.subcategory_tbid.length <= 0) {
+            this.Subcategory_tbid_check = true
+            this.category_tbid_check = true;
+          } else {
+            this.Subcategory_tbid_check = false
+            this.category_tbid_check = false;
+          }
+          if (data.product_name.length <= 0) {
+            this.productName_check = true
+          } else {
+            this.productName_check = false
+          }
+          if (data.cost.length <= 0) {
+            this.CostAvailable = true
+          } else {
+            this.CostAvailable = false
+          }
+          if (data.unit.length <= 0) {
+            this.unitAvailable = true
+          } else {
+            this.unitAvailable = false
+          }
+          if (data.description.length <= 0) {
+            this.descrptionAvailable = true
+          } else {
+            this.descrptionAvailable = false
+          }
+          if (data.weight.length <= 0) {
+            this.weightavailable = true
+          } else {
+            this.weightavailable = false
+          }
+
+          if (this.image == null) {
+            this.productImagecheck = true
+          } else {
+            this.productImagecheck = false
+          }
+          if (this.Subcategory_tbid_check == false && this.productName_check == false && this.CostAvailable == false && this.unitAvailable == false && this.weightavailable == false
+            && this.productImagecheck == false) {
+            this.http.postFormData("/create_product", formdata).subscribe((response: any) => {
+              this.router.navigate(['/myproducts']);
+              console.log(response);
+              if (response.success == "true") {
+                const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'top-end',
+                  showConfirmButton: false,
+                  timer: 1000,
+                  timerProgressBar: true,
+                  didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                  }
+                })
+                Toast.fire({
+                  icon: 'success',
+                  title: 'Product Added Successfully '
+                })
+                setTimeout(() => {
+                  location.reload();
+                }, 10);
+              }
+
+            }, (error: any) => {
+              console.log(error);
+              const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              })
+              Toast.fire({
+                icon: 'error',
+                title: 'Product Already Exist'
+              })
+            }
+            );
+          }
         }
+
       }
     } else {
       const Toast = Swal.mixin({
