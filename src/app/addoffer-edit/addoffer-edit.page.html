@@ -34,9 +34,11 @@
 
 
 
-<ion-content [ngStyle]="{'opacity':addnewproductpopup ? '0.52' : '1'}" [ngStyle]="{'opacity':addnewcategorypopup ? '0.52' : '1'}" [ngStyle]="{'opacity':addnewsubcategorypopup ? '0.52' : '1'}">
+<ion-content [ngStyle]="{'opacity':addnewproductpopup ? '0.52' : '1'}"
+  [ngStyle]="{'opacity':addnewcategorypopup ? '0.52' : '1'}"
+  [ngStyle]="{'opacity':addnewsubcategorypopup ? '0.52' : '1'}">
   <div class="container">
-    <div  class="signin-div mb-3" style="margin-top: 10px;">
+    <div class="signin-div mb-3" style="margin-top: 10px;">
       <div class="container">
         <div class="row">
           <div class="col-12 ion-text-left " style="margin-top: 20px;">
@@ -49,15 +51,15 @@
             </svg>
           </div>
           <div class="col-12">
-            <h5 class="title  ion-text-center" ><b>Edit Your Offer</b></h5>
+            <h5 class="title  ion-text-center"><b>Edit Your Offer</b></h5>
           </div>
           <div class="col-10">
-            <p class="title mt-3 ion-text-left" >Category :</p>
+            <p class="title mt-3 ion-text-left">Category :</p>
           </div>
           <div class="col-2 mt-2">
 
-            <svg *ngIf="isVisible" (click)="showaddnewcategorypopup()" style="margin: 5px;" width="22"
-              height="18" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+            <svg *ngIf="isVisible" (click)="showaddnewcategorypopup()" style="margin: 5px;" width="22" height="18"
+              fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
               <path
                 d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
               <path fill-rule="evenodd"
@@ -71,33 +73,33 @@
 
 
           <div class="col-10">
-            <p class="name mt-3 ion-text-left" >Sub Category :</p>
+            <p class="name mt-3 ion-text-left">Sub Category :</p>
           </div>
           <div class="col-2 mt-2">
-            <svg *ngIf="isVisible" (click)="showaddnewsubcategorypopup()" style="margin: 5px;" width="22"
-            height="18" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-            <path
-              d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-            <path fill-rule="evenodd"
-              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-          </svg>
+            <svg *ngIf="isVisible" (click)="showaddnewsubcategorypopup()" style="margin: 5px;" width="22" height="18"
+              fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+              <path
+                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+              <path fill-rule="evenodd"
+                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+            </svg>
 
-            
+
           </div>
           <div class="col-12">
             <input type="text" disabled [(ngModel)]="subcategory">
           </div>
-        
 
 
 
 
-          <div class="col-10 ion-text-left">          
-            <p class="name mt-2" >Product:</p>
+
+          <div class="col-10 ion-text-left">
+            <p class="name mt-2">Product:</p>
           </div>
           <div class="col-2 mt-2">
-            <svg *ngIf="isVisible" (click)="showaddproductpopup()" style="margin: 5px;" width="22"
-              height="18" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+            <svg *ngIf="isVisible" (click)="showaddproductpopup()" style="margin: 5px;" width="22" height="18"
+              fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
               <path
                 d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
               <path fill-rule="evenodd"
@@ -108,14 +110,14 @@
           <div class="col-12">
             <input type="text" disabled [(ngModel)]="productName">
           </div>
-      
+
 
         </div>
-       
+
 
         <div class="row mt-4">
           <div class="col-6">
-            <p class="edit-name ion-text-left" >Total Cost(₹) : </p>
+            <p class="edit-name ion-text-left">Total Cost(₹) : </p>
           </div>
 
           <div class="col-6">
@@ -125,13 +127,13 @@
 
         <div class="row">
           <div class="col-12">
-            <p class="edit-name ion-text-left" >Offer End Time
-              </p>
+            <p class="edit-name ion-text-left">Offer End Time
+            </p>
           </div>
           <div class="col-12">
             <!-- <input [(ngModel)]="offerTime" type="time" id="offer"> -->
             <input type="datetime-local" [ngModel]="offer_end_time | date:'yyyy-MM-ddTHH:mm'"
-            (ngModelChange)="change($event)">
+              (ngModelChange)="change($event)">
           </div>
         </div>
 
@@ -139,16 +141,16 @@
         <div class="row mt-2">
           <div class="col-1">
             <input name="offer-select" type="radio" value="DiscountOffer" (change)="onItemChange()"
-            [checked]="offer_checked">
+              [checked]="offer_checked">
 
           </div>
           <div class="col-11" [ngStyle]="{'opacity': DiscountOffer ? '0.5' : '1' }">
             <div class="row ">
               <div class="col-6">
-                <p class="edit-name ion-text-left" >Offer:</p>
+                <p class="edit-name ion-text-left">Offer:</p>
               </div>
               <div class="col-4">
-                
+
                 <span><input [(ngModel)]="offer" type="text" id="offer" (keyup)="calculateOfferPrice()" type="text"
                     pattern="\d*" maxlength="2" min="1" max="99" id="offer" [disabled]="DiscountOffer"></span>
               </div>
@@ -159,7 +161,7 @@
 
             <div class="row">
               <div class="col-6">
-                <p class="edit-name ion-text-left" >Offer Price(₹) :</p>
+                <p class="edit-name ion-text-left">Offer Price(₹) :</p>
               </div>
               <div class="col-6">
                 <input [(ngModel)]="offerPrice" type="text" id="offer" disabled>
@@ -171,12 +173,13 @@
 
         <div class="row">
           <div class="col-1">
-            <input name="offer-select" type="radio"  value="OtherOffer" (change)="onItemChange2()" [checked]="other_offer_checked"/>
+            <input name="offer-select" type="radio" value="OtherOffer" (change)="onItemChange2()"
+              [checked]="other_offer_checked" />
           </div>
           <div class="col-11" [ngStyle]="{'opacity': OtherOffer ? '0.5' : '1' }">
             <div class="row">
               <div class="col-6">
-                <p class="edit-name ion-text-left" >Other Offer :</p>
+                <p class="edit-name ion-text-left">Other Offer :</p>
               </div>
               <div class="col-6">
                 <input [(ngModel)]="otheroffer" type="text" id="offer" type="text" id="offer"
@@ -187,16 +190,23 @@
         </div>
 
         <div class="form-group mt-3 ion-text-center">
-          <label for="exampleFormControlTextarea1" > Description </label>
-          <textarea style="margin-top: 5px;" class="form-control" [(ngModel)]="description"
-            description id="exampleFormControlTextarea1" rows="3"></textarea>
+          <label for="exampleFormControlTextarea1"> Description </label>
+          <textarea style="margin-top: 5px;" class="form-control" [(ngModel)]="description" description
+            id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-        <div class="row">
+        <div class="row mb-4">
           <div class="col-6 ion-text-center">
-            <button *ngIf="isVisible" (click)="offerDelete()" class="btn btn-sm delete-btn mt-2">Delete</button>
+
+            <ion-button *ngIf="isVisible" style="width: 95%;" class="secondarySmallBtn" color="none"
+              (click)="offerDelete()">
+              Delete</ion-button>
+
           </div>
           <div class="col-6 ion-text-center">
-            <button *ngIf="isVisible" class="btn btn-sm update-btn mt-2" (click)="addoffer() ">Post</button>
+
+            <ion-button *ngIf="isVisible" style="width: 95%;" class="primarySmallBtn" color="none" (click)="addoffer()">
+              Post</ion-button>
+
           </div>
         </div>
       </div>
@@ -208,34 +218,56 @@
 <!------------ add new category popup ------------->
 
 <div *ngIf="addnewcategorypopup" class="container pop-up-model">
-  <div class="card pop-up-card ion-text-center" style="padding: 7px;"  id="category-popupCard">
+  <div class="card pop-up-card ion-text-center" style="padding: 7px;" id="category-popupCard">
     <div style="margin-top: 2px;" class="title">
       <div class="row">
         <div class="col-10">
-          <h4 ><b>Update  category</b></h4>
+          <h4><b>Update category</b></h4>
         </div>
         <div class="col-2">
           <div class="ion-margin-top ion-text-center">
-            <svg style="margin-top: -4px !important;" (click)="hideaddnewcategorypopup()" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="9" fill="#fff" fill-opacity="0.25"/>
-              <path d="M16 8L8 16" stroke="#EB154B" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round"/>
-              <path d="M8 8L16 16" stroke="#EB154B" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round"/>
-              </svg>
-            </div>
+
+            <svg (click)="hideaddnewcategorypopup()" style="margin-top:-8px;cursor:pointer" width="24" height="27"
+              viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g filter="url(#filter0_d_1056_2574)">
+                <path d="M18 6L6 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M6 6L18 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+              <defs>
+                <filter id="filter0_d_1056_2574" x="-4" y="0" width="32" height="32" filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                    result="hardAlpha" />
+                  <feOffset dy="4" />
+                  <feGaussianBlur stdDeviation="2" />
+                  <feComposite in2="hardAlpha" operator="out" />
+                  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1056_2574" />
+                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1056_2574" result="shape" />
+                </filter>
+              </defs>
+            </svg>
+
+
+
+          </div>
         </div>
       </div>
     </div>
-    <div class="row ion-text-center mb-4" >
+    <div class="row ion-text-center mb-4">
       <form #categoryselect="ngForm" (change)="popupModel(categoryselect.value)" (ngSubmit)="categorysubmit()">
         <div class="col-12 ">
-          <div class="select">
+          <div  style="width: 90%;margin: auto;" class="select">
             <select ngModel name="category">
               <option value="" disabled selected>Select Your Category</option>
               <option *ngFor="let cat of categoryList" value="{{cat.category}}">{{cat.category}}</option>
             </select>
           </div>
         </div>
-        <button class="btn  mt-4 signin-btn mb-4" type="submit"> Update Category</button><br>
+
+        <ion-button type="submit" style="width: 90%;"  class="secondaryLargeBtn mt-3" color="none" >
+          Update Category</ion-button>
       </form>
     </div>
   </div>
@@ -250,37 +282,60 @@
     <div style="margin-top: 2px;" class="title">
       <div class="row">
         <div class="col-10">
-          <h4 ><b>Update sub category</b></h4>
+          <h4><b>Update Sub Category</b></h4>
         </div>
         <div class="col-2">
           <div class="ion-margin-top ion-text-center">
-            <svg style="margin-top: -4px !important;" (click)="hideaddnewsubcategorypopup()" width="24" height="24" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="9" fill="#fff" fill-opacity="0.25"/>
-              <path d="M16 8L8 16" stroke="#EB154B" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round"/>
-              <path d="M8 8L16 16" stroke="#EB154B" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round"/>
-              </svg>
-            </div>
+
+
+            <svg (click)="hideaddnewsubcategorypopup()" style="margin-top:-8px;cursor:pointer" width="24" height="27"
+              viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g filter="url(#filter0_d_1056_2574)">
+                <path d="M18 6L6 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M6 6L18 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+              <defs>
+                <filter id="filter0_d_1056_2574" x="-4" y="0" width="32" height="32" filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                    result="hardAlpha" />
+                  <feOffset dy="4" />
+                  <feGaussianBlur stdDeviation="2" />
+                  <feComposite in2="hardAlpha" operator="out" />
+                  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1056_2574" />
+                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1056_2574" result="shape" />
+                </filter>
+              </defs>
+            </svg>
+
+
+          </div>
         </div>
       </div>
     </div>
 
-      <form #subcategoryselect="ngForm" (ngSubmit)="subcategorysubmit(subcategoryselect.value)" (change)="SubCategoryPopupModel(subcategoryselect.value)">
-        <div class="col-12 mt-2">
-          <div class="select">
-            <select ngModel name="subcategory">
-              <option value="" disabled selected>Select Your Sub Category</option>
-              <option *ngFor="let subcat of subcategoryList; let i = index" value="{{subcat.subsubcategory}}">
-                {{subcat.subsubcategory}}
-              </option>
-              <option disabled *ngIf="subCategoryNotfound" style="background-color: #d1d1d1;">No Sub Category Found
-              </option>
-              <!-- <option style="background-color: #23d5ab;" value="1">+ add new</option> -->
+    <form #subcategoryselect="ngForm" (ngSubmit)="subcategorysubmit(subcategoryselect.value)"
+      (change)="SubCategoryPopupModel(subcategoryselect.value)">
+      <div class="col-12 mt-2">
+        <div style="width: 90%;margin: auto;" class="select">
+          <select  ngModel name="subcategory">
+            <option value="" disabled selected>Select Your Sub Category</option>
+            <option *ngFor="let subcat of subcategoryList; let i = index" value="{{subcat.subsubcategory}}">
+              {{subcat.subsubcategory}}
+            </option>
+            <option disabled *ngIf="subCategoryNotfound" style="background-color: #d1d1d1;">No Sub Category Found
+            </option>
+            <!-- <option style="background-color: #23d5ab;" value="1">+ add new</option> -->
 
-            </select>
-          </div>
+          </select>
         </div>
-        <button class="btn  mt-4 signin-btn" type="submit"> Update Sub Category</button><br>
-      </form>
+      </div>
+
+      <ion-button type="submit" style="width: 90%;"  class="secondaryLargeBtn mt-3" color="none" >
+        Update Sub Category</ion-button>
+    </form>
   </div>
 </div>
 
@@ -290,36 +345,58 @@
     <div style="margin-top: 2px;" class="title">
       <div class="row">
         <div class="col-10">
-          <h4 ><b>Update  product name</b></h4>
+          <h4><b>Update Product Name</b></h4>
         </div>
         <div class="col-2">
           <div class="ion-margin-top ion-text-center">
-            <svg style="margin-top: -4px !important;" (click)="hideaddproductpopup()" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="9" fill="#fff" fill-opacity="0.25"/>
-              <path d="M16 8L8 16" stroke="#EB154B" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round"/>
-              <path d="M8 8L16 16" stroke="#EB154B" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round"/>
-              </svg>
-            </div>
+
+            <svg (click)="hideaddproductpopup()" style="margin-top:-8px;cursor:pointer" width="24" height="27"
+              viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g filter="url(#filter0_d_1056_2574)">
+                <path d="M18 6L6 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M6 6L18 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+              <defs>
+                <filter id="filter0_d_1056_2574" x="-4" y="0" width="32" height="32" filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                    result="hardAlpha" />
+                  <feOffset dy="4" />
+                  <feGaussianBlur stdDeviation="2" />
+                  <feComposite in2="hardAlpha" operator="out" />
+                  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1056_2574" />
+                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1056_2574" result="shape" />
+                </filter>
+              </defs>
+            </svg>
+
+
+          </div>
         </div>
       </div>
     </div>
 
-      <form #productselect="ngForm" (ngSubmit)="productselectform(productselect.value)">
+    <form #productselect="ngForm" (ngSubmit)="productselectform(productselect.value)">
 
-        <div class="select " id="kg-dropdwon">
-          <select ngModel name="productName">
-            <option value="" disabled selected>Select Your Product</option>
-            <option *ngFor="let product of productList" value="{{product.product_name}}">{{product.product_name}}
-            </option>
-            <option disabled *ngIf="ProductNotfound">No Product Found</option>
-          </select>
+      <div   style="width: 90%;margin: auto;" class="select " id="kg-dropdwon">
+        <select ngModel name="productName">
+          <option value="" disabled selected>Select Your Product</option>
+          <option *ngFor="let product of productList" value="{{product.product_name}}">{{product.product_name}}
+          </option>
+          <option disabled *ngIf="ProductNotfound">No Product Found</option>
+        </select>
+      </div>
+      <div class="row">
+        <div class="col-12">
+
+          <ion-button type="submit" style="width: 90%;"  class="secondaryLargeBtn mt-3" color="none" >
+            Update Product Name</ion-button>
+
         </div>
-        <div class="row">
-          <div class="col-12">
-            <button class="btn  mt-4 signin-btn" type="submit"> Update product name</button><br>
-          </div>
-        </div>
-      </form>
+      </div>
+    </form>
 
   </div>
 </div>

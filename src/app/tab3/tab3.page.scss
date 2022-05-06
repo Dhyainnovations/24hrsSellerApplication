@@ -18,6 +18,14 @@
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
 
+select {
+  border: 1px solid #fff;
+  border-radius: 0 !important;
+  
+  border-bottom: 2px solid var(--ion-color-primary) !important;
+
+}
+
 input[type=text] {
   font-size: 15px;
   margin: 0 8px;

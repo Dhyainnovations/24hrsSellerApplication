@@ -1,6 +1,6 @@
 input[type=text] {
     font-size: 14px;
-    margin: 0 5px;
+    margin: 0 0px;
     margin-top: -12px;
     margin-left: -20px;
     margin-bottom: 2px;
@@ -11,6 +11,12 @@ input[type=text] {
     border-bottom: 2px solid var(--ion-color-primary);
   }
   
+
+.editprofile {
+  width        : 155px;
+  height       : 150px;
+  border-radius: 50%;
+}
   
   input[type=number] {
     font-size: 14px;
@@ -35,7 +41,15 @@ input[type=text] {
     top     : 0;
   }
   
-  
+  .container {
+    width: 98% !important;
+  margin: auto !important;
+  background: var(--ion-color-light) !important;
+  border-radius: 5px;
+  box-shadow      : 2px 2px 2px 2px #d3d3d3;
+  backdrop-filter: blur(8.2px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
   
   .extraInfo {
     position        : absolute;
@@ -92,4 +106,7 @@ input[type=text] {
     padding      : 3px;
     margin       : 15px !important;
   }
+  
+
+
   

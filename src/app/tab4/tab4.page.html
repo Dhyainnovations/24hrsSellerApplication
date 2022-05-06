@@ -14,7 +14,7 @@
     <div class="col-4">
       <h5 style="margin-top:10px"><b></b></h5>
     </div>
-    <div class="col-8 mt-2 mx-2" style="text-align: right;width: 90%;">
+    <div class="col-8 mt-2 mx-4" style="text-align: right;width: 90%;">
       <svg (click)="notification()" style="margin:3px;" width="26" height="26" viewBox="0 0 24 24" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -37,9 +37,9 @@
 <!-- If No Offer -- Add Offer -->
 <ion-content class="bg-class mb-3" [ngStyle]="{'opacity':PopupModel ? '0.52' : '1' }"
   [ngStyle]="{'opacity':backgroundisvisible ? '0.52' : '1' }">
-  <div class="  row mt-2 mb-2">
-    <div class="col-3">
-      <svg (click)="searchPage()" style="margin-left: 20%;" width="25" height="25" viewBox="0 0 24 24" fill="none">
+  <div class="  row mt-2 mb-2 mx-2">
+    <div class="col-6 mt-2">
+      <svg (click)="searchPage()"  width="25" height="25" viewBox="0 0 24 24" fill="none">
         <circle cx="11" cy="11" r="7" stroke="#121212" stroke-width="2" />
         <path
           d="M11 8C10.606 8 10.2159 8.0776 9.85195 8.22836C9.48797 8.37913 9.15726 8.6001 8.87868 8.87868C8.6001 9.15726 8.37913 9.48797 8.22836 9.85195C8.0776 10.2159 8 10.606 8 11"
@@ -48,10 +48,12 @@
       </svg>
 
     </div>
-    <div class="col-8 ion-text-right">
+    <div class="col-6 ion-text-right">
       <div style="width: 100%; ">
-        <button *ngIf="cardVisible" (click)="offerPage()" class="btn btn-success btn-sm offer-btn mx-2 ">+ Add
-          Offer</button>
+
+        <ion-button *ngIf="cardVisible" style="width: 100%;" [disabled]="otp == '' " class="primarySmallOutlineBtn" color="none" (click)="offerPage()">
+          + AddOffer</ion-button>
+        
       </div>
     </div>
 
@@ -75,8 +77,12 @@
             <div class="outter-badge">
               <img src="{{offer.product_image}}" alt="">
             </div>
-            <button (click)="repostOffer(offer.product)"
-              class="btn btn-sm btn-outline-danger repost-btn mx-3 mb-2">Repost</button>
+
+            <ion-button (click)="repostOffer(offer.product)" *ngIf="cardVisible" style="width: 80%;"  class="primarySmallOutlineBtn mx-3" color="none" >
+              Repost </ion-button>
+
+           
+
           </div>
           <div class="col-8">
             <div class="row">
@@ -173,7 +179,7 @@
               {{offer.other_offer}}
             </p>
             <div class="row" [ngClass]='offer.offer != "" ? "show" : "hidden"'>
-              <div class="col-6">
+              <div class="col-12">
                 <p style="font-size: 12px;">
                   <b>Cost</b>&nbsp;
                   <del>₹{{offer.total_cost}} </del> &nbsp;₹{{offer.offer_price}}
@@ -354,27 +360,6 @@
       <button type="button" (click)="addoffer()" class="btn btn-primary  confirm-btn mt-2">Confirm</button>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </ion-content>
 

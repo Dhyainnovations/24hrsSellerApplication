@@ -14,7 +14,7 @@
     <div class="col-4">
       <h5 style="color:#121212;margin-top:10px"><b></b></h5>
     </div>
-    <div class="col-8 mt-2 mx-2" style="text-align: right;width: 90%;">
+    <div class="col-8 mt-2 mx-4" style="text-align: right;width: 90%;">
       <svg (click)="notification()" style="margin:3px;" width="26" height="26" viewBox="0 0 24 24" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -38,7 +38,7 @@
     <div class="container mb-3">
       <div class="signin-div mt-2">
         <div class="row mt-2 " style="padding: 10px">
-          <h5 class="title ion-text-left" >
+          <h5 class="title ion-text-left">
             <b>
               <svg (click)="backToMyproducts()" style="margin-top: -8px; cursor: pointer; margin: 5px"
                 xmlns="http://www.w3.org/2000/svg" width="22" height="20" fill="#EB154B" class="bi bi-arrow-left"
@@ -58,21 +58,21 @@
           </div>
 
           <div class="col-12 text-center mt-3">
-            <label (change)="MediaFileSelected($event)" style="
-                    border: 1px solid rgb(202, 202, 202);
-                    width: 60%;
-                    margin-left: 10px;
-                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;padding: 5px;border-radius: 5px;cursor: pointer;
-                  ">
-              <svg width="30" height="25" viewBox="0 0 34 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M31.1667 0H8.5C6.93517 0 5.66667 1.25918 5.66667 2.8125V17.8125C5.66667 19.3658 6.93517 20.625 8.5 20.625H31.1667C32.7315 20.625 34 19.3658 34 17.8125V2.8125C34 1.25918 32.7309 0 31.1667 0ZM13.1691 3.75C14.2127 3.75 15.058 4.58965 15.058 5.625C15.058 6.66035 14.267 7.5 13.1691 7.5C12.1261 7.5 11.2802 6.66035 11.2802 5.625C11.2802 4.58965 12.1774 3.75 13.1691 3.75ZM29.1656 16.3828C29.0003 16.6875 28.6816 16.875 28.3333 16.875H11.3333C10.9778 16.875 10.6527 16.677 10.4916 16.3623C10.3305 16.0478 10.3609 15.6703 10.5702 15.385L14.7022 9.75996C14.8809 9.51562 15.1642 9.375 15.4653 9.375C15.767 9.375 16.0506 9.51803 16.2285 9.7602L17.5478 11.5567L21.2512 6.04242C21.374 5.7832 21.6691 5.625 22.0351 5.625C22.3507 5.625 22.6454 5.78156 22.8207 6.04248L29.119 15.4175C29.3132 15.7031 29.3309 16.0723 29.1656 16.3828ZM26.9167 23.4375H7.08333C4.73993 23.4375 2.83333 21.5449 2.83333 19.2188V5.15625C2.83333 4.38281 2.19878 3.75 1.41667 3.75C0.634549 3.75 0 4.38281 0 5.15625V19.2188C0 23.0977 3.17747 26.25 7.08333 26.25H26.9167C27.6988 26.25 28.3333 25.6201 28.3333 24.8438C28.3333 24.0674 27.7017 23.4375 26.9167 23.4375Z"
-                  fill="black" />
-              </svg>
 
-              Upload
-              <input type="file" class="btn" name="image" accept=".jpeg,.jpg,.png" />
-            </label>
+            <ion-button style="width: 50%;" class="primarySmallOutlineBtn" color="none">
+              <label (change)="MediaFileSelected($event)">
+                <svg width="25" height="25" viewBox="0 0 34 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M31.1667 0H8.5C6.93517 0 5.66667 1.25918 5.66667 2.8125V17.8125C5.66667 19.3658 6.93517 20.625 8.5 20.625H31.1667C32.7315 20.625 34 19.3658 34 17.8125V2.8125C34 1.25918 32.7309 0 31.1667 0ZM13.1691 3.75C14.2127 3.75 15.058 4.58965 15.058 5.625C15.058 6.66035 14.267 7.5 13.1691 7.5C12.1261 7.5 11.2802 6.66035 11.2802 5.625C11.2802 4.58965 12.1774 3.75 13.1691 3.75ZM29.1656 16.3828C29.0003 16.6875 28.6816 16.875 28.3333 16.875H11.3333C10.9778 16.875 10.6527 16.677 10.4916 16.3623C10.3305 16.0478 10.3609 15.6703 10.5702 15.385L14.7022 9.75996C14.8809 9.51562 15.1642 9.375 15.4653 9.375C15.767 9.375 16.0506 9.51803 16.2285 9.7602L17.5478 11.5567L21.2512 6.04242C21.374 5.7832 21.6691 5.625 22.0351 5.625C22.3507 5.625 22.6454 5.78156 22.8207 6.04248L29.119 15.4175C29.3132 15.7031 29.3309 16.0723 29.1656 16.3828ZM26.9167 23.4375H7.08333C4.73993 23.4375 2.83333 21.5449 2.83333 19.2188V5.15625C2.83333 4.38281 2.19878 3.75 1.41667 3.75C0.634549 3.75 0 4.38281 0 5.15625V19.2188C0 23.0977 3.17747 26.25 7.08333 26.25H26.9167C27.6988 26.25 28.3333 25.6201 28.3333 24.8438C28.3333 24.0674 27.7017 23.4375 26.9167 23.4375Z"
+                    fill="#EB154B" />
+                </svg>
+
+
+                <input type="file" class="btn" name="image" accept=".jpeg,.jpg,.png" />
+              </label>
+            </ion-button>
+
+
             <p class="small text-success text-center pt-3" *ngIf="logoUploadCheck">Uploaded Successfully</p>
             <p class="small text-danger text-center" *ngIf="imageSize">Uploaded File Size Should Not Exceed More Than
               5Mb
@@ -81,7 +81,7 @@
 
 
           <div class="col-10 mt-4">
-            <p class="name" >Category :</p>
+            <p class="name">Category :</p>
           </div>
           <div class="col-2 mt-4">
             <svg *ngIf="isVisibleButtons" (click)="showaddnewcategorypopup()" style="margin: 5px;" width="22"
@@ -98,7 +98,7 @@
           </div>
 
           <div class="col-10 mt-4">
-            <p class="name" >Sub Category :</p>
+            <p class="name">Sub Category :</p>
           </div>
           <div class="col-2 mt-4">
 
@@ -117,21 +117,21 @@
           </div>
 
           <div class="col-6 mt-5">
-            <p class="name" >Product Name :</p>
+            <p class="name">Product Name :</p>
           </div>
           <div class="col-6 mt-5">
             <input [(ngModel)]="productname" type="text" id="offer" name="product_name" />
           </div>
 
           <div class="col-6">
-            <p class="name" >Cost:</p>
+            <p class="name">Cost:</p>
           </div>
           <div class="col-6">
             <input [(ngModel)]="cost" type="text" id="offer" name="cost" />
           </div>
 
           <div class="col-6">
-            <p class="name" >Weight:</p>
+            <p class="name">Weight:</p>
           </div>
           <div class="col-6">
             <input [(ngModel)]="weight" type="text" id="offer" name="weight" />
@@ -139,7 +139,7 @@
 
           <div class="row">
             <div class="col-3 mt-1">
-              <p class="name" >Unit :</p>
+              <p class="name">Unit :</p>
             </div>
 
             <div class="col-7 ">
@@ -168,20 +168,22 @@
 
         </div>
         <div class="form-group">
-          <label  for="exampleFormControlTextarea1">Product Description :</label>
-          <textarea *ngIf="isVisibleButtons" [(ngModel)]="description" 
-            class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+          <label for="exampleFormControlTextarea1">Product Description :</label>
+          <textarea *ngIf="isVisibleButtons" [(ngModel)]="description" class="form-control"
+            id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
         </div>
         <div class="row">
           <div class="col-6 ion-text-center">
-            <button *ngIf="isVisibleButtons" (click)="deleteProduct()" class="btn btn-sm delete-btn mt-2">
-              Delete
-            </button>
+
+            <ion-button *ngIf="isVisibleButtons" style="width: 90%;" class="secondarySmallBtn mb-3" color="none"
+              (click)="deleteProduct()">
+              Delete</ion-button>
           </div>
           <div class="col-6 ion-text-center">
-            <button *ngIf="isVisibleButtons" class="btn btn-sm update-btn" (click)="showselecteditems()">
-              Update
-            </button>
+
+            <ion-button *ngIf="isVisibleButtons" style="width: 90%;" class="primarySmallBtn mb-3" color="none"
+              (click)="showselecteditems()">
+              Post</ion-button>
           </div>
         </div>
       </div>
@@ -210,32 +212,42 @@
 
     <div style="margin-top: 2px;" class="title">
       <div class="row">
-        <div class="col-10">
-          <h4><b>Change Category</b></h4>
+        <div class="col-9 ion-text-left mt-2">
+          <h4 style="margin-left: 8%;"><b>Change Category</b></h4>
         </div>
-        <div class="col-2">
+        <div class="col-3">
           <div class="ion-margin-top ion-text-center">
-            <svg (click)="hideaddnewcategorypopup()" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="9" fill="red" fill-opacity="0.25" />
-              <path d="M16 8L8 16" stroke="white" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round" />
-              <path d="M8 8L16 16" stroke="white" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round" />
+            <svg (click)="hideaddnewcategorypopup()" style="margin-top:15% !important;margin:4px;cursor:pointer" width="24" height="27"
+              viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g filter="url(#filter0_d_1056_2574)">
+                <path d="M18 6L6 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M6 6L18 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+              <defs>
+                <filter id="filter0_d_1056_2574" x="-4" y="0" width="32" height="32" filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                    result="hardAlpha" />
+                  <feOffset dy="4" />
+                  <feGaussianBlur stdDeviation="2" />
+                  <feComposite in2="hardAlpha" operator="out" />
+                  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1056_2574" />
+                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1056_2574" result="shape" />
+                </filter>
+              </defs>
             </svg>
+
+
           </div>
         </div>
       </div>
     </div>
 
     <div class="row ion-text-center">
-      <div class="col-12 ">
-        <button class="btn  add-new-btn " (click)="visibleCategoryPopup()">
-          Add New +
-        </button>
-      </div>
-
-
       <form #categoryselect="ngForm" (change)="popupModel(categoryselect.value)">
-        <div class="col-12 mt-2">
+        <div class="col-12 mt-3">
           <div style="width: 90%;margin: auto !important;" class="select">
             <select ngModel name="category">
               <option value="" disabled selected>Select Your Category</option>
@@ -246,8 +258,22 @@
             </select>
           </div>
         </div>
-        <button class="btn signin-btn " (click)="categorysubmit()">
-          Update Category</button><br />
+
+        <div class="row mt-4">
+          <div class="col-6 ">
+            <ion-button style="width: 80%;" class="secondarySmallBtn" color="none" (click)="visibleCategoryPopup()">
+              Add New </ion-button>
+
+          </div>
+
+          <div class="col-6 ">
+            <ion-button style="width: 80%;" class="primarySmallBtn" color="none" (click)="categorysubmit()">
+              Update Category</ion-button>
+
+          </div>
+        </div>
+
+
       </form>
     </div>
   </div>
@@ -267,27 +293,40 @@
         </div>
         <div class="col-2">
           <div class="ion-margin-top ion-text-left">
-            <svg (click)="hideaddnewsubcategorypopup()" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="9" fill="red" fill-opacity="0.25" />
-              <path d="M16 8L8 16" stroke="white" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round" />
-              <path d="M8 8L16 16" stroke="white" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round" />
-            </svg>
+
+            <svg (click)="hideaddnewsubcategorypopup()" style="margin-top:15%;cursor:pointer" width="24" height="27"
+            viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_d_1056_2574)">
+              <path d="M18 6L6 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M6 6L18 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+            <defs>
+              <filter id="filter0_d_1056_2574" x="-4" y="0" width="32" height="32" filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha" />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1056_2574" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1056_2574" result="shape" />
+              </filter>
+            </defs>
+          </svg>
+
           </div>
         </div>
       </div>
     </div>
 
 
-    <div class="col-12">
-      <button class="btn add-new-btn " (click)="visibleSubCategoryPopup()">
-        Add New +
-      </button>
-    </div>
+    
 
 
     <form #subcategoryselect="ngForm" (ngSubmit)="subcategorysubmit(subcategoryselect.value)">
-      <div class="col-12 mt-2">
+      <div class="col-12 mt-4">
         <div style="width: 90%;margin: auto !important;" class="select">
           <select ngModel name="subcategory">
             <option value="" disabled selected>
@@ -303,8 +342,22 @@
           </select>
         </div>
       </div>
-      <button class="btn signin-btn " type="submit">
-        Update Sub Category</button><br />
+
+
+      <div class="row mt-4">
+        <div class="col-6 ">
+          <ion-button style="width: 80%;" class="secondarySmallBtn" color="none" (click)="visibleSubCategoryPopup()">
+            Add New </ion-button>
+
+        </div>
+
+        <div class="col-6 ">
+          <ion-button type="submit"  style="width: 80%;" class="primarySmallBtn" color="none" >
+            Update Category</ion-button>
+
+        </div>
+      </div>
+
     </form>
   </div>
 </div>
@@ -327,12 +380,12 @@
       </h5>
     </div>
     <div class="col-12">
-      <input [(ngModel)]="categoryName" type="text" class="input-popup"/>
+      <input style="width: 93%;" [(ngModel)]="categoryName" type="text" class="input-popup" />
     </div>
     <div style="width: 100%; text-align: center">
-      <button type="button" (click)="createCategory()" class="btn signin-btn mt-2">
-        Submit
-      </button>
+
+      <ion-button style="width: 96%;"  class="secondarySmallBtn mt-4" color="none" (click)="createCategory()">
+        Submit</ion-button>
     </div>
   </div>
 </div>
@@ -343,12 +396,15 @@
 <div class="card" *ngIf="subcategoryPopupModel" id="card">
   <div class="row" style="margin: 5%" id="modal">
     <div class="col-12 ion-text-left">
-      <svg (click)="ScBackToprivious()" style=" margin-top: -8px; cursor: pointer"
-        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#EB154B" class="bi bi-arrow-left"
-        viewBox="0 0 16 16">
+      <svg (click)="ScBackToprivious()" style=" margin-top: -8px; cursor: pointer" xmlns="http://www.w3.org/2000/svg"
+        width="16" height="16" fill="#EB154B" class="bi bi-arrow-left" viewBox="0 0 16 16">
         <path fill-rule="evenodd"
           d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
       </svg>
+
+     
+
+
     </div>
 
     <div class="col-12">
@@ -374,17 +430,34 @@
   <div class="card pop-up-card ion-text-center" id="unit-popupCard" style="margin-top: -2px">
     <div style="margin-top: 2px;" class="title">
       <div class="row">
-        <div class="col-10">
-          <h4><b>Update unit</b></h4>
+        <div class="col-10 ion-text-left">
+          <h4 style="margin-left: 8%;"><b>Update unit</b></h4>
         </div>
         <div class="col-2">
           <div class="ion-margin-top ion-text-left">
-            <svg (click)="hideChangeunit()" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="9" fill="red" fill-opacity="0.25" />
-              <path d="M16 8L8 16" stroke="white" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round" />
-              <path d="M8 8L16 16" stroke="white" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="round" />
-            </svg>
+
+            <svg (click)="hideChangeunit()" style="margin-top:-8px;cursor:pointer" width="24" height="27"
+          viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g filter="url(#filter0_d_1056_2574)">
+            <path d="M18 6L6 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M6 6L18 18" stroke="#EB154B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+          <defs>
+            <filter id="filter0_d_1056_2574" x="-4" y="0" width="32" height="32" filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feOffset dy="4" />
+              <feGaussianBlur stdDeviation="2" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1056_2574" />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1056_2574" result="shape" />
+            </filter>
+          </defs>
+        </svg>
+
           </div>
         </div>
       </div>
@@ -393,7 +466,7 @@
 
     <!----------------Unit Selection---------------->
     <div class="col-12 mt-2">
-      <div style="width: 90%;margin: auto !important;" class="select">
+      <div style="width: 90%;margin: auto !important;" class="select mt-3">
         <select name="unit" class="unit-dropdown p-1" (change)="unitSelect()" [(ngModel)]="unitSelected">
           <option value="" disabled selected>unit</option>
           <option *ngFor="let item of unitList" value="{{item}}" class="unit-dropdown-options">
@@ -401,8 +474,10 @@
           </option>
         </select>
       </div>
-      <button class="btn signin-btn " type="submit" (click)="updateChangeunit()">
-        Update Unit</button><br />
+
+      <ion-button style="width: 90%;" type="submit" class="secondarySmallBtn mt-4" color="none" (click)="updateChangeunit()">
+        Update Unit
+      </ion-button>
 
     </div>
   </div>

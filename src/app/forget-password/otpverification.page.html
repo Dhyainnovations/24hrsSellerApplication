@@ -41,13 +41,17 @@
 
     <div class="row">
       <div class="col-6">
-        <ion-button  *ngIf="AfterSixtySeconds" class="btn btn-sm text-white" color="secondary" (click)="ReSendOTP()" >Resend OTP
-        </ion-button>
+
+        <ion-button style="width: 95%;margin: auto;"  class="secondarySmallBtn mt-2" color="none" (click)="ReSendOTP()">
+         Resend OTP</ion-button>
+
+    
       </div>
   
       <div class="col-6">
-        <ion-button *ngIf="isOTPsent" class="btn btn-sm text-white" color="secondary" (click)="verifyOTP()">Verify OTP
-        </ion-button>
+
+        <ion-button style="width: 95%;margin: auto;"  class="secondarySmallBtn mt-2" color="none" (click)="ReSendOTP()">
+          Verify OTP</ion-button>
       </div>
     </div>
 

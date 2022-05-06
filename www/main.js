@@ -98,6 +98,10 @@ const routes = [
         path: 'show-product-image',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_show-product-image_show-product-image_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./show-product-image/show-product-image.module */ 3752)).then(m => m.ShowProductImagePageModule)
     },
+    {
+        path: 'edit-profile',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_edit-profile_edit-profile_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./edit-profile/edit-profile.module */ 1241)).then(m => m.EditProfilePageModule)
+    },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -594,7 +598,7 @@ module.exports = "ion-menu ion-content {\n  --background: var(--ion-color-light)
 /***/ ((module) => {
 
 "use strict";
-module.exports = "\n<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu swipeGesture=\"false\"  contentId=\"main-content\" type=\"overlay\">\n      <ion-content>\n        <ion-list style=\"margin-top:20%\" id=\"inbox-list\">\n        \n          <!-- <div class=\"row\">\n  \n            <div class=\"col-12  mb-2 mx-5 \">\n               <h2><b>24 Hrs</b></h2>\n            </div>\n          </div> -->\n          <ion-menu-toggle  auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n            <ion-item  routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" routerLinkActive=\"selected\">\n              <img  class=\"mb-3\" style=\"height:35px;width:35px;margin:5px\" [src]=\"p.icon\" alt=\"\">\n              <ion-label class=\"mb-2\">{{ p.title }}</ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n          <ion-menu-toggle  auto-hide=\"false\" >\n            <ion-item  (click)=\"logout()\" >\n              <img  style=\"height:35px;width:35px;margin:6px;\" src=\"assets/icon/logout.png\" alt=\"\">\n              <ion-label style=\"margin-top: 10px !important;\">Logout</ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n\n          <p  style=\"margin-left: 67%;margin-top: -2%;font-size: 10px;\" class=\"ion-text-left\">V17.0.2</p>\n        </ion-list>\n      </ion-content>\n      \n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
+module.exports = "\n<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu swipeGesture=\"false\"  contentId=\"main-content\" type=\"overlay\">\n      <ion-content>\n        <ion-list style=\"margin-top:20%\" id=\"inbox-list\">\n        \n          <!-- <div class=\"row\">\n  \n            <div class=\"col-12  mb-2 mx-5 \">\n               <h2><b>24 Hrs</b></h2>\n            </div>\n          </div> -->\n          <ion-menu-toggle  auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n            <ion-item  routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" routerLinkActive=\"selected\">\n              <img  class=\"mb-3\" style=\"height:35px;width:35px;margin:5px\" [src]=\"p.icon\" alt=\"\">\n              <ion-label class=\"mb-2\">{{ p.title }}</ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n          <ion-menu-toggle  auto-hide=\"false\" >\n            <ion-item  (click)=\"logout()\" >\n              <img  style=\"height:35px;width:35px;margin:6px;\" src=\"assets/icon/logout.png\" alt=\"\">\n              <ion-label style=\"margin-top: 10px !important;\">Logout</ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n\n          <p  style=\"margin-left: 67%;margin-top: -2%;font-size: 10px;\" class=\"ion-text-left\">V17.0.6</p>\n        </ion-list>\n      </ion-content>\n      \n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
 
 /***/ })
 

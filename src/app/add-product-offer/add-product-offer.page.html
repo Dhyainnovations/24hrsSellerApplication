@@ -14,7 +14,7 @@
     <div class="col-4">
       <h5 style="color:#121212;margin-top:10px"><b></b></h5>
     </div>
-    <div class="col-8 mt-2 mx-2" style="text-align: right;width: 90%;">
+    <div class="col-8 mt-2 mx-4" style="text-align: right;width: 90%;">
       <svg (click)="notification()" style="margin:3px;" width="26" height="26" viewBox="0 0 24 24" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -153,7 +153,7 @@
           </div>
         </div>
 
-        <div class="form-group mt-3 ion-text-center">
+        <div class="form-group mt-1 ion-text-left">
           <label for="exampleFormControlTextarea1" style="color:#404040;"> Description </label>
           <textarea style="margin-top: 5px;" class="form-control" [(ngModel)]="description"
             description id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -163,7 +163,9 @@
             <button *ngIf="isVisible" (click)="offerDelete()" class="btn btn-sm delete-btn mt-2">Delete</button>
           </div> -->
           <div class="col-12 ion-text-center">
-            <button *ngIf="isVisible" class="btn btn-sm update-btn mt-2" (click)="addoffer() ">Post</button>
+
+            <ion-button  *ngIf="isVisible" (click)="addoffer()"  style="width: 97%;font-size: 15px;"  class="secondarySmallBtn mb-4" color="none" >
+              Post</ion-button>
           </div>
         </div>
       </div>

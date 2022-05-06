@@ -62,15 +62,15 @@
     <div *ngFor="let items of displaydetails">
       <div class="row">
         <div class="col-6">
-          <b class="primaryTitle" style="font-size: 13px;margin:10px;"> {{items.product}}</b>
+          <b class="subtitle" style="font-size: 11px;margin:10px;"> {{items.product}}</b>
         </div>
 
         <div class="col-3">
-          <p class="subtitle" style="font-size: 11px;margin-left:-22px;"> {{items.created_at | date: 'dd/MM/yyyy'}}</p>
+          <p class="subtitle" style="font-size: 11px;margin-left:-22px;margin-top:5px"> {{items.created_at | date: 'dd/MM/yyyy'}}</p>
         </div>
 
         <div class="col-3">
-          <p class="subtitle" style="font-size: 11px;margin-left:2px;">{{items.offer_start_time | slice:11:20}}</p>
+          <p class="subtitle" style="font-size: 11px;margin-left:2px;margin-top:5px">{{items.offer_start_time | slice:11:20}}</p>
         </div>
 
       </div>
