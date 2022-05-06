@@ -48,7 +48,7 @@
               </div>
               <div class="col-6">
 
-                <ion-button style="width: 90%;"  class="primarySmallBtn" color="none" (click)="visibleCategoryPopup()">
+                <ion-button style="width: 90%;"  class="primarySmallBtn" color="none" (click)="visibleCategoryPopup()" type="submit">
                   Add New +</ion-button>
               </div>
             </div>
@@ -120,9 +120,12 @@
               <div style="margin-top: -5%;" class="col-6">
                 <input ngModel name="weight" type="text" id="quantityTextBox" (keyup)="WeightAvailableCheck()" style="color: black;">
               </div>
+
+
+
               <div  style="margin-top: -6%;" class="col-6">
                 <div class="select">
-                  <select  ngModel name="unit" placeholder="category" (change)="UnitAvailableCheck()" name="category">
+                  <select  ngModel name="unit" placeholder="category" (change)="UnitAvailableCheck()">
                     <option value="" disabled selected>unit </option>
                     <option *ngFor="let item of unitList" value="{{item}}">{{item}}</option>
                   </select>
@@ -130,17 +133,24 @@
            
                 </div>
               </div>
-              <p class="small text-danger text-center" *ngIf="unitAvailable">Choose anyone of the Unit</p>
+
+
+
+              <p class="small text-danger text-center mt-1" *ngIf="unitAvailable">Choose anyone of the Unit</p>
               <p class="small text-danger text-center" *ngIf="weightavailable">Enter The Weight Of The Product</p>
 
             </div>
           </div>
           <div class="col-12 mt-4">
-            <p>Product Image:</p>
+            <p>Product Image:<span class="infoIcon">
+              <img src="assets/icon/i.png" alt="info icon" width="15px">
+
+              <p class="extraInfo">Upload Only jpeg or png & Ratio 1:1</p>
+            </span></p>
 
             <div class="row">
                 <div class="col-9">
-                  <ion-button style="width: 98%;" [disabled]="otp == '' " class="primarySmallOutlineBtn" color="none">
+                  <ion-button style="width: 98%;" [disabled]="otp == '' " class="primarySmallOutlineBtn" color="none" >
                     <label class="btn btn-sm" (change)="MediaFileSelected($event)"
                     >
   
@@ -148,10 +158,10 @@
                       <path
                         d="M9.42857 8.24995V9.74997C9.42857 10.1641 9.07672 10.5 8.64286 10.5H2.35714C1.92328 10.5 1.57143 10.1641 1.57143 9.74997V8.24995C1.57143 7.8358 1.21958 7.49994 0.785714 7.49994C0.351853 7.49994 0 7.8358 0 8.24995V9.74997C0 10.9926 1.05531 12 2.35714 12H8.64286C9.94469 12 11 10.9926 11 9.74997V8.24995C11 7.8358 10.6481 7.49994 10.2143 7.49994C9.78042 7.49994 9.42857 7.8351 9.42857 8.24995ZM4.94509 0.219569L1.80223 3.21961C1.49507 3.51282 1.49556 3.98743 1.80223 4.28017C2.10915 4.57314 2.60636 4.57314 2.91328 4.28017L4.71429 2.56159V7.49994C4.71429 7.91455 5.06565 8.24995 5.5 8.24995C5.93435 8.24995 6.28571 7.91455 6.28571 7.49994V2.56159L8.08746 4.28146C8.39437 4.57443 8.89158 4.57443 9.1985 4.28146C9.50542 3.98849 9.50542 3.51387 9.1985 3.2209L6.05565 0.220858C5.74799 -0.073404 5.25201 -0.073404 4.94509 0.219569Z"
                         fill="#EB154B" />
-                    </svg>
+                    </svg><span style="color:#EB154B ;">Upload</span>
   
   
-                    <input type="file" class="" name="image" accept=".jpeg,.jpg,.png">
+                    <input type="file" class="" name="image" accept=".jpeg,.jpg,.png" >
                   </label></ion-button>
                 </div>
                 <div class="col-3">
@@ -168,13 +178,12 @@
 
           
 
-          <div style="margin-top: -7%;" class="col-12 ">
+          <div  class="col-12 ">
             <p class="small text-success text-center" *ngIf="logoUploadCheck">Uploaded Successfully</p>
             <p class="small text-danger text-center" *ngIf="imageSize">Uploaded File Size Should Not Exceed More Than
               5Mb
             </p><!-- <button class="btn btn-primary" (click)="uploadMedia()">Submit</button> -->
             <p class="small text-danger text-center" *ngIf="productImagecheck">Upload Product Image</p>
-            <span  class="validationtext small "><br>(Upload Only jpeg or png & Ratio 1:1)</span>
           </div>
 
         </div>
@@ -186,7 +195,7 @@
         </div>
         <p class="small text-danger text-center" *ngIf="descrptionAvailable">Enter The Description</p>
         <div style="width:100%; text-align: center;">
-          <ion-button (click)="makeTrue()"  style="width: 90%;"  class="secondarySmallBtn mb-4" color="none" >
+          <ion-button (click)="makeTrue()"  style="width: 90%;"  class="secondarySmallBtn mb-4" color="none" type="submit">
             Add Product </ion-button>
         </div>
       </div>

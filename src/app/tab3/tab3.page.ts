@@ -121,7 +121,7 @@ export class Tab3Page {
   redirecttoGallery() {
     if (this.subcategory_tbid) {
       this.router.navigate(['/show-product-image'], { queryParams: { productname: this.subcategory_tbid } });
-    }else{
+    } else {
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -316,19 +316,23 @@ export class Tab3Page {
 
   //Create New Product
   onClickSubmit(data) {
+
     if (this.idproofcheck == false && this.addressproofcheck == false && this.store_categoryCheck == false) {
-      if (this.makeTrueCall == true) {
+      if (this.makeTrueCall == true) {  
         if (this.selectedFile) {
           this.galleryImage = null
         }
-        var str = data.unit;
+          var str = data.unit;
+        console.log(data.unit);
+  
         var splittedUnit = str.split(" ", 1);
         console.log(splittedUnit)
         this.image = this.selectedFile;
         console.log(this.image)
 
-
-        if (this.galleryImage) {     
+   
+        if (this.galleryImage) {
+    
           this.selectedFile = null
           const formdata = new FormData();
           formdata.append("category_id", this.category_tbid);
@@ -337,7 +341,7 @@ export class Tab3Page {
           formdata.append("cost", data.cost);
           formdata.append("unit", splittedUnit);
           formdata.append("description", data.description);
-          formdata.append("product_image_url", "http://localhost/24Hrs/images/seller/product/"+this.galleryImage);
+          formdata.append("product_image_url", "http://localhost/24Hrs/images/seller/product/" + this.galleryImage);
           formdata.append("weight", data.weight)
           console.log('formData: ', formdata.getAll('category'), formdata.getAll('product_image'));
           console.log(this.subcategory_tbid.length);
@@ -349,11 +353,20 @@ export class Tab3Page {
             this.Subcategory_tbid_check = false
             this.category_tbid_check = false;
           }
-          if (data.product_name.length <= 0) {
+
+
+          if (data.product_name) {
+            if (data.product_name.length <= 0) {
+              this.productName_check = true
+            } else {
+              this.productName_check = false
+            }
+          }else{
             this.productName_check = true
-          } else {
-            this.productName_check = false
           }
+
+
+
           if (data.cost.length <= 0) {
             this.CostAvailable = true
           } else {
@@ -380,6 +393,7 @@ export class Tab3Page {
           } else {
             this.productImagecheck = false
           }
+   
           if (this.Subcategory_tbid_check == false && this.productName_check == false && this.CostAvailable == false && this.unitAvailable == false && this.weightavailable == false
             && this.productImagecheck == false) {
             this.http.postFormData("/product_gallery_create", formdata).subscribe((response: any) => {
@@ -427,6 +441,7 @@ export class Tab3Page {
             );
           }
         } else {
+    
           const formdata = new FormData();
           formdata.append("category_id", this.category_tbid);
           formdata.append("subcategory_id", this.subcategory_tbid);
@@ -437,8 +452,11 @@ export class Tab3Page {
           formdata.append("product_image", this.image);
           formdata.append("weight", data.weight)
           console.log('formData: ', formdata.getAll('category'), formdata.getAll('product_image'));
+     
           console.log(this.subcategory_tbid.length);
+
           console.log(this.subcategory_tbid.length);
+ 
           if (this.subcategory_tbid.length <= 0) {
             this.Subcategory_tbid_check = true
             this.category_tbid_check = true;
@@ -446,10 +464,15 @@ export class Tab3Page {
             this.Subcategory_tbid_check = false
             this.category_tbid_check = false;
           }
-          if (data.product_name.length <= 0) {
+      
+          if (data.product_name) {
+            if (data.product_name.length <= 0) {
+              this.productName_check = true
+            } else {
+              this.productName_check = false
+            }
+          }else{
             this.productName_check = true
-          } else {
-            this.productName_check = false
           }
           if (data.cost.length <= 0) {
             this.CostAvailable = true
@@ -461,6 +484,7 @@ export class Tab3Page {
           } else {
             this.unitAvailable = false
           }
+       
           if (data.description.length <= 0) {
             this.descrptionAvailable = true
           } else {

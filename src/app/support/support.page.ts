@@ -19,11 +19,11 @@ export class SupportPage implements OnInit {
   }
 
   problemDescription: any = "";
-  userdetails: any =  localStorage.getItem("tbid");
+  userdetails: any = localStorage.getItem("tbid");
   tbid: any = this.userdetails;
 
 
-  navigateToFaq(){
+  navigateToFaq() {
     this.router.navigate(['/frequently-asked-questions'])
   }
 
@@ -32,7 +32,7 @@ export class SupportPage implements OnInit {
     this.router.navigate(['/tabs/tab5'])
   }
 
-  navigateToFAQ(){
+  navigateToFAQ() {
     this.router.navigate(['/frequently-asked-questions'])
   }
   submit() {
@@ -40,7 +40,7 @@ export class SupportPage implements OnInit {
       tbid: this.tbid,
       description: this.problemDescription
     }
-    this.http.post('/seller_description', obj).subscribe((response: any) => {
+    this.http.postFormData('/seller_description', obj).subscribe((response: any) => {
       if (response.success == "true") {
         const Toast = Swal.mixin({
           toast: true,
@@ -58,7 +58,7 @@ export class SupportPage implements OnInit {
           icon: 'success',
           title: 'Report Send Successfully'
         })
-
+        this.problemDescription = "";
       }
 
 
@@ -66,7 +66,7 @@ export class SupportPage implements OnInit {
       console.log(error);
     }
     );
-   
+
 
 
   }

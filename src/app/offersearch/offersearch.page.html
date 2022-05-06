@@ -63,31 +63,35 @@
   </div>
 
 
-  <div class="p-2" *ngIf="OfferShowDetail" (click)="redirecttoOffer()">
+  <div class="" *ngIf="OfferShowDetail" (click)="redirecttoOffer()">
 
     <!-- Show Offer In Card -->
 
     <div class="card"
       style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px !important;border-radius: 5px;">
       <div class="row">
-        <div class="col-5">
+        <div class="col-5" >
           <img src="{{productImage}}" alt="">
 
         </div>
-        <div class="col-7 small">
+        <div class="col-7">
           <h6 class="product-name"><b>{{productname}}</b></h6>
 
-          <p style="font-size: smaller;" *ngIf="IfOfferPresent">
+          <p style="font-size: 13px;" *ngIf="IfOfferPresent">
             <span><b>Offer: &nbsp;</b></span>
             {{offer}}%
           </p>
 
-          <p style="font-size: smaller;">
-            <span style="font-size: 13px;"><b>Offer time: &nbsp;</b></span>
+          <p style="font-size: 13px;">
+            <span style="font-size: 13px;"><b>Offer time: &nbsp;</b><br></span>
             {{offertime}}
           </p>
 
 
+          <p style="font-size: 13px;">
+            <span style="font-size: 13px;"><b>Quantity: &nbsp;</b></span>
+            {{weight}} {{unit}}
+          </p>
           <p *ngIf="IfOfferPresent" style="font-size: 13px;">
             <span style="font-size: 13px;"><b>Price: &nbsp;</b></span>
             <b><span style="text-decoration: line-through;">₹{{totalcost}}</span>&nbsp;₹{{offerprice}}</b>

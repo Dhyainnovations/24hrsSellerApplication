@@ -23,6 +23,7 @@ export class WelcomePage implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   async login() {
@@ -46,12 +47,12 @@ export class WelcomePage implements OnInit {
   //   this.googleUser = await GoogleAuth.signIn() as any;
   //   console.log('my user: ', this.googleUser);
   //   this.userInfo = this.googleUser;
-                             
+
   // }
 
 
 
-   register() {
+  register() {
     this.router.navigate(['/signuppage'])
   }
 
@@ -59,6 +60,13 @@ export class WelcomePage implements OnInit {
   //   console.log("Logout");
 
   // }
+
+
+
+
+
+
+  
 }
 
 

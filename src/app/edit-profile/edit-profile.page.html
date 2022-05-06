@@ -63,6 +63,8 @@
         <form #categoryselect="ngForm" (change)="StoreCategory(categoryselect.value)">
           <div class="select">
             <select ngModel placeholder="category" name="category">
+              <option selected disabled value="Select">
+                Select</option>
               <option *ngFor="let cat of listOfCat" value="{{cat.tbid}}">
                 {{cat.store_category}}</option>
             </select>

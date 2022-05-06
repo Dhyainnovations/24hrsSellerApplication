@@ -45,7 +45,7 @@ export class Tab5Page {
   imageSize: any;
   logoUploadCheck: any;
   theInstagramToggle: any;
-  userMobileNumber: any = localStorage.getItem("user_mobile_Number");
+  mobile_Number: any = localStorage.getItem("mobile_Number");
   userdetails: any = localStorage.getItem("StoreName");
   EmailID: any = localStorage.getItem("EmailID");
   store_number: any;

@@ -71,7 +71,7 @@ export class OffersearchPage implements OnInit {
     this.router.navigate(['/notification'])
   }
 
-
+  weight:any;
 
   offerDetail(data) {
     console.log(data);
@@ -96,6 +96,7 @@ export class OffersearchPage implements OnInit {
         this.productdescription = response.records[0].description;
         this.cost = response.records[0].total_cost;
         this.unit = response.records[0].product_unit;
+        this.weight=response.records[0].product_weight
         this.offer = response.records[0].offer;
         this.offertime = response.records[0].offer_end_time;
         this.totalcost = response.records[0].total_cost;

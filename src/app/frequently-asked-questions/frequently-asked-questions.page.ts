@@ -16,7 +16,6 @@ export class FrequentlyAskedQuestionsPage implements OnInit {
     private toastCtrl: ToastController, route: ActivatedRoute) {
     route.params.subscribe(val => {
       this.sellerAllDetails();
-      this.faq();
     });
   }
 
@@ -32,19 +31,7 @@ export class FrequentlyAskedQuestionsPage implements OnInit {
     this.router.navigate(['/support'])
   }
 
-  faq() {
-    var obj = {
-      store_category_id: this.store_category_id,
 
-    }
-
-    this.http.postFormData('/seller_faq', obj).subscribe((response: any) => {
-      this.faqs = response.message.records
-    }, (error: any) => {
-      console.log(error);
-    }
-    );
-  }
 
 
 
@@ -55,7 +42,16 @@ export class FrequentlyAskedQuestionsPage implements OnInit {
       if (response.success == "true") {
         console.log(response);
         this.store_category_id = response.records.store_category_id
-
+        var obj = {
+          store_category_id: this.store_category_id,
+        }
+        console.log(obj);
+        this.http.post('/seller_faq', obj).subscribe((response: any) => {
+          this.faqs = response.message.records
+        }, (error: any) => {
+          console.log(error);
+        }
+        );
 
       }
     }, (error: any) => {

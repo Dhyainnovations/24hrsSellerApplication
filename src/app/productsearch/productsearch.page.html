@@ -59,7 +59,7 @@
   <!-- <ion-searchbar (keyup)="searchProduct()" [(ngModel)]="productName"></ion-searchbar> -->
   <div *ngFor="let product of ShowProducts" >
     <div style="padding: 10px;"  (click)="productDetail(product)" *ngIf="productShowname">
-      <ion-item>{{product}}</ion-item>
+      <ion-item>{{product }}</ion-item>
     </div>
   </div>
 
@@ -75,9 +75,9 @@
         </div>
     
         <div class="col-7 small">
-          <h4 class="product-name"><b>{{storeName}}</b></h4>
-          <p class="product-name"><b>Product : {{productname}}</b></p>
-          <p class="price">Price : Rs.{{cost}}/{{unit}}</p>
+          <h4 class="product-name"><b>{{storeName | titlecase}}</b></h4>
+          <p class="product-name"><b>Product : </b>{{productname}}</p>
+          <p class="price"><b>Price :</b> Rs.{{cost}}/{{unit}}</p>
         </div>
         
       </div>

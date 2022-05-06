@@ -79,16 +79,11 @@ export class SigninPage implements OnInit {
       console.log(response);
       if (response.success == "true") {
         this.dismiss();
-     
-          
-     
-   
-        
-        localStorage.setItem("user_mobile_Number", response.mobile_number)
         localStorage.setItem("token", response.token)
         localStorage.setItem("tbid", response.tbid)
         localStorage.setItem("StoreName", response.store_name)
-        localStorage.setItem("EmailID", response.email_id)
+        localStorage.setItem("EmailID", response.email_id);
+        localStorage.setItem("mobile_Number", response.mobile_number)
 
         this.http.get('/seller_details').subscribe((response: any) => {
           if (response.success == "true") {
@@ -111,14 +106,14 @@ export class SigninPage implements OnInit {
             }
             if (this.store_categoryCheck == false && this.idproofcheck == false && this.addressproofcheck == false) {
               this.router.navigate(['/tabs'])
-            }else{
+            } else {
               this.router.navigate(['/sellerdetailpage'])
             }
           }
         }, (error: any) => {
           console.log(error);
         }
-        );  
+        );
 
 
         const Toast = Swal.mixin({
@@ -215,7 +210,7 @@ export class SigninPage implements OnInit {
   }
 
 
-  
+
   store_categoryCheck: any;
   idproofcheck: any;
   store_category_id: any;
