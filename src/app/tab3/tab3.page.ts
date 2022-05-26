@@ -7,6 +7,9 @@ import { ToastController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
+import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
+import { LoadingController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-tab3',
@@ -15,7 +18,7 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class Tab3Page {
-  constructor(public popoverController: PopoverController, private router: Router, private http: HttpService,
+  constructor(public loadingCtrl: LoadingController,public popoverController: PopoverController, private router: Router, private http: HttpService,
     private toastCtrl: ToastController, private route: ActivatedRoute, private _sanitizer: DomSanitizer, private https: HttpClient) {
     route.params.subscribe(val => {
       this.sellerAllDetails();
@@ -92,6 +95,36 @@ export class Tab3Page {
   subcategoryPopupModel: any = false;
   subCategoryNotfound = false;
   productImagecheck: any;
+
+
+
+
+
+
+
+
+  async getPicture() {
+    let imgUrl = await Camera.getPhoto({
+      resultType: CameraResultType.Uri,
+      source: CameraSource.Camera,
+      quality: 100
+    });
+
+    let base64Image = 'data:image/jpeg;base64,' + imgUrl;
+    console.log(base64Image);
+    alert(imgUrl)
+    this.http.post('/processImage', { dataUrl: base64Image }).subscribe((response: any) => {
+      console.log(response);
+    alert("hello")
+
+    }, (error: any) => {
+      console.log(error);
+    }
+    );
+  }
+
+
+
 
 
 

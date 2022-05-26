@@ -13,12 +13,12 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page implements OnInit  {
+export class Tab1Page implements OnInit {
   backButtonSubscription: any;
 
   constructor(private platform: Platform, public toastCtrl: ToastController, private http: HttpService, private router: Router, private menu: MenuController, route: ActivatedRoute, public navCtrl: NavController) {
     route.params.subscribe(val => {
-     this.StoreName = localStorage.getItem("StoreName");
+      this.StoreName = localStorage.getItem("StoreName");
 
       this.offersCount()
       this.viewCount()
@@ -29,14 +29,20 @@ export class Tab1Page implements OnInit  {
   ngOnInit() {
 
 
-
   }
+
+  
+
+
+
+
+
 
   //Naviagtions
   notification() {
     this.router.navigate(['/notification'])
   }
-  
+
   StoreName: any = localStorage.getItem("StoreName");
 
   listOfCat: any = [];
@@ -136,6 +142,6 @@ export class Tab1Page implements OnInit  {
   }
 
 
-  
+
 }
 

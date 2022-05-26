@@ -4,7 +4,7 @@ import { HttpService } from '../shared/http.service';
 import Swal from 'sweetalert2';
 import { ToastController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
-
+import { FormGroup, FormControl } from '@angular/forms';
 
 
 @Component({
@@ -45,7 +45,6 @@ export class Tab5Page {
   imageSize: any;
   logoUploadCheck: any;
   theInstagramToggle: any;
-  mobile_Number: any = localStorage.getItem("mobile_Number");
   userdetails: any = localStorage.getItem("StoreName");
   EmailID: any = localStorage.getItem("EmailID");
   store_number: any;
@@ -100,12 +99,13 @@ export class Tab5Page {
   store_category: any;
   store_categoryExist: any;
   store_categoryNotExist: any;
+  mobile_Number:any;
   //Seller-get-Details
   sellerAllDetails() {
     this.http.get('/seller_details').subscribe((response: any) => {
       if (response.success == "true") {
         console.log(response);
-
+        this.mobile_Number=response.records.mobile_number;
         if (response.records.id_proof == "" || response.records.id_proof == null) {
           this.idProofNotExist = true;
           this.idProofExist = false;

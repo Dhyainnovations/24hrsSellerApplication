@@ -18,8 +18,25 @@
     </div>
 
 
-    <ion-input [(ngModel)]="signinpassword" placeholder="Enter your password" type="password" class="primary-input">
-    </ion-input>
+
+
+   <div class="container">
+    <div class="row primary-input">
+      <div class="col-10">
+        <ion-input [type]="password" [(ngModel)]="signinpassword"  placeholder="Enter Your Password"> </ion-input>
+      </div>
+      
+      <div class="col-2">
+        <button style="background-color:transparent !important;margin-top: 47% !important;" class="eyebutton" (click)="onClick()">
+          <i style="color:black" class="fa fa-eye" aria-hidden="true" *ngIf="!show"></i>
+          <i style="color:black" class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
+        </button>
+      </div>
+    </div>
+   </div>
+
+
+    
 
     <div class="row">
       <div class="col-12 forgot-pw" (click)="forgotPasswordPage()">
@@ -37,13 +54,13 @@
       </div>
     </div>
 
-    <div >
+    <div>
       <ion-button style="width: 98%;" [disabled]="otp == '' " class="secondaryLargeBtn" color="none" (click)="signin()">
         LOGIN</ion-button>
     </div>
 
     <div class="col-12 forgot-pw ion-text-center">
-      New user ? <span (click)="signupPage()" class="signup"><b>Signup</b></span>
+      New user? <span (click)="signupPage()" class="signup"><b>Signup</b></span>
     </div>
   </div>
 

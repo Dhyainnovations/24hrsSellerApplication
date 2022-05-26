@@ -27,6 +27,9 @@ export class SupportPage implements OnInit {
     this.router.navigate(['/frequently-asked-questions'])
   }
 
+  notification() {
+    this.router.navigate(['/notification'])
+  }
 
   backToPrivious() {
     this.router.navigate(['/tabs/tab5'])

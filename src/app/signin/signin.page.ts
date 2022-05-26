@@ -27,10 +27,12 @@ export class SigninPage implements OnInit {
 
   ngOnInit() {
     this.verifyOTPValidate = false;
+    this.password = 'password';
   }
 
 
-
+  password:any;
+  show = true;
 
   verifynumber: any;
   loginstatus: any = ""
@@ -90,10 +92,12 @@ export class SigninPage implements OnInit {
             console.log(response);
             this.store_category_id = response.records.store_category_id
             if (response.records.store_category != null) {
-              this.store_categoryCheck = false
+              this.store_categoryCheck = true
             } else {
-              this.store_categoryCheck = true;
+              this.store_categoryCheck = false;
             }
+ 
+            
             if (response.records.id_proof != null) {
               this.idproofcheck = false
             } else {
@@ -104,7 +108,9 @@ export class SigninPage implements OnInit {
             } else {
               this.addressproofcheck = true;
             }
-            if (this.store_categoryCheck == false && this.idproofcheck == false && this.addressproofcheck == false) {
+        
+            
+            if (this.store_categoryCheck == true && this.idproofcheck == true && this.addressproofcheck == true) {
               this.router.navigate(['/tabs'])
             } else {
               this.router.navigate(['/sellerdetailpage'])
@@ -216,6 +222,16 @@ export class SigninPage implements OnInit {
   store_category_id: any;
   addressproofcheck: any;
 
+
+  onClick() {
+    if (this.password === 'password') {
+      this.password = 'text';
+      this.show = true;
+    } else {
+      this.password = 'password';
+      this.show = false;
+    }
+  }
 
 
 }

@@ -63,7 +63,7 @@ export class OffersearchPage implements OnInit {
 
   clearData() {
     this.offerName = " ";
-
+  //  this.OfferShowDetail = false;
   }
 
   //Naviagtions

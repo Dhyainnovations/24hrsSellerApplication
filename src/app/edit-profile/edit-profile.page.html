@@ -1,5 +1,5 @@
 <ion-content>
-  <div style="margin-top: 15% !important;width: 93% !important;" class="container">
+  <div style="margin-top: 15% !important;width: 94% !important;" class="container">
     <div class="row ">
       <div class="col-12 mt-3">
         <p class="edit-name">Store logo <span class="infoIcon">
@@ -14,22 +14,27 @@
         <div class="col-12 ion-text-center">
           <img class="editprofile" src="{{store_logo}}" alt="" width="50%" *ngIf="imagefound">
           <img class="editprofile" src="../../assets/imagenotavilable.png" alt="" *ngIf="noimagefound" width="50%">
+
+
+          <ion-button class="profileImageChange"  style="margin-top: 20% !important;margin-left:-10% !important;">
+
+            <label  style="font-size: 13px;" (change)="MediaFileSelected($event)" >
+
+              <svg  (change)="MediaFileSelected($event)"  width="22" height="20" fill="#fff" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+              </svg>
+
+
+           
+              <input type="file"  name="image" accept=".jpeg,.png">
+            </label>
+
+           
+          </ion-button>
+
         </div>
-
-
-        <ion-button style="width: 50%;margin: auto;" [disabled]="otp == '' " class="primarySmallOutlineBtn mt-3" color="none">
-          <label class="btn" style="font-size: 13px;" (change)="MediaFileSelected($event)"
-         
-          type="submit">
-          <svg width="30" height="22" viewBox="0 0 34 27" fill="none">
-            <path
-              d="M31.1667 0H8.5C6.93517 0 5.66667 1.25918 5.66667 2.8125V17.8125C5.66667 19.3658 6.93517 20.625 8.5 20.625H31.1667C32.7315 20.625 34 19.3658 34 17.8125V2.8125C34 1.25918 32.7309 0 31.1667 0ZM13.1691 3.75C14.2127 3.75 15.058 4.58965 15.058 5.625C15.058 6.66035 14.267 7.5 13.1691 7.5C12.1261 7.5 11.2802 6.66035 11.2802 5.625C11.2802 4.58965 12.1774 3.75 13.1691 3.75ZM29.1656 16.3828C29.0003 16.6875 28.6816 16.875 28.3333 16.875H11.3333C10.9778 16.875 10.6527 16.677 10.4916 16.3623C10.3305 16.0478 10.3609 15.6703 10.5702 15.385L14.7022 9.75996C14.8809 9.51563 15.1642 9.375 15.4653 9.375C15.767 9.375 16.0506 9.51803 16.2285 9.7602L17.5478 11.5567L21.2512 6.04242C21.374 5.7832 21.6691 5.625 22.0351 5.625C22.3507 5.625 22.6454 5.78156 22.8207 6.04248L29.119 15.4175C29.3132 15.7031 29.3309 16.0723 29.1656 16.3828ZM26.9167 23.4375H7.08333C4.73993 23.4375 2.83333 21.5449 2.83333 19.2188V5.15625C2.83333 4.38281 2.19878 3.75 1.41667 3.75C0.634549 3.75 0 4.38281 0 5.15625V19.2188C0 23.0977 3.17747 26.25 7.08333 26.25H26.9167C27.6988 26.25 28.3333 25.6201 28.3333 24.8438C28.3333 24.0674 27.7017 23.4375 26.9167 23.4375Z"
-              fill="#EB154B" />
-          </svg>
-          <input type="file" class="" name="image" accept=".jpeg,.png">
-        </label></ion-button>
-        <p class="small text-success" *ngIf="logoUploadCheck"><i>Uploaded Successfully</i></p>
-        <p class="small text-danger" *ngIf="imageSize"><i>Uploaded File Size Should Not Exceed More Than 5Mb</i>
+        <p class="small text-success ion-text-center" *ngIf="logoUploadCheck"><i>Uploaded Successfully</i></p>
+        <p class="small text-danger ion-text-center" *ngIf="imageSize"><i>Uploaded File Size Should Not Exceed More Than 5Mb</i>
         </p>
 
 
@@ -39,32 +44,31 @@
 
 
       <!-- Store Name Change -->
-      <div class="col-6">
+      <div class="col-6 mt-1">
         <p class="edit-name">Store Name :</p>
       </div>
-      <div class="col-6">
+      <div class="col-6 mt-1">
         <input type="text" [(ngModel)]="storeName">
       </div>
       <!-- EmailChange -->
-      <div class="col-6">
+      <div class="col-6 mt-1">
         <p class="edit-name">Email:</p>
       </div>
-      <div class="col-6">
+      <div class="col-6 mt-1">
         <input type="text" [ngModel]="EmailID" (ngModelChange)="mailID($event)">
       </div>
 
 
-      <div class="col-5">
+      <div class="col-5 mt-1">
         <p>Store Category</p>
       </div>
 
 
-      <div class="col-6">
+      <div class="col-7 mt-1">
         <form #categoryselect="ngForm" (change)="StoreCategory(categoryselect.value)">
           <div class="select">
-            <select ngModel placeholder="category" name="category">
-              <option selected disabled value="Select">
-                Select</option>
+            <select style="color:black;" ngModel placeholder="category" name="category">
+              <option disabled value=""> {{store_category}}</option>
               <option *ngFor="let cat of listOfCat" value="{{cat.tbid}}">
                 {{cat.store_category}}</option>
             </select>
@@ -73,41 +77,41 @@
       </div>
 
 
-      <div class="col-6 ">Address Line 1</div>
-      <div class="col-6">
+      <div class="col-6 mt-1 ">Address Line 1</div>
+      <div class="col-6 mt-1">
         <input [ngModel]="sellerDetails.address_line_1 == 'null' ? '': sellerDetails.address_line_1" type="text"
           id="edit-field" name="address_line_1" placeholder="Enter Your Address"
           (ngModelChange)="addressline_1($event)">
       </div>
-      <div class="col-6">Address Line 2</div>
-      <div class="col-6">
+      <div class="col-6 mt-1">Address Line 2</div>
+      <div class="col-6 mt-1">
         <input [ngModel]="sellerDetails.address_line_2 == 'null' ? '': sellerDetails.address_line_2" type="text"
           id="edit-field" name="address_line_2" placeholder="Enter Your Address"
           (ngModelChange)="addressline_2($event)">
       </div>
-      <div class="col-6">City</div>
-      <div class="col-6">
+      <div class="col-6 mt-1">City</div>
+      <div class="col-6 mt-1">
         <input [ngModel]="sellerDetails.city == 'null' ? '': sellerDetails.city" type="text" id="edit-field" name="city"
           placeholder="Enter Your City" (ngModelChange)="city($event)">
       </div>
-      <div class="col-6">State</div>
-      <div class="col-6">
+      <div class="col-6 mt-1">State</div>
+      <div class="col-6 mt-1">
         <input [ngModel]="sellerDetails.state == 'null' ? '': sellerDetails.state" type="text" id="edit-field"
           name="state" placeholder="Enter Your State" (ngModelChange)="state($event)">
       </div>
-      <div class="col-6">Pincode</div>
-      <div class="col-6">
+      <div class="col-6 mt-1">Pincode</div>
+      <div class="col-6 mt-1">
         <input [ngModel]="sellerDetails.pincode == 'null' ? '': sellerDetails.pincode" type="text" id="edit-field"
           name="pincode" maxlength="6" placeholder="Enter Your Pincode" (ngModelChange)="pincode($event)">
       </div>
 
       <div class="row mt-3">
-        <div style="margin-left: -2% !important;" class="col-6">
-          <ion-button  (click)="backToprivious()" style="width: 100%;" class="secondarySmallBtn mb-4" color="none">
+        <div class="col-6 ion-text-left">
+          <ion-button (click)="backToprivious()" style="width: 100%;" class="secondarySmallBtn mb-4" color="none">
             Cancel </ion-button>
         </div>
 
-        <div class="col-6">
+        <div class="col-6 ion-text-right">
           <ion-button (click)="updateProfile()" style="width: 100%;" class="primarySmallBtn mb-4" color="none">
             Update</ion-button>
         </div>

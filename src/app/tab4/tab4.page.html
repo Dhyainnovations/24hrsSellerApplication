@@ -1,5 +1,5 @@
 <!------------ Header  ---------------->
-<ion-toolbar color="light">
+<ion-toolbar *ngIf="headerVivible" color="light">
   <ion-buttons slot="start">
     <ion-menu-button style="margin-top:15px;color:#121212" autoHide="false">
       <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,7 +15,7 @@
       <h5 style="margin-top:10px"><b></b></h5>
     </div>
     <div class="col-8 mt-2 mx-4" style="text-align: right;width: 90%;">
-      <svg (click)="notification()" style="margin:3px;" width="26" height="26" viewBox="0 0 24 24" fill="none"
+      <svg (click)="notification()" style="margin:3px;" width="30" height="34" viewBox="0 0 24 24" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd"
           d="M13.7942 3.29494C13.2296 3.10345 12.6258 3 12 3C9.1535 3 6.7622 5.14032 6.44786 7.96942L6.19605 10.2356L6.1896 10.2933C6.06065 11.417 5.69489 12.5005 5.11646 13.4725L5.08667 13.5222L4.50863 14.4856C3.98408 15.3599 3.7218 15.797 3.77842 16.1559C3.8161 16.3946 3.93899 16.6117 4.12435 16.7668C4.40292 17 4.9127 17 5.93224 17H18.0678C19.0873 17 19.5971 17 19.8757 16.7668C20.061 16.6117 20.1839 16.3946 20.2216 16.1559C20.2782 15.797 20.0159 15.3599 19.4914 14.4856L18.9134 13.5222L18.8836 13.4725C18.4273 12.7059 18.1034 11.8698 17.9236 10.9994C15.1974 10.9586 13 8.73592 13 6C13 5.00331 13.2916 4.07473 13.7942 3.29494ZM16.2741 4.98883C16.0999 5.28551 16 5.63109 16 6C16 6.94979 16.6621 7.74494 17.5499 7.94914C17.4205 6.82135 16.9608 5.80382 16.2741 4.98883Z"
@@ -38,7 +38,7 @@
 <ion-content class="bg-class mb-3" [ngStyle]="{'opacity':PopupModel ? '0.52' : '1' }"
   [ngStyle]="{'opacity':backgroundisvisible ? '0.52' : '1' }">
   <div class="  row mt-2 mb-2 mx-2">
-    <div class="col-6 mt-2">
+    <div *ngIf="searchIcon" class="col-6 mt-2">
       <svg (click)="searchPage()"  width="25" height="25" viewBox="0 0 24 24" fill="none">
         <circle cx="11" cy="11" r="7" stroke="#121212" stroke-width="2" />
         <path
@@ -52,7 +52,7 @@
       <div style="width: 100%; ">
 
         <ion-button *ngIf="cardVisible" style="width: 100%;" [disabled]="otp == '' " class="primarySmallOutlineBtn" color="none" (click)="offerPage()">
-          + AddOffer</ion-button>
+          + Add Offer</ion-button>
         
       </div>
     </div>
@@ -74,22 +74,23 @@
       <div class="welcomecard">
         <div class="row">
           <div class="col-4">
-            <div class="outter-badge">
+            <div class="outter-badge mx-3">
               <img src="{{offer.product_image}}" alt="">
+              <ion-button (click)="repostOffer(offer.product)" *ngIf="cardVisible" style="width: 100%;margin: auto !important;margin-top: 10% !important;"  class="primarySmallOutlineBtn " color="none" >
+                Repost </ion-button>
             </div>
 
-            <ion-button (click)="repostOffer(offer.product)" *ngIf="cardVisible" style="width: 80%;"  class="primarySmallOutlineBtn mx-3" color="none" >
-              Repost </ion-button>
+            
 
            
 
           </div>
           <div class="col-8">
             <div class="row">
-              <div style="margin-top: -5px;" class="col-8">
+              <div style="margin-top: -10px;" class="col-8">
                 <h6><b>{{offer.product}}</b></h6>
               </div>
-              <div class="col-4 mt-3">
+              <div class="col-4 mt-2">
                 <ion-badge slot="start" color="secondary">1
                   {{offer.product_unit}}</ion-badge>
               </div>
@@ -115,22 +116,35 @@
               <b>Offer : </b>&nbsp;
               {{offer.other_offer}}
             </p>
+      
+
             <div class="row" [ngClass]='offer.offer != "" ? "show" : "hidden"'>
-              <div class="col-6">
+              <div class="col-12">
                 <p style="font-size: 12px;">
                   <b>Cost</b>&nbsp;
                   <del>₹{{offer.total_cost}} </del> &nbsp;₹{{offer.offer_price}}
                 </p>
               </div>
             </div>
+
             <div class="row" [ngClass]='offer.offer == "" ? "show" : "hidden"'>
               <div class="col-6">
-                <p style="font-size: 12px;">
+                <p  style="font-size: 12px;">
                   <b>Cost</b>&nbsp;
                   ₹{{offer.total_cost}}
                 </p>
               </div>
             </div>
+
+            <div class="row" style="margin-top:-15px">
+              <div class="col-6">
+                <p style="font-size: 12px;">
+                  <b>Quantity</b>&nbsp;
+                  {{offer.quantity}} {{offer.product_unit}}
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -139,7 +153,7 @@
 
 
 
-  <div class="container mt-5" *ngIf="cardVisible">
+  <div class="container mt-3 mb-4" *ngIf="cardVisible">
     <h5 *ngIf="expiredOffersBanner">Expired Offers:</h5>
     <div *ngFor="let offer of expiredotherofferList; let i = index">
       <div class="expiredcard">
@@ -147,16 +161,20 @@
           <div class="col-4">
             <div class="outter-badge">
               <img src="{{offer.product_image}}" alt="">
+              <ion-button (click)="repostOffer(offer.product)"  style="width: 100%;margin: auto !important;margin-top: 10% !important"  class="primarySmallOutlineBtn mt-4" color="none" >
+                Repost </ion-button>
             </div>
-            <button (click)="repostOffer(offer.product)"
-              class="btn btn-sm btn-outline-danger repost-btn mx-3 mb-2" style="opacity:1;">Repost</button>
+          
+
+              
+
           </div>
           <div class="col-8">
             <div class="row">
               <div style="margin-top: -5px;" class="col-8">
                 <h6><b>{{offer.product}}</b></h6>
               </div>
-              <div class="col-4 mt-3">
+              <div class="col-4 mt-2">
                 <ion-badge style="color:#ffffff !important;font-size: 10px;" slot="start" color="secondary">1
                   {{offer.product_unit}}</ion-badge>
               </div>
@@ -200,7 +218,7 @@
     </div>
   </div>
 
-  <div *ngIf="isvisible" class="container signin-div mb-4">
+  <div *ngIf="isvisible" class="container signin-div mt-3 mb-4 p-3">
     <div class="row">
       <div class="col-12 ion-text-left mt-2">
         <svg style="margin-top: 5px !important;" (click)="backToPrivious()" width="22" height="20" fill="#EB154B"
@@ -210,10 +228,10 @@
         </svg>
       </div>
       <div class="col-12">
-        <h5 class="name  ion-text-center" style="color:#676767;"><b>Add Your Offer</b></h5>
+        <h5 class="name  ion-text-center" style="color:#121212;"><b>Add Your Offer</b></h5>
         <div class="row">
           <div class="col-6">
-            <p class="name mt-2 ion-text-left" style="color:hsl(0, 0%, 25%);">Category :</p>
+            <p class="name mt-2 ion-text-left" style="color:hsl(0, 0%, 0%);">Category :</p>
           </div>
           <!-- <div class="col-6">
             <button class="btn signin-btn text-white" (click)="visibleCategoryPopup()">Add New +</button>
@@ -238,7 +256,7 @@
       <div class="col-12 mt-4">
         <div class="row">
           <div class="col-6">
-            <p class="name mt-2 ion-text-left" style="color:hsl(0, 0%, 25%);">Sub Category :</p>
+            <p class="name mt-2 ion-text-left" style="color:hsl(0, 0%, 0%);">Sub Category :</p>
           </div>
           <!-- <div class="col-6">
             <button class="btn signin-btn text-white" (click)="visibleSubCategoryPopup()"
@@ -295,7 +313,7 @@
       <div class="col-12">
         <p class="edit-name ion-text-left">Offer End Time :</p>
       </div>
-      <div class="col-12">
+      <div class="col-12 mt-1">
         <!-- <input [(ngModel)]="offerTime" type="time" id="offer"> -->
         <input type="datetime-local" [ngModel]="expiryDateandTime | date:'yyyy-MM-ddTHH:mm'"
           (ngModelChange)="change($event)">
@@ -303,23 +321,21 @@
     </div>
     <p class="small text-danger text-center" *ngIf="timerrorcheck">Select The Time</p>
     <div class="row mt-2">
-      <div class="col-1">
+      <div class="col-1 mt-2">
         <input name="offer-select" type="radio" value="DiscountOffer" (change)="onItemChange()"
           checked="otherofferradio">
       </div>
-      <div class="col-11" [ngStyle]="{'opacity': DiscountOffer ? '0.5' : '1' }">
+      <div class="col-11 mt-2" [ngStyle]="{'opacity': DiscountOffer ? '0.5' : '1' }">
         <div class="row ">
           <div class="col-6">
             <p class="edit-name ion-text-left">Offer:</p>
           </div>
-          <div class="col-4">
+          <div class="col-6">
             <!-- <span class="valuePadding"><input id="inputRRPDiscount" style="text-align:left;">%</span> -->
             <span><input [(ngModel)]="offer" type="text" pattern="\d*" maxlength="2" min="1" max="99" id="offer"
-                (keyup)="keydown()" [disabled]="DiscountOffer"></span>
+                (keyup)="keydown()" [disabled]="DiscountOffer"><span style="margin-left:-28px !important">%</span> </span>
           </div>
-          <div class="col-2">
-            <p>%</p>
-          </div>
+      
         </div>
         <div class="row">
           <div class="col-6">
@@ -350,14 +366,17 @@
       </div>
     </div>
     <p class="small text-danger text-center" *ngIf="OfferCheck">Choose Anyone one of the offer</p>
-    <div class="form-group mt-3 ion-text-center">
+    <div class="form-group mt-3 ion-text-left">
       <label for="exampleFormControlTextarea1"> Description </label>
-      <textarea [(ngModel)]="description" maxlength="50" style="background-color: #fff;margin-top: 5px;"
+      <textarea style="width: 100% !important" [(ngModel)]="description" maxlength="50" style="background-color: #fff;margin-top: 5px;"
         class="form-control" id="exampleFormControlTextarea1" rows="3" (keyup)=" descrtionerrorFalse()"></textarea>
     </div>
     <p class="small text-danger text-center" *ngIf="descriptionerror">Enter The Description</p>
     <div style="width:100%; text-align: center;">
-      <button type="button" (click)="addoffer()" class="btn btn-primary  confirm-btn mt-2">Confirm</button>
+
+      <ion-button (click)="addoffer()"  style="width: 94%;"  class="secondarySmallBtn mb-4 mt-4" color="none" >
+        Confirm </ion-button>
+
     </div>
   </div>
 

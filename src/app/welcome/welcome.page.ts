@@ -26,6 +26,11 @@ export class WelcomePage implements OnInit {
 
   }
 
+
+  guide(){
+    this.router.navigate(['/ref'])
+  }
+
   async login() {
     const modal = await this.modalCtrl.create({
       component: SigninPage,

@@ -1,6 +1,6 @@
 {
 	"appId": "com.sellermobo.app",
-	"appName": "ionic",
+	"appName": "Seller App",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }

@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductsearchPage implements OnInit {
   storeName: any;
+  weight: any;
 
   constructor(private router: Router, private http: HttpService,
     private toastCtrl: ToastController, route: ActivatedRoute) {
@@ -52,6 +53,7 @@ export class ProductsearchPage implements OnInit {
 
   clearData() {
     this.productName = " ";
+    this.productShowDetail = false
 
   }
 
@@ -73,7 +75,8 @@ export class ProductsearchPage implements OnInit {
       this.productdescription = response.records[0].description;
       this.cost = response.records[0].cost;
       this.unit = response.records[0].unit;
-      this.storeName = response.records[0].store_name
+      this.storeName = response.records[0].store_name;
+      this.weight = response.records[0].weight
 
     }, (error: any) => {
       console.log(error);

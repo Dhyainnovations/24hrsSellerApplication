@@ -86,6 +86,12 @@ const routes: Routes = [
     path: 'edit-profile',
     loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
   },
+ 
+  {
+    path: 'ref',
+    loadChildren: () => import('./reference/reference.module').then( m => m.ReferencePageModule)
+  },
+
 
 
 

@@ -38,11 +38,16 @@
 .name {
   font-size  : 14px;
   color      : #0d0d0d;
-  text-align : left;
+  text-align : left !important;
   font-style : bold;
   font-weight: 550;
 }
 
+
+.sellerDetails{
+  border-bottom: 2px solid  var(--ion-color-primary) !important;
+  font-size: 12px;
+}
 
 .edit-name {
   font-size : 13px;
@@ -200,6 +205,8 @@ ion-badge {
   box-shadow     : 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.2px);
   border         : 1px solid rgba(255, 255, 255, 0.3);
+  width           : 96% !important;
+  margin: auto;
 }
 
 ion-content {

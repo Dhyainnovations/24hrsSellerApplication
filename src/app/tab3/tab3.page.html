@@ -14,8 +14,8 @@
     <div class="col-4">
       <h5 style="color:#121212;margin-top:10px"><b></b></h5>
     </div>
-    <div class="col-8 mt-2 mx-2" style="text-align: right;width: 90%;">
-      <svg (click)="notification()" style="margin:3px;" width="26" height="26" viewBox="0 0 24 24" fill="none"
+    <div class="col-8 mt-2 mx-4" style="text-align: right;width: 90%;">
+      <svg (click)="notification()" style="margin:3px;" width="30" height="34" viewBox="0 0 24 24" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd"
           d="M13.7942 3.29494C13.2296 3.10345 12.6258 3 12 3C9.1535 3 6.7622 5.14032 6.44786 7.96942L6.19605 10.2356L6.1896 10.2933C6.06065 11.417 5.69489 12.5005 5.11646 13.4725L5.08667 13.5222L4.50863 14.4856C3.98408 15.3599 3.7218 15.797 3.77842 16.1559C3.8161 16.3946 3.93899 16.6117 4.12435 16.7668C4.40292 17 4.9127 17 5.93224 17H18.0678C19.0873 17 19.5971 17 19.8757 16.7668C20.061 16.6117 20.1839 16.3946 20.2216 16.1559C20.2782 15.797 20.0159 15.3599 19.4914 14.4856L18.9134 13.5222L18.8836 13.4725C18.4273 12.7059 18.1034 11.8698 17.9236 10.9994C15.1974 10.9586 13 8.73592 13 6C13 5.00331 13.2916 4.07473 13.7942 3.29494ZM16.2741 4.98883C16.0999 5.28551 16 5.63109 16 6C16 6.94979 16.6621 7.74494 17.5499 7.94914C17.4205 6.82135 16.9608 5.80382 16.2741 4.98883Z"
@@ -37,7 +37,7 @@
   <div class="mt-2 mb-2">
     <!--------  Add Product Form  -------->
     <form #addproduct="ngForm" (ngSubmit)="onClickSubmit(addproduct.value)">
-      <div class="welcomecard mt-2">
+      <div class="welcomecard mt-2 p-2">
         <div class="row mt-2" style="padding: 10px;">
           <div class="col-12">
 
@@ -59,7 +59,7 @@
             <div class="col-12 ">
               <div class="select">
                 <select ngModel name="category">
-                  <option value="" disabled selected>Select Your Category (e.g Grocery)</option>
+                  <option value="" disabled selected>Select Your Category <span style="font-size: 5px !important;">(e.g Grocery)</span></option>
                   <option *ngFor="let cat of categoryList" value="{{cat.tbid}}">{{cat.category}}</option>
                   <!-- <option style="background-color: #23d5ab;" value="categoryPopup" (click)="check()">+ add new</option> -->
                 </select>
@@ -85,7 +85,7 @@
               </div>
               <div class="select">
                 <select ngModel name="subcategory">
-                  <option value="" disabled selected>Select Your Subcategory (e.g Fruits)</option>
+                  <option value="" disabled selected>Select Your Subcategory <span style="font-size: 5px !important;">(e.g Fruits)</span></option>
                   <option *ngFor="let subcat of subcategoryList" value="{{subcat.tbid}}">{{subcat.subsubcategory}}
                   </option>
                   <option disabled *ngIf="subCategoryNotfound">No Sub Category Found</option>
@@ -106,7 +106,7 @@
           <p class="small text-danger text-center" *ngIf="productName_check">Enter the Product Name</p>
 
           <div class="col-6">
-            <p class="name" >Cost:</p>
+            <p class="name" >Cost :</p>
           </div>
           <div class="col-6">
             <input ngModel name="cost" type="text" id="offer" (keyup)="CostAvailableCheck()" style="color: black;">
@@ -141,8 +141,12 @@
 
             </div>
           </div>
+
+          <!-- <button (click)="getPicture()" class="btn btn-primary mt-3"> camera</button> -->
+
+          <p>{{base64Image}}</p>
           <div class="col-12 mt-4">
-            <p>Product Image:<span class="infoIcon">
+            <p>Product Image :<span style="margin:5px;" class="infoIcon">
               <img src="assets/icon/i.png" alt="info icon" width="15px">
 
               <p class="extraInfo">Upload Only jpeg or png & Ratio 1:1</p>
@@ -164,8 +168,8 @@
                     <input type="file" class="" name="image" accept=".jpeg,.jpg,.png" >
                   </label></ion-button>
                 </div>
-                <div class="col-3">
-                  <ion-button style="width: 98%;" [disabled]="otp == '' " class="primarySmallOutlineBtn" color="none" (click)="redirecttoGallery()">
+                <div class="col-3 ion-text-left">
+                  <ion-button style="width: 90%;" [disabled]="otp == '' " class="primarySmallOutlineBtn" color="none" (click)="redirecttoGallery()">
                     <svg width="20" height="16"
                     viewBox="0 0 34 27" fill="none">
                     <path
@@ -190,12 +194,12 @@
 
         <div class="form-group ">
           <label  for="exampleFormControlTextarea1">Product Description :</label>
-          <textarea maxlength="50" ngModel name="description"  class="form-control"
+          <textarea maxlength="50" ngModel name="description"  class="form-control mt-2"
             id="exampleFormControlTextarea1" rows="3" (keyup)="DescriptionAvailableCheck()"></textarea>
         </div>
         <p class="small text-danger text-center" *ngIf="descrptionAvailable">Enter The Description</p>
         <div style="width:100%; text-align: center;">
-          <ion-button (click)="makeTrue()"  style="width: 90%;"  class="secondarySmallBtn mb-4" color="none" type="submit">
+          <ion-button (click)="makeTrue()"  style="width: 94%;"  class="secondarySmallBtn mb-4" color="none" type="submit">
             Add Product </ion-button>
         </div>
       </div>

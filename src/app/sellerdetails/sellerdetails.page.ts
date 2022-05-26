@@ -120,6 +120,7 @@ export class SellerdetailsPage implements OnInit {
   storecategoryCheck: any;
   usernamecheck: any;
   usernumber: any;
+  mailId=localStorage.getItem("EmailID");
   onClickSubmit(data) {
     this.image = this.selectedFile;
     const formdata = new FormData();
@@ -135,6 +136,7 @@ export class SellerdetailsPage implements OnInit {
     formdata.append("mobile_number", data.usernumber);
     formdata.append("seller_name", data.username);
     formdata.append("store_logo", this.image);
+    formdata.append("email_id", this.mailId);
  
     const idformdata = new FormData();
     idformdata.append("tbid", this.userdetails);
@@ -234,4 +236,3 @@ export class SellerdetailsPage implements OnInit {
   }
   
 }
-

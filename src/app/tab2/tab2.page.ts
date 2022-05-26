@@ -72,11 +72,11 @@ export class Tab2Page {
 
 
 
-      // one = this.promotion[0].product_count
-      // two = this.promotion[1].product_count
-      // three = this.promotion[2].product_count
-      // four = this.promotion[3].product_count
-      // five = this.promotion[4].product_count
+      // one = response.records.product_count
+      // two = response.records.product_count
+      // three = response.records.product_count
+      // four = response.records.product_count
+      // five = response.records.product_count
 
       console.log(response.records.length);
 
@@ -97,13 +97,13 @@ export class Tab2Page {
 
       if (response.records.length == 1) {
         console.log("working" + response.records.length);
-        one = this.promotion[0].product_count
+        one = response.records[0].product_count
         two = 0;
         three = 0;
         four = 0;
         five = 0;
 
-        category_one = this.promotion[0].category
+        category_one = response.records.category
         category_two = ''
         category_three = ''
         category_four = ''
@@ -112,14 +112,14 @@ export class Tab2Page {
       }
       if (response.records.length == 2) {
         console.log("working" + response.records.length);
-        one = this.promotion[0].product_count
-        two = this.promotion[1].product_count
+        one = response.records.product_count
+        two = response.records.product_count
         three = 0;
         four = 0;
         five = 0;
 
-        category_one = this.promotion[0].category
-        category_two = this.promotion[1].category
+        category_one = response.records.category
+        category_two = response.records.category
         category_three = ''
         category_four = ''
         category_five = ''
@@ -127,15 +127,15 @@ export class Tab2Page {
 
       if (response.records.length == 3) {
         console.log("working" + response.records.length);
-        one = this.promotion[0].product_count
-        two = this.promotion[1].product_count
-        three = this.promotion[2].product_count
+        one = response.records.product_count
+        two = response.records.product_count
+        three = response.records.product_count
         four = 0;
         five = 0;
 
-        category_one = this.promotion[0].category
-        category_two = this.promotion[1].category
-        category_three = this.promotion[2].category
+        category_one = response.records.category
+        category_two = response.records.category
+        category_three = response.records.category
         category_four = ''
         category_five = ''
 
@@ -143,33 +143,33 @@ export class Tab2Page {
 
       if (response.records.length == 4) {
         console.log("working" + response.records.length);
-        one = this.promotion[0].product_count
-        two = this.promotion[1].product_count
-        three = this.promotion[2].product_count
-        four = this.promotion[3].product_count
+        one = response.records.product_count
+        two = response.records.product_count
+        three = response.records.product_count
+        four = response.records.product_count
         five = 0;
 
-        category_one = this.promotion[0].category
-        category_two = this.promotion[1].category
-        category_three = this.promotion[2].category
-        category_four = this.promotion[3].category
+        category_one = response.records.category
+        category_two = response.records.category
+        category_three = response.records.category
+        category_four = response.records.category
         category_five = ''
 
       }
 
       if (response.records.length == 5) {
         console.log("working" + response.records.length);
-        one = this.promotion[0].product_count
-        two = this.promotion[1].product_count
-        three = this.promotion[2].product_count
-        four = this.promotion[3].product_count
-        five = this.promotion[4].product_count;
+        one = response.records.product_count
+        two = response.records.product_count
+        three = response.records.product_count
+        four = response.records.product_count
+        five = response.records.product_count;
 
-        category_one = this.promotion[0].category
-        category_two = this.promotion[1].category
-        category_three = this.promotion[2].category
-        category_four = this.promotion[3].category
-        category_five = this.promotion[4].category
+        category_one = response.records.category
+        category_two = response.records.category
+        category_three = response.records.category
+        category_four = response.records.category
+        category_five = response.records.category
 
       }
 
@@ -232,23 +232,23 @@ export class Tab2Page {
             // selected: true
           }, {
             name: category_two,
-            color: '#00bfc4',
+            color: '#00BFC4',
             y: two
           },
           {
             name: category_three,
 
-            color: '#7cae00',
+            color: '#778899',
             y: three
           },
           {
             name: category_four,
-            color: '#f8766d',
+            color: '#ADD8E6',
             y: four
           },
           {
             name: category_five,
-            color: '#c77cff',
+            color: '#20B2AA',
             y: five
           }]
         }]

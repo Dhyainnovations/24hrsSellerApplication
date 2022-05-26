@@ -12,7 +12,7 @@
       <div style="margin-top: -2%;" class="row ">
         <div class="col-12">
           <p class="get-started  mx-3"><b>Getting Started</b></p>
-          <p class="create-account mx-3 ">Create an account to continue!</p>
+          <p  class="create-account  ">Create an account to continue!</p>
         </div>
        
 
@@ -29,7 +29,24 @@
           <p style="color:#EB154B;;font-size: 10px;margin: 5px;"  *ngIf="ValidNumber"> Enter Valid Mobile
             Number </p>
 
-          <ion-input  required [(ngModel)]="password" (keyup)="isPasswordCheck()" type="password" placeholder="Enter your password" class="primary-input"></ion-input>
+          <!-- <ion-input  required [(ngModel)]="password" (keyup)="isPasswordCheck()" type="password" placeholder="Enter your password" class="primary-input"></ion-input> -->
+
+          <div class="container">
+            <div style="height: 45px !important;" class="row primary-input">
+              <div  class="col-10 passInput">
+                <ion-input (keyup)="isPasswordCheck()" [type]="passwordType" [(ngModel)]="password"  placeholder="Enter Your Password"> </ion-input>
+              </div>
+              
+              <div class="col-2">
+                <button style="background-color:transparent !important;margin-top: 47% !important;" class="eyebutton" (click)="onClick()">
+                  <i style="color:black" class="fa fa-eye" aria-hidden="true" *ngIf="!show"></i>
+                  <i style="color:black" class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
+                </button>
+              </div>
+            </div>
+           </div>
+
+
           <p *ngIf="passwordCheck" style="color:#EB154B;;font-size: 10px;margin: 5px;" >Your password must be 8-16
             characters, and include at least one lowercse letter, one uppercase letter, and a number</p>       
         </div>
@@ -42,13 +59,13 @@
           <ion-checkbox (ionChange)="checkboxClick($event)" color="success" [checked]="checked"></ion-checkbox>
         </div>
         <div  class="col-8">
-          <p style="margin-left: -2px;" class="tearmsAndCondition" (click)="termsAndCondition()" 
+          <p style="margin-left: -2px;font-size: 11px" class="tearmsAndCondition" (click)="termsAndCondition()" 
             *ngIf="acceptCondtioned">By
             creating an account, you agree to our
             <b> Terms & Conditions</b>
           </p>
           <p style="margin-left: -2px;" class="tearmsAndCondition" (click)="termsAndCondition()" 
-            *ngIf="acceptCondtion" style="color:red;font-size: 10px;">By
+            *ngIf="acceptCondtion" style="color:red;font-size: 11px;">By
             creating an account, you agree to our
             <b> Terms & Conditions</b>
           </p>

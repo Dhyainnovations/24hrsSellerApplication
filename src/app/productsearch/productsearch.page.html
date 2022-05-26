@@ -14,7 +14,7 @@
     <div class="col-4">
       <h5 style="margin-top:10px"><b></b></h5>
     </div>
-    <div class="col-8 mt-2 mx-2" style="text-align: right;width: 90%;">
+    <div class="col-8 mt-2 mx-4" style="text-align: right;width: 90%;">
       <svg (click)="notification()" style="margin:3px;" width="26" height="26" viewBox="0 0 24 24" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -69,15 +69,16 @@
       style="box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px !important;border-radius: 5px;">
       
       <div style="cursor: pointer;"  class="row">
-        <div class="col-5">
+        <div class="col-5 mt-1">
           <img src="{{productImage}}" alt=""
             >
         </div>
     
-        <div class="col-7 small">
-          <h4 class="product-name"><b>{{storeName | titlecase}}</b></h4>
+        <div style="margin-left: -10%" class="col-7 small">
+          <p class="product-name"><b>Store : </b>{{storeName | titlecase}}</p>
           <p class="product-name"><b>Product : </b>{{productname}}</p>
-          <p class="price"><b>Price :</b> Rs.{{cost}}/{{unit}}</p>
+          <p class="price"><b>Price :</b> Rs.{{cost}}</p>
+          <p class="price"><b>Quantity :</b> {{weight}} {{unit}}</p>
         </div>
         
       </div>

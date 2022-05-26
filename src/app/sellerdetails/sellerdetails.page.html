@@ -1,5 +1,5 @@
 <ion-content class="mt-2">
-  <div style="margin-top: 20%;" class="myproduct-div mb-4">
+  <div style="margin-top: 20% !important;" class="myproduct-div  mb-4">
 
     <h4 style="padding-left: 17px;" class="title"> Provide Your Details:</h4>
     <form #sellerdetailform="ngForm" (ngSubmit)="onClickSubmit(sellerdetailform.value)">
@@ -48,23 +48,23 @@
 
       <div class="row" style="padding-left: 17px;">
 
-        <div class="col-6 ">Address Line 1</div>
+        <div class="col-6 mt-2">Address Line 1</div>
         <div class="col-6">
           <input ngModel type="text" id="edit-field" name="address_line_1" (keyup)="adresscheckFalse()">
         </div>
-        <div class="col-6">Address Line 2</div>
+        <div class="col-6 mt-2">Address Line 2</div>
         <div class="col-6">
           <input ngModel type="text" id="edit-field" name="address_line_2" (keyup)="adresscheckFalse()">
         </div>
-        <div class="col-6">City</div>
+        <div class="col-6 mt-2">City</div>
         <div class="col-6">
           <input ngModel type="text" id="edit-field" name="city" (keyup)="adresscheckFalse()">
         </div>
-        <div class="col-6">State</div>
+        <div class="col-6 mt-2">State</div>
         <div class="col-6">
           <input ngModel type="text" id="edit-field" name="state" (keyup)="adresscheckFalse()">
         </div>
-        <div class="col-6">Pincode</div>
+        <div class="col-6 mt-2">Pincode</div>
         <div class="col-6">
           <input ngModel type="text" id="edit-field" name="pincode" (keyup)="adresscheckFalse()" maxlength="6">
         </div>
@@ -72,12 +72,13 @@
 
       <p class="small text-danger text-center mt-1" *ngIf="addresscheck">Enter Your Valid Store Address</p>
       <div class="row mt-2" style="padding-left: 17px;">
-        <div class="col-6">
+        <div class="col-6 mt-2">
           <p>Store Category</p>
         </div>
         <div class="col-6">
           <div style="margin-left: -20px !important;" class="select">
-            <select  ngModel placeholder="category" name="category">
+            <select style="color:black" ngModel placeholder="category" name="category">
+              <option  disabled value=""> select</option>
               <option *ngFor="let cat of listOfCat" value="{{cat.tbid}}">{{cat.store_category}}</option>
             </select>
           </div>
@@ -85,7 +86,7 @@
       </div>
       <p class="small text-danger text-center mt-2" *ngIf="storecategoryCheck">Choose Store Category</p>
       <div class="row" style="padding-left: 17px;">
-        <div class="col-6">
+        <div class="col-6 mt-2">
           <p>User Name</p>
         </div>
         <div class="col-6">
@@ -94,7 +95,7 @@
       </div>
       <p class="small text-danger text-center mt-2" *ngIf="usernameCheck">Enter Username</p>
       <div class="row" style="padding-left: 17px;">
-        <div class="col-6 mb-2">
+        <div class="col-6 mt-2 mb-2">
           <p>Mobile Number</p>
         </div>
         <div class="col-6">

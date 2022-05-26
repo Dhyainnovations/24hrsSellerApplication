@@ -30,7 +30,12 @@ export class SignupPage implements OnInit {
 
 
   ngOnInit() {
+
+    this.passwordType = 'password';
   }
+
+  passwordType:any;
+  show = true;
 
   OTPVerificationStatus: any;
   checked: any = "false";
@@ -61,6 +66,16 @@ export class SignupPage implements OnInit {
 
 
  
+  onClick() {
+    if (this.passwordType === 'password') {
+      this.passwordType = 'text';
+      this.show = true;
+    } else {
+      this.passwordType = 'password';
+      this.show = false;
+    }
+  }
+
 
   isEmailCheck() {
     this.isNotEmailAlert = false;

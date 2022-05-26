@@ -19,6 +19,7 @@ export class Tab4Page {
     route.params.subscribe(val => {
       this.isvisible = false;
       this.cardVisible = true;
+      this.headerVivible = true;
       this.sellerAllDetails();
       this.GetOtherList();
 
@@ -78,18 +79,23 @@ export class Tab4Page {
   OnlyIfCategorySelected: any = true;
   otherofferList: any = [];
 
+  searchIcon:any= true;
 
-
+  headerVivible:any = true;
 
 
   backToPrivious() {
     this.cardVisible = true;
     this.isvisible = false;
+    this.headerVivible = true;
+    this.searchIcon = true
   }
 
   offerPage() {
+    this.searchIcon = false
     this.cardVisible = false;
     this.isvisible = true;
+    this.headerVivible = false;
     this.noOffer = false;
   }
 
@@ -566,6 +572,7 @@ export class Tab4Page {
             remaining_time: response.records[i].remaining_time,
             offer: response.records[i].offer,
             offer_price: response.records[i].offer_price,
+            quantity: response.records[i].product_weight
           }
           console.log(this.otherofferList);
           this.otherofferList.push(data);
@@ -701,9 +708,9 @@ export class Tab4Page {
         console.log(response.records.id_proof);
         console.log(response.records.address_proof);
         if (response.records.store_category != null) {
-          this.store_categoryCheck = false
+          this.store_categoryCheck = true
         } else {
-          this.store_categoryCheck = true;
+          this.store_categoryCheck = false;
         }
         if (response.records.id_proof != null) {
           this.idproofcheck = false
