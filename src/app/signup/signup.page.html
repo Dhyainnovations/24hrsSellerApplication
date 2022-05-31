@@ -22,7 +22,7 @@
           <ion-input  required (keyup)="isEmailCheck()" [(ngModel)]="emailid"placeholder="Enter your email" class="primary-input"></ion-input>
           <p style="color:#EB154B;;font-size: 10px;margin: 5px;" *ngIf="isNotEmailAlert" > Incorrect Email Address </p>
 
-          <ion-input  required [(ngModel)]="sellername"  (keyup)="isUSername()" placeholder="Enter your user name" class="primary-input"></ion-input>
+          <ion-input  required [(ngModel)]="sellername"  (keyup)="isUSername()" placeholder="Enter your store name" class="primary-input"></ion-input>
           <p *ngIf="isUserNameAlert" style="color:#EB154B;;font-size: 10px;margin: 5px;"> Incorrect User name </p>
 
           <ion-input  (keyup)="isMobileNumber()" required [(ngModel)]="mobilenumber"  maxlength="10"placeholder="Enter your mobile number" class="primary-input" (keypress)="numberOnly($event)" type="text"></ion-input >

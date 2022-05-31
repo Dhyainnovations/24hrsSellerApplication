@@ -95,26 +95,16 @@ export class SigninPage implements OnInit {
               this.store_categoryCheck = true
             } else {
               this.store_categoryCheck = false;
-            }
- 
-            
-            if (response.records.id_proof != null) {
-              this.idproofcheck = false
-            } else {
-              this.idproofcheck = true;
-            }
-            if (response.records.address_proof != null) {
-              this.addressproofcheck = false
-            } else {
-              this.addressproofcheck = true;
-            }
-        
-            
-            if (this.store_categoryCheck == true && this.idproofcheck == true && this.addressproofcheck == true) {
+            } 
+     
+           
+            if (this.store_categoryCheck == true ) {
               this.router.navigate(['/tabs'])
             } else {
               this.router.navigate(['/sellerdetailpage'])
             }
+           
+            
           }
         }, (error: any) => {
           console.log(error);

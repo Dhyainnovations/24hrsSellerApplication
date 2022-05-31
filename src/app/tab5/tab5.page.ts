@@ -45,7 +45,7 @@ export class Tab5Page {
   imageSize: any;
   logoUploadCheck: any;
   theInstagramToggle: any;
-  userdetails: any = localStorage.getItem("StoreName");
+  userdetails: any ;
   EmailID: any = localStorage.getItem("EmailID");
   store_number: any;
   instagram: any;
@@ -106,6 +106,16 @@ export class Tab5Page {
       if (response.success == "true") {
         console.log(response);
         this.mobile_Number=response.records.mobile_number;
+       
+
+        if (response.records.store_name == "" || response.records.store_name == null) {
+          this.id_proof = "Not Available"
+        } else {
+          this.userdetails=response.records.store_name;
+        }
+
+
+
         if (response.records.id_proof == "" || response.records.id_proof == null) {
           this.idProofNotExist = true;
           this.idProofExist = false;

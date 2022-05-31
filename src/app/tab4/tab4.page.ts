@@ -430,7 +430,7 @@ export class Tab4Page {
 
   //PopUpModel True - False / Show - Hide;
   visibleCategoryPopup() {
-    if (this.idproofcheck == false && this.addressproofcheck == false && this.store_categoryCheck == false) {
+    if (this.store_categoryCheck == false) {
       this.PopupModel = true;
     } else {
       const Toast = Swal.mixin({
@@ -708,19 +708,9 @@ export class Tab4Page {
         console.log(response.records.id_proof);
         console.log(response.records.address_proof);
         if (response.records.store_category != null) {
-          this.store_categoryCheck = true
-        } else {
           this.store_categoryCheck = false;
-        }
-        if (response.records.id_proof != null) {
-          this.idproofcheck = false
         } else {
-          this.idproofcheck = true;
-        }
-        if (response.records.address_proof != null) {
-          this.addressproofcheck = false
-        } else {
-          this.addressproofcheck = true;
+          this.store_categoryCheck = true;
         }
       }
     }, (error: any) => {

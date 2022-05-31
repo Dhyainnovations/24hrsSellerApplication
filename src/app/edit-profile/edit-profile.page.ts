@@ -36,6 +36,7 @@ export class EditProfilePage implements OnInit {
   mailID(data) {
     this.EmailID = data;
   }
+  mobile_number:any;
   store_logo: any;
   sellerAllDetails() {
     this.http.get('/seller_details').subscribe((response: any) => {
@@ -47,6 +48,7 @@ export class EditProfilePage implements OnInit {
         this.address_line_1 = response.records.address_line_1;
         this.address_line_2 = response.records.address_line_2;
         this.citys = response.records.city;
+        this.mobile_number=response.records.mobile_number;
         this.store_logo = response.records.store_logo;
         this.states = response.records.city;
         this.pincodes = response.records.pincode;
@@ -73,6 +75,8 @@ export class EditProfilePage implements OnInit {
           this.imagefound = true;
         }
       }
+      console.log(this.mobile_number);
+      
     }, (error: any) => {
       console.log(error);
     }
@@ -150,6 +154,9 @@ export class EditProfilePage implements OnInit {
     sellerdetailformdata.append("pincode", this.pincodes);
     sellerdetailformdata.append("email_id", this.EmailID);
     sellerdetailformdata.append("store_name", this.storeName);
+    sellerdetailformdata.append("mobile_number", this.mobile_number);
+    console.log(sellerdetailformdata);
+    
     this.http.postFormData("/seller_update_profile", sellerdetailformdata).subscribe((response: any) => {
       console.log(response);
       this.router.navigate(['/tabs/tab5'])

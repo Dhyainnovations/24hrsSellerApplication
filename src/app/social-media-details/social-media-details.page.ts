@@ -55,12 +55,9 @@ export class SocialMediaDetailsPage implements OnInit {
   mobilenumber: any;
   Deliveryavailabilitytoggle: any = true;
   facebookurl: boolean = false;
-
+  googlelocation:any;
 
   sellerContact() {
-
-
-
       const contactData = {
         tbid: this.tbid,
         website: this.website,
@@ -69,7 +66,8 @@ export class SocialMediaDetailsPage implements OnInit {
         facebook: this.facebook,
         youtube: this.youtube,
         store_number: this.mobilenumber,
-        delivery_availability: this.deliveryStatus
+        delivery_availability: this.deliveryStatus,
+        location:this.googlelocation
       }
       console.log(contactData);
 

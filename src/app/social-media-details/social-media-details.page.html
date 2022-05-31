@@ -66,7 +66,7 @@
         </svg>
       </div>
       <div class="col-8">
-        <input type="text" id="edit-field" placeholder="youtube Link" [(ngModel)]="youtube">
+        <input type="text" id="edit-field" placeholder="Youtube Link" [(ngModel)]="youtube">
         <p class="small text-danger" *ngIf="youtubeurlCheck"><i>Kindly Enter Correct Youtube Url</i></p>
       </div>
     </div>
@@ -79,6 +79,17 @@
       <div class="col-8">
         <input type="text" id="edit-field" placeholder="Facebook Id" [(ngModel)]="facebook">
         <p class="small text-danger" *ngIf="facebookurl"><i>Kindly Enter Facebook Url</i></p>
+      </div>
+    </div>
+    <div class="row ion-text-center">
+      <div class="col-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+          <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+        </svg>
+      </div>
+      <div class="col-8">
+        <input type="text" id="edit-field" placeholder="Location Link" [(ngModel)]="googlelocation">
+        <p class="small text-danger" *ngIf="googleurl"><i>Kindly Enter Location Link</i></p>
       </div>
     </div>
 

@@ -96,6 +96,8 @@ const routes: Routes = [
     path: 't-and-c',
     loadChildren: () => import('./t-and-c/t-and-c.module').then( m => m.TAndCPageModule)
   },
+ 
+
 
 
 

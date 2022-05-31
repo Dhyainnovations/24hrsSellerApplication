@@ -106,7 +106,8 @@ export class OtpverificationPage implements OnInit {
 
 
   NaviagtetoBack() {
-    this.router.navigate((['/signinpage']), { queryParams: { checkbox: true } })
+    this.dismiss();
+    this.router.navigate(['/signinpage'])
   }
   OTPField: any;
   password: any;
