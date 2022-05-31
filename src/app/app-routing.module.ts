@@ -91,6 +91,11 @@ const routes: Routes = [
     path: 'ref',
     loadChildren: () => import('./reference/reference.module').then( m => m.ReferencePageModule)
   },
+ 
+  {
+    path: 't-and-c',
+    loadChildren: () => import('./t-and-c/t-and-c.module').then( m => m.TAndCPageModule)
+  },
 
 
 

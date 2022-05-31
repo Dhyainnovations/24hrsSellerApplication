@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService } from '../shared/http.service';
 import Swal from 'sweetalert2';
+import { TermsAndConditionPage } from '../terms-and-condition/terms-and-condition.page';
 @Component({
   selector: 'app-support',
   templateUrl: './support.page.html',
@@ -38,6 +39,11 @@ export class SupportPage implements OnInit {
   navigateToFAQ() {
     this.router.navigate(['/frequently-asked-questions'])
   }
+
+  navigateTo(){
+    this.router.navigate(['t-and-c'])
+  }
+
   submit() {
     const obj = {
       tbid: this.tbid,
