@@ -79,9 +79,9 @@ export class Tab4Page {
   OnlyIfCategorySelected: any = true;
   otherofferList: any = [];
 
-  searchIcon:any= true;
+  searchIcon: any = true;
 
-  headerVivible:any = true;
+  headerVivible: any = true;
 
 
   backToPrivious() {
@@ -570,6 +570,7 @@ export class Tab4Page {
             product_unit: response.records[i].product_unit,
             other_offer: response.records[i].other_offer,
             remaining_time: response.records[i].remaining_time,
+            // remaining_time: 100,
             offer: response.records[i].offer,
             offer_price: response.records[i].offer_price,
             quantity: response.records[i].product_weight
@@ -587,6 +588,27 @@ export class Tab4Page {
     this.GetOfferExpiredList();
   }
 
+  ngAfterViewInit() {
+
+    
+    setInterval(() => {
+      this.otherofferList = this.otherofferList.map(function(element){
+        // element.remaining_time = element.remaining_time.getTime() -1 * 1000 ;
+        console.log(new Date(element.remaining_time));
+        
+        return element;
+    });
+    }, 1000);
+
+    
+  
+
+  
+  }
+
+  
+
+  noExpiredOffer: any = false
   expiredOffersBanner: any;
   CheckOtherOfferExpiry: any;
   GetOfferExpiredList() {
@@ -611,8 +633,10 @@ export class Tab4Page {
         this.CheckOtherOfferExpiry = this.expiredotherofferList.length
         if (this.CheckOtherOfferExpiry > 0) {
           this.expiredOffersBanner = true;
+          this.noExpiredOffer = false
         } else {
-          this.expiredOffersBanner = false;
+          this.expiredOffersBanner = true;
+          this.noExpiredOffer = true
         }
       }
       this.noOffer = false;

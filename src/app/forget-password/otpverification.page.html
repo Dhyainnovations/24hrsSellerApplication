@@ -55,14 +55,14 @@
       class="primary-input"></ion-input>
 
     
-    <p class="small text-center mt-1">Resend OTP Will Be Enabled In 60 Seconds</p>
+    <p class="small text-center mt-1">Resend OTP Will Be Enabled In {{otpseconds}} Seconds</p>
     <!-- <ion-button class="btn btn-sm text-white" color="success" (click)="NaviagtetoBack()">
     Back</ion-button> -->
 
     <div class="row">
       <div class="col-6 mb-3">
 
-        <ion-button style="width: 95%;margin: auto;"  class="secondarySmallBtn mt-2" color="none" (click)="ReSendOTP()" *ngIf="AfterSixtySeconds">
+        <ion-button style="width: 95%;margin: auto;"   class="secondarySmallBtn mt-2" color="none" (click)="ReSendOTP()" *ngIf="AfterSixtySeconds">
          Resend OTP</ion-button>
 
     
@@ -93,6 +93,7 @@
 
     
 
+    
     <ion-button (click)="confirmThePassword()"  style="width: 98%;"  class="secondarySmallBtn mt-3 mb-4" color="none" >
       Submit </ion-button>
 

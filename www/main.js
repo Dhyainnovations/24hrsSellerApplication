@@ -24,11 +24,11 @@ const routes = [
     },
     {
         path: 'signinpage',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_forget-password_otpverification_page_ts"), __webpack_require__.e("default-src_app_signin_signin_page_ts"), __webpack_require__.e("src_app_signin_signin_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./signin/signin.module */ 7445)).then(m => m.SigninPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_forget-password_otpverification_page_ts"), __webpack_require__.e("default-src_app_otp_otp_page_ts"), __webpack_require__.e("default-src_app_signin_signin_page_ts"), __webpack_require__.e("src_app_signin_signin_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./signin/signin.module */ 7445)).then(m => m.SigninPageModule)
     },
     {
         path: 'signuppage',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_forget-password_otpverification_page_ts"), __webpack_require__.e("default-src_app_signin_signin_page_ts"), __webpack_require__.e("src_app_signup_signup_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./signup/signup.module */ 7648)).then(m => m.SignupPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_forget-password_otpverification_page_ts"), __webpack_require__.e("default-src_app_otp_otp_page_ts"), __webpack_require__.e("default-src_app_signin_signin_page_ts"), __webpack_require__.e("src_app_signup_signup_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./signup/signup.module */ 7648)).then(m => m.SignupPageModule)
     },
     {
         path: 'myproducts',
@@ -76,7 +76,7 @@ const routes = [
     },
     {
         path: 'otp',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("src_app_otp_otp_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./otp/otp.module */ 1599)).then(m => m.OtpPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_otp_otp_page_ts"), __webpack_require__.e("src_app_otp_otp_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./otp/otp.module */ 1599)).then(m => m.OtpPageModule)
     },
     {
         path: 'searchpage',
@@ -88,7 +88,7 @@ const routes = [
     },
     {
         path: 'welcome',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_forget-password_otpverification_page_ts"), __webpack_require__.e("default-src_app_signin_signin_page_ts"), __webpack_require__.e("src_app_welcome_welcome_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./welcome/welcome.module */ 2526)).then(m => m.WelcomePageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_forget-password_otpverification_page_ts"), __webpack_require__.e("default-src_app_otp_otp_page_ts"), __webpack_require__.e("default-src_app_signin_signin_page_ts"), __webpack_require__.e("src_app_welcome_welcome_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./welcome/welcome.module */ 2526)).then(m => m.WelcomePageModule)
     },
     {
         path: 'add-product-offer',
@@ -105,6 +105,10 @@ const routes = [
     {
         path: 'ref',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_reference_reference_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./reference/reference.module */ 7696)).then(m => m.ReferencePageModule)
+    },
+    {
+        path: 't-and-c',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_t-and-c_t-and-c_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./t-and-c/t-and-c.module */ 6878)).then(m => m.TAndCPageModule)
     },
 ];
 let AppRoutingModule = class AppRoutingModule {

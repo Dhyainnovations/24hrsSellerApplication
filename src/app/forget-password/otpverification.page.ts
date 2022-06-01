@@ -19,8 +19,31 @@ export class OtpverificationPage implements OnInit {
 
   ngOnInit() {
     this.OTPField = "true";
+    
 
   }
+
+
+  intervalId = 0;
+  
+  otpseconds: any = "60";
+  clearTimer() { clearInterval(this.intervalId); }
+  start() { this.countDown(); }
+  stop() {
+    this.clearTimer();
+  }
+
+  private countDown() {
+    this.clearTimer();
+    this.intervalId = window.setInterval(() => {
+      this.otpseconds -= 1;
+      if (this.otpseconds === 0) {
+        this.clearTimer();
+        this.otpseconds = 0;
+      }
+    }, 1000);
+  }
+
 
 
   SellerName: any;
@@ -30,6 +53,7 @@ export class OtpverificationPage implements OnInit {
   OTPSent: any = false;
 
   ReSendOTP() {
+    this.start()
     const obj = {
       mobile_number: this.PhoneNumber
     }
@@ -173,10 +197,13 @@ export class OtpverificationPage implements OnInit {
 
   }
 
+  
+
   ifOTPSent: any;
 
   isOTPsent: any;
   SendOTP() {
+    this.start()
     setTimeout(() => {
       this.enableResendOTP();
     }, 60000)

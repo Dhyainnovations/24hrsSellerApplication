@@ -375,7 +375,7 @@ let Tab3Page = class Tab3Page {
     }
     //Create New Product
     onClickSubmit(data) {
-        if (this.idproofcheck == false && this.addressproofcheck == false && this.store_categoryCheck == false) {
+        if (this.store_categoryCheck == false) {
             if (this.makeTrueCall == true) {
                 if (this.selectedFile) {
                     this.galleryImage = null;
@@ -631,25 +631,11 @@ let Tab3Page = class Tab3Page {
                 console.log(response);
                 this.store_category_id = response.records.store_category_id;
                 this.getCategoryList();
-                console.log(response.records.id_proof);
-                console.log(response.records.address_proof);
                 if (response.records.store_category != null) {
                     this.store_categoryCheck = false;
                 }
                 else {
                     this.store_categoryCheck = true;
-                }
-                if (response.records.id_proof != null) {
-                    this.idproofcheck = false;
-                }
-                else {
-                    this.idproofcheck = true;
-                }
-                if (response.records.address_proof != null) {
-                    this.addressproofcheck = false;
-                }
-                else {
-                    this.addressproofcheck = true;
                 }
             }
         }, (error) => {

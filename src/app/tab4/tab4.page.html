@@ -153,8 +153,13 @@
 
 
 
+
   <div class="container mt-3 mb-4" *ngIf="cardVisible">
     <h5 *ngIf="expiredOffersBanner">Expired Offers:</h5>
+      <!------------ no products gif  --------------->
+  <div *ngIf="noExpiredOffer" >
+    <img style="width:100%;height:100%;" src="assets/gif/empty.gif" alt="">
+  </div>
     <div *ngFor="let offer of expiredotherofferList; let i = index">
       <div class="expiredcard">
         <div class="row">
