@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { HttpService } from '../shared/http.service';
@@ -18,7 +18,10 @@ import { LoadingController } from '@ionic/angular';
 })
 
 export class Tab3Page {
-  constructor(public loadingCtrl: LoadingController,public popoverController: PopoverController, private router: Router, private http: HttpService,
+  @ViewChild('catSelect') catSelect: ElementRef;
+  @ViewChild('subSelect') subSelect: ElementRef;
+
+  constructor(public loadingCtrl: LoadingController, public popoverController: PopoverController, private router: Router, private http: HttpService,
     private toastCtrl: ToastController, private route: ActivatedRoute, private _sanitizer: DomSanitizer, private https: HttpClient) {
     route.params.subscribe(val => {
       this.sellerAllDetails();
@@ -115,7 +118,7 @@ export class Tab3Page {
     alert(imgUrl)
     this.http.post('/processImage', { dataUrl: base64Image }).subscribe((response: any) => {
       console.log(response);
-    alert("hello")
+      alert("hello")
 
     }, (error: any) => {
       console.log(error);
@@ -214,12 +217,30 @@ export class Tab3Page {
       category_name: this.categoryName
     }
     this.http.postFormData('/create_category', catData).subscribe((response: any) => {
-      console.log(response);
-
       if (response.success == "true") {
         this.Category = ''
-        this.categoryName = ''
         this.getCategoryList()
+
+        var obj = {
+          store_category_id: this.store_category_id
+        }
+
+        this.http.post('/list_category', obj).subscribe((response: any) => {
+          this.categoryList = response.records;
+          for (var i = 0; i < this.categoryList.length; i++) {
+            if (this.categoryList[i].category == this.categoryName) {
+              this.catSelect.nativeElement.value = this.categoryList[i].tbid;
+              // this.catSelect.nativeElement.change() 
+              this.catSelect.nativeElement.dispatchEvent(new Event('change'))
+              this.categoryName = ''
+            }
+          }
+
+        }, (error: any) => {
+          console.log(error);
+        }
+        );
+
         this.PopupModel = false;
       }
     }, (error: any) => {
@@ -229,6 +250,56 @@ export class Tab3Page {
     );
 
   }
+
+  //Create New Sub Category
+  createSubcategory() {
+    const subcatData = {
+      category_id: this.category_tbid,
+      subcategory_name: this.subcategoryName
+    }
+
+    this.http.postFormData('/create_subcategory', subcatData).subscribe((response: any) => {
+      console.log(response);
+      if (response.success == "true") {
+        this.subcategoryPopupModel = false;
+        const obj = {
+          category_id: this.category_tbid,
+          store_category_id: this.store_category_id
+        }
+        this.http.post('/list_subcategory', obj).subscribe((response: any) => {
+          console.log(this.subcategoryList);
+
+
+          this.subcategoryList = response.records
+          console.log(this.subcategoryList);
+
+          // for (var i = 0; i < this.subcategoryList.length; i++) {
+          //   if (this.subcategoryList[i].subsubcategory == this.subcategoryName) {
+          //     alert("hai")
+          //     console.log(this.subcategoryList[i].tbid);
+          //     this.subSelect.nativeElement.value = this.subcategoryList[i].tbid;
+          //     console.log(this.subSelect.nativeElement.value + ',' + this.subcategoryList[i].tbid);
+          //     this.subSelect.nativeElement.dispatchEvent(new Event('change'))
+          //     this.subcategoryName = ''
+          //   }
+          // }
+
+          this.subCategoryNotfound = false;
+
+        }, (error: any) => {
+          console.log(error);
+          this.subCategoryNotfound = true;
+          this.subcategoryList = [];
+        }
+        );
+      }
+    }, (error: any) => {
+      console.log(error);
+    }
+    );
+
+  }
+
 
   //FormData Inital Call
   makeTrue() {
@@ -266,42 +337,7 @@ export class Tab3Page {
 
 
 
-  //Create New Sub Category
-  createSubcategory() {
-    const subcatData = {
-      // tbid: this.userdetails,
-      category_id: this.category_tbid,
-      subcategory_name: this.subcategoryName
-    }
 
-    this.http.postFormData('/create_subcategory', subcatData).subscribe((response: any) => {
-      console.log(response);
-      if (response.success == "true") {
-        this.subcategoryName = ''
-        this.subcategoryPopupModel = false;
-        const obj = {
-          category_id: this.category_tbid,
-          store_category_id: this.store_category_id
-        }
-        this.http.post('/list_subcategory', obj).subscribe((response: any) => {
-          console.log(response.records);
-          this.subcategoryList = response.records
-          console.log(this.subcategoryList);
-          this.subCategoryNotfound = false;
-
-        }, (error: any) => {
-          console.log(error);
-          this.subCategoryNotfound = true;
-          this.subcategoryList = [];
-        }
-        );
-      }
-    }, (error: any) => {
-      console.log(error);
-    }
-    );
-
-  }
 
 
 
@@ -310,11 +346,8 @@ export class Tab3Page {
     var obj = {
       store_category_id: this.store_category_id
     }
-    console.log(obj);
     this.http.post('/list_category', obj).subscribe((response: any) => {
-      console.log(response.records);
       this.categoryList = response.records
-      console.log(this.categoryList);
     }, (error: any) => {
       console.log(error);
     }
@@ -351,21 +384,21 @@ export class Tab3Page {
   onClickSubmit(data) {
 
     if (this.store_categoryCheck == false) {
-      if (this.makeTrueCall == true) {  
+      if (this.makeTrueCall == true) {
         if (this.selectedFile) {
           this.galleryImage = null
         }
-          var str = data.unit;
+        var str = data.unit;
         console.log(data.unit);
-  
+
         var splittedUnit = str.split(" ", 1);
         console.log(splittedUnit)
         this.image = this.selectedFile;
         console.log(this.image)
 
-   
+
         if (this.galleryImage) {
-    
+
           this.selectedFile = null
           const formdata = new FormData();
           formdata.append("category_id", this.category_tbid);
@@ -394,7 +427,7 @@ export class Tab3Page {
             } else {
               this.productName_check = false
             }
-          }else{
+          } else {
             this.productName_check = true
           }
 
@@ -426,7 +459,7 @@ export class Tab3Page {
           } else {
             this.productImagecheck = false
           }
-   
+
           if (this.Subcategory_tbid_check == false && this.productName_check == false && this.CostAvailable == false && this.unitAvailable == false && this.weightavailable == false
             && this.productImagecheck == false) {
             this.http.postFormData("/product_gallery_create", formdata).subscribe((response: any) => {
@@ -474,7 +507,7 @@ export class Tab3Page {
             );
           }
         } else {
-    
+
           const formdata = new FormData();
           formdata.append("category_id", this.category_tbid);
           formdata.append("subcategory_id", this.subcategory_tbid);
@@ -485,11 +518,11 @@ export class Tab3Page {
           formdata.append("product_image", this.image);
           formdata.append("weight", data.weight)
           console.log('formData: ', formdata.getAll('category'), formdata.getAll('product_image'));
-     
+
           console.log(this.subcategory_tbid.length);
 
           console.log(this.subcategory_tbid.length);
- 
+
           if (this.subcategory_tbid.length <= 0) {
             this.Subcategory_tbid_check = true
             this.category_tbid_check = true;
@@ -497,14 +530,14 @@ export class Tab3Page {
             this.Subcategory_tbid_check = false
             this.category_tbid_check = false;
           }
-      
+
           if (data.product_name) {
             if (data.product_name.length <= 0) {
               this.productName_check = true
             } else {
               this.productName_check = false
             }
-          }else{
+          } else {
             this.productName_check = true
           }
           if (data.cost.length <= 0) {
@@ -517,7 +550,7 @@ export class Tab3Page {
           } else {
             this.unitAvailable = false
           }
-       
+
           if (data.description.length <= 0) {
             this.descrptionAvailable = true
           } else {

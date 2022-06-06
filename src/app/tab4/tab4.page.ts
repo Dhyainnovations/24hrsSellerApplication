@@ -13,6 +13,8 @@ import { DatePipe } from '@angular/common';
 })
 export class Tab4Page {
   route: any;
+  offerTimer: string;
+  noTimer: any;
 
   constructor(private router: Router, private http: HttpService,
     private toastCtrl: ToastController, route: ActivatedRoute, public datepipe: DatePipe) {
@@ -23,6 +25,9 @@ export class Tab4Page {
       this.sellerAllDetails();
       this.GetOtherList();
 
+      // setInterval(() => {
+      //   this.GetOtherList();
+      // }, 5000);
 
     });
 
@@ -31,6 +36,7 @@ export class Tab4Page {
 
   ngOnInit() {
 
+   
   }
 
 
@@ -555,6 +561,8 @@ export class Tab4Page {
   //Get All available Offer
   expiredofferList: any = [];
   expiredotherofferList: any = [];
+
+
   GetOtherList() {
     this.expiredotherofferList = [];
     this.otherofferList = []
@@ -578,6 +586,8 @@ export class Tab4Page {
           console.log(this.otherofferList);
           this.otherofferList.push(data);
         }
+
+        
       }
       this.noOffer = false;
     }, (error: any) => {
@@ -585,25 +595,25 @@ export class Tab4Page {
       this.noOffer = true;
     }
     );
+
+ 
+    
     this.GetOfferExpiredList();
+
+
+    
   }
 
   ngAfterViewInit() {
-
-    
-    setInterval(() => {
-      this.otherofferList = this.otherofferList.map(function(element){
-        // element.remaining_time = element.remaining_time.getTime() -1 * 1000 ;
-        console.log(new Date(element.remaining_time));
+    // setInterval(() => {
+    //   this.otherofferList = this.otherofferList.map(function(element){
+    //     // element.remaining_time = element.remaining_time.getTime() -1 * 1000 ;
+    //     console.log(new Date(element.remaining_time));
         
-        return element;
-    });
-    }, 1000);
+    //     return element;
+    // });
+    // }, 1000);
 
-    
-  
-
-  
   }
 
   

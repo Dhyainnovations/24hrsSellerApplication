@@ -146,9 +146,10 @@ ion-badge {
 }
 
 #modal {
-  position           : fixed;
-  top                : 9% !important;
-  margin             : 5%;
+  position           : absolute;
+  top                : 7% !important;
+  left : 4% !important;
+  margin             : 5% !important;
   background-color   : var(--ion-color-light);
   border             : 1px solid #ebe6e6;
   border-radius      : 5px;
@@ -157,6 +158,24 @@ ion-badge {
   animation-name     : example;
   animation-duration : 1s;
   animation-fill-mode: forwards;
+  z-index: 99;
+
+}
+
+ #modal.ios{
+  position           : relative;
+  top                : -47% !important;
+  left : 4% !important;
+  margin             : 5% !important;
+  background-color   : var(--ion-color-light);
+  border             : 1px solid #ebe6e6;
+  border-radius      : 5px;
+  // box-shadow: 2px 2px 2px 2px #ccc;
+  width              : 94% !important;
+  animation-name     : example;
+  animation-duration : 1s;
+  animation-fill-mode: forwards;
+  z-index: 99;
 
 }
 

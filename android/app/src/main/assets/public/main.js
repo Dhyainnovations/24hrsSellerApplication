@@ -24,11 +24,11 @@ const routes = [
     },
     {
         path: 'signinpage',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_forget-password_otpverification_page_ts"), __webpack_require__.e("default-src_app_signin_signin_page_ts"), __webpack_require__.e("src_app_signin_signin_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./signin/signin.module */ 7445)).then(m => m.SigninPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_forget-password_otpverification_page_ts"), __webpack_require__.e("default-src_app_otp_otp_page_ts"), __webpack_require__.e("default-src_app_signin_signin_page_ts"), __webpack_require__.e("src_app_signin_signin_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./signin/signin.module */ 7445)).then(m => m.SigninPageModule)
     },
     {
         path: 'signuppage',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_forget-password_otpverification_page_ts"), __webpack_require__.e("default-src_app_signin_signin_page_ts"), __webpack_require__.e("src_app_signup_signup_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./signup/signup.module */ 7648)).then(m => m.SignupPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_forget-password_otpverification_page_ts"), __webpack_require__.e("default-src_app_otp_otp_page_ts"), __webpack_require__.e("default-src_app_signin_signin_page_ts"), __webpack_require__.e("src_app_signup_signup_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./signup/signup.module */ 7648)).then(m => m.SignupPageModule)
     },
     {
         path: 'myproducts',
@@ -76,7 +76,7 @@ const routes = [
     },
     {
         path: 'otp',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("src_app_otp_otp_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./otp/otp.module */ 1599)).then(m => m.OtpPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_otp_otp_page_ts"), __webpack_require__.e("src_app_otp_otp_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./otp/otp.module */ 1599)).then(m => m.OtpPageModule)
     },
     {
         path: 'searchpage',
@@ -88,7 +88,7 @@ const routes = [
     },
     {
         path: 'welcome',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_forget-password_otpverification_page_ts"), __webpack_require__.e("default-src_app_signin_signin_page_ts"), __webpack_require__.e("src_app_welcome_welcome_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./welcome/welcome.module */ 2526)).then(m => m.WelcomePageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_shared_http_service_ts-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_forget-password_otpverification_page_ts"), __webpack_require__.e("default-src_app_otp_otp_page_ts"), __webpack_require__.e("default-src_app_signin_signin_page_ts"), __webpack_require__.e("src_app_welcome_welcome_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./welcome/welcome.module */ 2526)).then(m => m.WelcomePageModule)
     },
     {
         path: 'add-product-offer',
@@ -105,6 +105,10 @@ const routes = [
     {
         path: 'ref',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_reference_reference_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./reference/reference.module */ 7696)).then(m => m.ReferencePageModule)
+    },
+    {
+        path: 't-and-c',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_t-and-c_t-and-c_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./t-and-c/t-and-c.module */ 6878)).then(m => m.TAndCPageModule)
     },
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -602,7 +606,7 @@ module.exports = "ion-menu ion-content {\n  --background: var(--ion-color-light)
 /***/ ((module) => {
 
 "use strict";
-module.exports = "\n<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu swipeGesture=\"false\"  contentId=\"main-content\" type=\"overlay\">\n      <ion-content>\n        <ion-list style=\"margin-top:20%\" id=\"inbox-list\">\n        \n          <!-- <div class=\"row\">\n  \n            <div class=\"col-12  mb-2 mx-5 \">\n               <h2><b>24 Hrs</b></h2>\n            </div>\n          </div> -->\n          <ion-menu-toggle  auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n            <ion-item  routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" routerLinkActive=\"selected\">\n              <img  class=\"mb-3\" style=\"height:35px;width:35px;margin:5px\" [src]=\"p.icon\" alt=\"\">\n              <ion-label class=\"mb-2\">{{ p.title }}</ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n          <ion-menu-toggle  auto-hide=\"false\" >\n            <ion-item  (click)=\"logout()\" >\n              <img  style=\"height:35px;width:35px;margin:6px;\" src=\"assets/icon/logout.png\" alt=\"\">\n              <ion-label style=\"margin-top: 10px !important;\">Logout</ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n\n          <p  style=\"margin-left: 67%;margin-top: -2%;font-size: 10px;\" class=\"ion-text-left\">V17.0.9</p>\n        </ion-list>\n      </ion-content>\n      \n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
+module.exports = "\n<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu swipeGesture=\"false\"  contentId=\"main-content\" type=\"overlay\">\n      <ion-content>\n        <ion-list style=\"margin-top:20%\" id=\"inbox-list\">\n        \n          <!-- <div class=\"row\">\n  \n            <div class=\"col-12  mb-2 mx-5 \">\n               <h2><b>24 Hrs</b></h2>\n            </div>\n          </div> -->\n          <ion-menu-toggle  auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n            <ion-item  routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" routerLinkActive=\"selected\">\n              <img  class=\"mb-3\" style=\"height:35px;width:35px;margin:5px\" [src]=\"p.icon\" alt=\"\">\n              <ion-label class=\"mb-2\">{{ p.title }}</ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n          <ion-menu-toggle  auto-hide=\"false\" >\n            <ion-item  (click)=\"logout()\" >\n              <img  style=\"height:35px;width:35px;margin:6px;\" src=\"assets/icon/logout.png\" alt=\"\">\n              <ion-label style=\"margin-top: 10px !important;\">Logout</ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n\n          <p  style=\"margin-left: 67%;margin-top: -2%;font-size: 10px;\" class=\"ion-text-left\">V17.0.4</p>\n        </ion-list>\n      </ion-content>\n      \n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
 
 /***/ })
 

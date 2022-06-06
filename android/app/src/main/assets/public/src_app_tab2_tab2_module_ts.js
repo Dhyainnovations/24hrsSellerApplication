@@ -243,7 +243,6 @@ let Tab2Page = class Tab2Page {
             // three = response.records.product_count
             // four = response.records.product_count
             // five = response.records.product_count
-            console.log(response.records.length);
             if (response.records.length == 0) {
                 console.log("working" + response.records.length);
                 one = 0;
@@ -264,7 +263,7 @@ let Tab2Page = class Tab2Page {
                 three = 0;
                 four = 0;
                 five = 0;
-                category_one = response.records.category;
+                category_one = response.records[0].category;
                 category_two = '';
                 category_three = '';
                 category_four = '';
@@ -272,55 +271,55 @@ let Tab2Page = class Tab2Page {
             }
             if (response.records.length == 2) {
                 console.log("working" + response.records.length);
-                one = response.records.product_count;
-                two = response.records.product_count;
+                one = response.records[0].product_count;
+                two = response.records[1].product_count;
                 three = 0;
                 four = 0;
                 five = 0;
-                category_one = response.records.category;
-                category_two = response.records.category;
+                category_one = response.records[0].category;
+                category_two = response.records[1].category;
                 category_three = '';
                 category_four = '';
                 category_five = '';
             }
             if (response.records.length == 3) {
                 console.log("working" + response.records.length);
-                one = response.records.product_count;
-                two = response.records.product_count;
-                three = response.records.product_count;
+                one = response.records[0].product_count;
+                two = response.records[1].product_count;
+                three = response.records[2].product_count;
                 four = 0;
                 five = 0;
-                category_one = response.records.category;
-                category_two = response.records.category;
-                category_three = response.records.category;
+                category_one = response.records[0].category;
+                category_two = response.records[1].category;
+                category_three = response.records[2].category;
                 category_four = '';
                 category_five = '';
             }
             if (response.records.length == 4) {
                 console.log("working" + response.records.length);
-                one = response.records.product_count;
-                two = response.records.product_count;
-                three = response.records.product_count;
-                four = response.records.product_count;
+                one = response.records[0].product_count;
+                two = response.records[1].product_count;
+                three = response.records[2].product_count;
+                four = response.records[3].product_count;
                 five = 0;
-                category_one = response.records.category;
-                category_two = response.records.category;
-                category_three = response.records.category;
-                category_four = response.records.category;
+                category_one = response.records[0].category;
+                category_two = response.records[1].category;
+                category_three = response.records[2].category;
+                category_four = response.records[3].category;
                 category_five = '';
             }
             if (response.records.length == 5) {
                 console.log("working" + response.records.length);
-                one = response.records.product_count;
-                two = response.records.product_count;
-                three = response.records.product_count;
-                four = response.records.product_count;
-                five = response.records.product_count;
-                category_one = response.records.category;
-                category_two = response.records.category;
-                category_three = response.records.category;
-                category_four = response.records.category;
-                category_five = response.records.category;
+                one = response.records[0].product_count;
+                two = response.records[1].product_count;
+                three = response.records[2].product_count;
+                four = response.records[3].product_count;
+                five = response.records[4].product_count;
+                category_one = response.records[0].category;
+                category_two = response.records[1].category;
+                category_three = response.records[2].category;
+                category_four = response.records[3].category;
+                category_five = response.records[4].category;
             }
             let myChart = highcharts__WEBPACK_IMPORTED_MODULE_2__.chart('dynamicSpline', {
                 chart: {
@@ -388,7 +387,7 @@ let Tab2Page = class Tab2Page {
                             }]
                     }]
             });
-            console.log(one);
+            console.log(one, two, three, four, five);
         }, (error) => {
             console.log(error);
             this.noRecords = true;

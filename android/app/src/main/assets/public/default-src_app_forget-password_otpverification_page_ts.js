@@ -37,14 +37,56 @@ let OtpverificationPage = class OtpverificationPage {
         this.http = http;
         this.toastCtrl = toastCtrl;
         this.route = route;
+        this.show = true;
+        this.showPw = true;
+        this.intervalId = 0;
+        this.otpseconds = "60";
         this.GetUserDetail = {};
         this.OneTimePassword = "";
         this.OTPSent = false;
     }
     ngOnInit() {
         this.OTPField = "true";
+        this.show = true;
+        this.showPw = true;
+    }
+    onClick() {
+        if (this.passwordType === 'password') {
+            this.passwordType = 'text';
+            this.show = true;
+        }
+        else {
+            this.passwordType = 'password';
+            this.show = false;
+        }
+    }
+    Click() {
+        if (this.pwType === 'password') {
+            this.pwType = 'text';
+            this.showPw = true;
+        }
+        else {
+            this.pwType = 'password';
+            this.showPw = false;
+        }
+    }
+    clearTimer() { clearInterval(this.intervalId); }
+    start() { this.countDown(); }
+    stop() {
+        this.clearTimer();
+    }
+    countDown() {
+        this.clearTimer();
+        this.intervalId = window.setInterval(() => {
+            this.otpseconds -= 1;
+            if (this.otpseconds === 0) {
+                this.clearTimer();
+                this.otpseconds = 0;
+            }
+        }, 1000);
     }
     ReSendOTP() {
+        this.start();
         const obj = {
             mobile_number: this.PhoneNumber
         };
@@ -108,7 +150,8 @@ let OtpverificationPage = class OtpverificationPage {
         });
     }
     NaviagtetoBack() {
-        this.router.navigate((['/signinpage']), { queryParams: { checkbox: true } });
+        this.dismiss();
+        this.router.navigate(['/signinpage']);
     }
     confirmThePassword() {
         if (this.OTPVerificationStatus == "true") {
@@ -163,6 +206,7 @@ let OtpverificationPage = class OtpverificationPage {
         }
     }
     SendOTP() {
+        this.start();
         setTimeout(() => {
             this.enableResendOTP();
         }, 60000);
@@ -284,7 +328,7 @@ module.exports = "ion-label {\n  font-size: 12px !important;\n  color: #4c4c4d !
   \**********************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content class=\"ion-padding\">\n  <div class=\"welcomecard p-3 \" style=\"margin-top: 55%;\">\n  <div class=\"title mt-1\">\n    <div class=\"row\">\n      <div class=\"col-10\">\n        <h4><b>Forgot Password </b></h4>\n      </div>\n      <div class=\"col-2\">\n        <div class=\"ion-margin-top ion-text-center\">\n          <svg (click)=\"dismiss()\" style=\"cursor:pointer\" width=\"24\" height=\"27\"\n          viewBox=\"0 0 24 27\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g filter=\"url(#filter0_d_1056_2574)\">\n            <path d=\"M18 6L6 18\" stroke=\"#EB154B\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n            <path d=\"M6 6L18 18\" stroke=\"#EB154B\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n          </g>\n          <defs>\n            <filter id=\"filter0_d_1056_2574\" x=\"-4\" y=\"0\" width=\"32\" height=\"32\" filterUnits=\"userSpaceOnUse\"\n              color-interpolation-filters=\"sRGB\">\n              <feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\" />\n              <feColorMatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\"\n                result=\"hardAlpha\" />\n              <feOffset dy=\"4\" />\n              <feGaussianBlur stdDeviation=\"2\" />\n              <feComposite in2=\"hardAlpha\" operator=\"out\" />\n              <feColorMatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0\" />\n              <feBlend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow_1056_2574\" />\n              <feBlend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect1_dropShadow_1056_2574\" result=\"shape\" />\n            </filter>\n          </defs>\n        </svg>\n\n        </div>\n      </div>\n    </div>\n  </div>\n\n\n  <div style=\"margin-top: -7%;\" *ngIf=\"OTPField\">\n    <div class=\"row\">\n      <div class=\"col-12\">\n        <ion-input [(ngModel)]=\"PhoneNumber\" placeholder=\"Enter Your Phone Number\"\n          class=\"primary-input\"></ion-input>\n      </div>\n\n\n      <div class=\"ion-text-center\">\n        <ion-button (click)=\"SendOTP()\"  style=\"width: 97%;\"  class=\"secondarySmallBtn mt-3 mb-4\" color=\"none\" >\n          Send OTP </ion-button>\n      </div>\n\n    </div>\n\n\n    <ion-input [(ngModel)]=\"OneTimePassword\" placeholder=\" - - - - \" type=\"password\"\n      class=\"primary-input\"></ion-input>\n\n    \n    <p class=\"small text-center mt-1\">Resend OTP Will Be Enabled In 60 Seconds</p>\n    <!-- <ion-button class=\"btn btn-sm text-white\" color=\"success\" (click)=\"NaviagtetoBack()\">\n    Back</ion-button> -->\n\n    <div class=\"row\">\n      <div class=\"col-6 mb-3\">\n\n        <ion-button style=\"width: 95%;margin: auto;\"  class=\"secondarySmallBtn mt-2\" color=\"none\" (click)=\"ReSendOTP()\">\n         Resend OTP</ion-button>\n\n    \n      </div>\n  \n      <div class=\"col-6 mb-3\">\n\n        <ion-button style=\"width: 95%;margin: auto;\"  class=\"secondarySmallBtn mt-2\" color=\"none\" (click)=\"ReSendOTP()\">\n          Verify OTP</ion-button>\n      </div>\n    </div>\n\n  </div>\n\n\n  <div class=\"input-field mb-5\" *ngIf=\"PasswordField\">\n\n    <ion-input [(ngModel)]=\"password\" placeholder=\"Enter Your Password\" type=\"password\"\n      (keyup)=\"passwordValidation(password)\" class=\"primary-input\"></ion-input>\n    <p *ngIf=\"pwLowercaseAlert\" class=\"validation\" > A <b>lowercase</b> letter </p>\n    <p *ngIf=\"pwUppercaseAlert\" class=\"validation\" > A <b>capital (uppercase)</b> lette</p>\n    <p *ngIf=\"pwNumberAlert\" class=\"validation\" > A <b>number</b> </p>\n    <p *ngIf=\"pwMinimumAlert\" class=\"validation\" >Minimum <b>8 characters</b> </p>\n    <p *ngIf=\"invalidAlert\" class=\"validation\" ><b>Invalid</b> </p>\n\n\n    <ion-input [(ngModel)]=\"confirmPassword\" placeholder=\"Confirm Your Password\"  type=\"password\" class=\"primary-input\"></ion-input>\n\n\n    <ion-button (click)=\"confirmThePassword()\"  style=\"width: 98%;\"  class=\"secondarySmallBtn mt-3 mb-4\" color=\"none\" >\n      Submit </ion-button>\n\n    \n\n  </div>\n\n</div>\n</ion-content>";
+module.exports = "<ion-content class=\"ion-padding\">\n  <div class=\"welcomecard p-3 \" style=\"margin-top: 55%;\">\n  <div class=\"title mt-1\">\n    <div class=\"row\">\n      <div class=\"col-10\">\n        <h4><b>Forgot Password </b></h4>\n      </div>\n      <div class=\"col-2\">\n        <div class=\"ion-margin-top ion-text-center\">\n          <svg (click)=\"dismiss()\" style=\"cursor:pointer\" width=\"24\" height=\"27\"\n          viewBox=\"0 0 24 27\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g filter=\"url(#filter0_d_1056_2574)\">\n            <path d=\"M18 6L6 18\" stroke=\"#EB154B\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n            <path d=\"M6 6L18 18\" stroke=\"#EB154B\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n          </g>\n          <defs>\n            <filter id=\"filter0_d_1056_2574\" x=\"-4\" y=\"0\" width=\"32\" height=\"32\" filterUnits=\"userSpaceOnUse\"\n              color-interpolation-filters=\"sRGB\">\n              <feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\" />\n              <feColorMatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\"\n                result=\"hardAlpha\" />\n              <feOffset dy=\"4\" />\n              <feGaussianBlur stdDeviation=\"2\" />\n              <feComposite in2=\"hardAlpha\" operator=\"out\" />\n              <feColorMatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0\" />\n              <feBlend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow_1056_2574\" />\n              <feBlend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect1_dropShadow_1056_2574\" result=\"shape\" />\n            </filter>\n          </defs>\n        </svg>\n\n        </div>\n      </div>\n    </div>\n  </div>\n\n\n  <div style=\"margin-top: -7%;\" *ngIf=\"OTPField\">\n    <div class=\"row\">\n      <div class=\"col-12\">\n        <ion-input [(ngModel)]=\"PhoneNumber\" placeholder=\"Enter Your Phone Number\"\n          class=\"primary-input\"></ion-input>\n      </div>\n\n\n      <div class=\"ion-text-center\">\n        <ion-button (click)=\"SendOTP()\"  style=\"width: 97%;\"  class=\"secondarySmallBtn mt-3 mb-4\" color=\"none\" >\n          Send OTP </ion-button>\n      </div>\n\n    </div>\n\n\n    <ion-input [(ngModel)]=\"OneTimePassword\" placeholder=\" - - - - \" type=\"password\"\n      class=\"primary-input\"></ion-input>\n\n    \n    <p class=\"small text-center mt-1\">Resend OTP Will Be Enabled In {{otpseconds}} Seconds</p>\n    <!-- <ion-button class=\"btn btn-sm text-white\" color=\"success\" (click)=\"NaviagtetoBack()\">\n    Back</ion-button> -->\n\n    <div class=\"row\">\n      <div class=\"col-6 mb-3\">\n\n        <ion-button style=\"width: 95%;margin: auto;\"   class=\"secondarySmallBtn mt-2\" color=\"none\" (click)=\"ReSendOTP()\" *ngIf=\"AfterSixtySeconds\">\n         Resend OTP</ion-button>\n\n    \n      </div>\n  \n      <div class=\"col-6 mb-3\">\n\n        <ion-button style=\"width: 95%;margin: auto;\"  class=\"secondarySmallBtn mt-2\" color=\"none\" (click)=\"verifyOTP()\" *ngIf=\"isOTPsent\">\n          Verify OTP</ion-button>\n      </div>\n    </div>\n\n  </div>\n\n\n  <div class=\"input-field mb-5\" *ngIf=\"PasswordField\" >\n\n    <div class=\"container\">\n    <div style=\"height: 45px !important;\" class=\"row primary-input\">\n      <div  class=\"col-10 passInput\">\n        <ion-input (keyup)=\"passwordValidation(password)\" [type]=\"passwordType\" [(ngModel)]=\"password\"  placeholder=\"Enter Your Password\"> </ion-input>\n      </div>\n      \n      <div class=\"col-2\">\n        <button style=\"background-color:transparent !important;margin-top: 47% !important;\" class=\"eyebutton\" (click)=\"onClick()\">\n          <i style=\"color:black\" class=\"fa fa-eye\" aria-hidden=\"true\" *ngIf=\"!show\"></i>\n          <i style=\"color:black\" class=\"fa fa-eye-slash\" aria-hidden=\"true\" *ngIf=\"show\"></i>\n        </button>\n      </div>\n    </div>\n   </div>\n\n   \n    <p *ngIf=\"pwLowercaseAlert\" class=\"validation\" > A <b>lowercase</b> letter </p>\n    <p *ngIf=\"pwUppercaseAlert\" class=\"validation\" > A <b>capital (uppercase)</b> lette</p>\n    <p *ngIf=\"pwNumberAlert\" class=\"validation\" > A <b>number</b> </p>\n    <p *ngIf=\"pwMinimumAlert\" class=\"validation\" >Minimum <b>8 characters</b> </p>\n    <p *ngIf=\"invalidAlert\" class=\"validation\" ><b>Invalid</b> </p>\n\n\n\n\n\n    <div class=\"container\">\n      <div style=\"height: 45px !important;\" class=\"row primary-input\">\n        <div  class=\"col-10 passInput\">\n          <ion-input (keyup)=\"passwordValidation(password)\" [type]=\"pwType\" [(ngModel)]=\"confirmPassword\"  placeholder=\"Enter Your Password\"> </ion-input>\n        </div>\n        \n        <div class=\"col-2\">\n          <button style=\"background-color:transparent !important;margin-top: 47% !important;\" class=\"eyebutton\" (click)=\"Click()\">\n            <i style=\"color:black\" class=\"fa fa-eye\" aria-hidden=\"true\" *ngIf=\"!showPw\"></i>\n            <i style=\"color:black\" class=\"fa fa-eye-slash\" aria-hidden=\"true\" *ngIf=\"showPw\"></i>\n          </button>\n        </div>\n      </div>\n     </div>\n\n\n    \n\n    \n    <ion-button (click)=\"confirmThePassword()\"  style=\"width: 98%;\"  class=\"secondarySmallBtn mt-3 mb-4\" color=\"none\" >\n      Submit </ion-button>\n\n    \n\n  </div>\n\n  \n\n</div>\n</ion-content>";
 
 /***/ })
 

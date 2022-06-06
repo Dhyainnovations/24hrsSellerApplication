@@ -78,10 +78,24 @@
   </div>
 
 
-  <div class="input-field mb-5" *ngIf="PasswordField">
+  <div class="input-field mb-5" *ngIf="PasswordField" >
 
-    <ion-input [(ngModel)]="password" placeholder="Enter Your Password" type="password"
-      (keyup)="passwordValidation(password)" class="primary-input"></ion-input>
+    <div class="container">
+    <div style="height: 45px !important;" class="row primary-input">
+      <div  class="col-10 passInput">
+        <ion-input (keyup)="passwordValidation(password)" [type]="passwordType" [(ngModel)]="password"  placeholder="Enter Your Password"> </ion-input>
+      </div>
+      
+      <div class="col-2">
+        <button style="background-color:transparent !important;margin-top: 47% !important;" class="eyebutton" (click)="onClick()">
+          <i style="color:black" class="fa fa-eye" aria-hidden="true" *ngIf="!show"></i>
+          <i style="color:black" class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
+        </button>
+      </div>
+    </div>
+   </div>
+
+   
     <p *ngIf="pwLowercaseAlert" class="validation" > A <b>lowercase</b> letter </p>
     <p *ngIf="pwUppercaseAlert" class="validation" > A <b>capital (uppercase)</b> lette</p>
     <p *ngIf="pwNumberAlert" class="validation" > A <b>number</b> </p>
@@ -89,7 +103,24 @@
     <p *ngIf="invalidAlert" class="validation" ><b>Invalid</b> </p>
 
 
-    <ion-input [(ngModel)]="confirmPassword" placeholder="Confirm Your Password"  type="password" class="primary-input"></ion-input>
+
+
+
+    <div class="container">
+      <div style="height: 45px !important;" class="row primary-input">
+        <div  class="col-10 passInput">
+          <ion-input (keyup)="passwordValidation(password)" [type]="pwType" [(ngModel)]="confirmPassword"  placeholder="Enter Your Password"> </ion-input>
+        </div>
+        
+        <div class="col-2">
+          <button style="background-color:transparent !important;margin-top: 47% !important;" class="eyebutton" (click)="Click()">
+            <i style="color:black" class="fa fa-eye" aria-hidden="true" *ngIf="!showPw"></i>
+            <i style="color:black" class="fa fa-eye-slash" aria-hidden="true" *ngIf="showPw"></i>
+          </button>
+        </div>
+      </div>
+     </div>
+
 
     
 
@@ -100,6 +131,8 @@
     
 
   </div>
+
+  
 
 </div>
 </ion-content>

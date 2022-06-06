@@ -58,7 +58,7 @@
           <form #categoryselect="ngForm" (change)="popupModel(categoryselect.value)">
             <div class="col-12 ">
               <div class="select">
-                <select ngModel name="category">
+                <select #catSelect ngModel name="category">
                   <option value="" disabled selected>Select Your Category <span style="font-size: 5px !important;">(e.g Grocery)</span></option>
                   <option *ngFor="let cat of categoryList" value="{{cat.tbid}}">{{cat.category}}</option>
                   <!-- <option style="background-color: #23d5ab;" value="categoryPopup" (click)="check()">+ add new</option> -->
@@ -84,7 +84,7 @@
                 </div>
               </div>
               <div class="select">
-                <select ngModel name="subcategory">
+                <select #subSelect ngModel name="subcategory">
                   <option value="" disabled selected>Select Your Subcategory <span style="font-size: 5px !important;">(e.g Fruits)</span></option>
                   <option *ngFor="let subcat of subcategoryList" value="{{subcat.tbid}}">{{subcat.subsubcategory}}
                   </option>

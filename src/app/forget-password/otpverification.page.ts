@@ -13,16 +13,43 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./otpverification.page.scss'],
 })
 export class OtpverificationPage implements OnInit {
+  passwordType: string;
+  show: boolean = true;
+  showPw :boolean = true
+  pwType: string;
 
   constructor(public modalCtrl: ModalController,private router: Router, private http: HttpService,
     private toastCtrl: ToastController, private route: ActivatedRoute,) { }
 
   ngOnInit() {
     this.OTPField = "true";
-    
+    this.show = true
+    this.showPw = true
 
   }
 
+
+  onClick() {
+    if (this.passwordType === 'password') {
+      this.passwordType = 'text';
+      this.show = true;
+    } else {
+      this.passwordType = 'password';
+      this.show = false;
+    }
+  }
+
+
+  Click() {
+    if (this.pwType === 'password') {
+      this.pwType = 'text';
+      this.showPw = true;
+    } else {
+      this.pwType = 'password';
+      this.showPw = false;
+    }
+  }
+  
 
   intervalId = 0;
   

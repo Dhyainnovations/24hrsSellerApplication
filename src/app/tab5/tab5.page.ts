@@ -101,6 +101,11 @@ export class Tab5Page {
   store_categoryNotExist: any;
   mobile_Number:any;
   //Seller-get-Details
+
+  backTo(){
+    this.PopupModel = false
+  }
+
   sellerAllDetails() {
     this.http.get('/seller_details').subscribe((response: any) => {
       if (response.success == "true") {
